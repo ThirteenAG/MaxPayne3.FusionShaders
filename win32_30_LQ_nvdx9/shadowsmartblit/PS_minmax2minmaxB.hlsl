@@ -1,0 +1,73 @@
+sampler2D SmartBlitSampler : register(s1);
+float4 clearcol : register(c196);
+
+float4 main(float2 texcoord : TEXCOORD) : COLOR
+{
+	float4 o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	r0.xy = -clearcol.xy + texcoord.xy;
+	r0 = tex2D(SmartBlitSampler, r0.xy);
+	r1.x = min(r0.x, 1);
+	r1.y = max(r0.y, 0);
+	r0.xy = clearcol.xy;
+	r2 = r0.xyxy * float4(0, -1, 1, -1) + texcoord.xyxy;
+	r3 = tex2D(SmartBlitSampler, r2.xy);
+	r2 = tex2D(SmartBlitSampler, r2.zw);
+	r0.z = min(r3.x, r1.x);
+	r0.w = max(r1.y, r3.y);
+	r1.x = max(r0.w, r2.y);
+	r1.y = min(r2.x, r0.z);
+	r2 = r0.xyxy * float4(2, -1, -1, 0) + texcoord.xyxy;
+	r3 = tex2D(SmartBlitSampler, r2.xy);
+	r2 = tex2D(SmartBlitSampler, r2.zw);
+	r0.z = min(r3.x, r1.y);
+	r0.w = max(r1.x, r3.y);
+	r1.x = max(r0.w, r2.y);
+	r1.y = min(r2.x, r0.z);
+	r2 = tex2D(SmartBlitSampler, texcoord.xy);
+	r0.z = min(r2.x, r1.y);
+	r0.w = max(r1.x, r2.y);
+	r1 = r0.xyxy * float4(1, 0, 2, 0) + texcoord.xyxy;
+	r2 = tex2D(SmartBlitSampler, r1.xy);
+	r1 = tex2D(SmartBlitSampler, r1.zw);
+	r1.z = min(r2.x, r0.z);
+	r1.w = max(r0.w, r2.y);
+	r0.z = max(r1.w, r1.y);
+	r0.w = min(r1.x, r1.z);
+	r1 = r0.xyxy * float4(-1, 1, 0, 1) + texcoord.xyxy;
+	r2 = tex2D(SmartBlitSampler, r1.xy);
+	r1 = tex2D(SmartBlitSampler, r1.zw);
+	r1.z = min(r2.x, r0.w);
+	r1.w = max(r0.z, r2.y);
+	r0.z = max(r1.w, r1.y);
+	r0.w = min(r1.x, r1.z);
+	r1.xy = clearcol.xy + texcoord.xy;
+	r1 = tex2D(SmartBlitSampler, r1.xy);
+	r2.x = min(r1.x, r0.w);
+	r2.y = max(r0.z, r1.y);
+	r1 = r0.xyxy * float4(2, 1, -1, 2) + texcoord.xyxy;
+	r3 = tex2D(SmartBlitSampler, r1.xy);
+	r1 = tex2D(SmartBlitSampler, r1.zw);
+	r0.z = min(r3.x, r2.x);
+	r0.w = max(r2.y, r3.y);
+	r2.x = max(r0.w, r1.y);
+	r2.y = min(r1.x, r0.z);
+	r1 = r0.xyxy * float4(0, 2, 1, 2) + texcoord.xyxy;
+	r3 = tex2D(SmartBlitSampler, r1.xy);
+	r1 = tex2D(SmartBlitSampler, r1.zw);
+	r0.z = min(r3.x, r2.y);
+	r0.w = max(r2.x, r3.y);
+	r2.x = max(r0.w, r1.y);
+	r2.y = min(r1.x, r0.z);
+	r0.xy = r0.xy * 2 + texcoord.xy;
+	r0 = tex2D(SmartBlitSampler, r0.xy);
+	o.x = min(r0.x, r2.y);
+	o.y = max(r2.x, r0.y);
+	o.zw = float2(0, 1);
+
+	return o;
+}

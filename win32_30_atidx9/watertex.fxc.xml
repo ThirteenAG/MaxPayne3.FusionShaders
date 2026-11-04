@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="3" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_watertex" OffsetBy1="false" File="watertex/VS_watertex.hlsl" DataType="hlsl" Model="3.0" Length="240">
+        </Shader>
+        <Shader Name="VS_RippleDropletSprite" OffsetBy1="false" File="watertex/VS_RippleDropletSprite.hlsl" DataType="hlsl" Model="3.0" Length="240">
+        </Shader>
+        <Shader Name="VS_RippleQuad" OffsetBy1="false" File="watertex/VS_RippleQuad.hlsl" DataType="hlsl" Model="3.0" Length="280">
+          <Variables>
+            <Variable>g_vRippleTexelSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="5" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_watertex" OffsetBy1="false" File="watertex/PS_watertex.hlsl" DataType="hlsl" Model="3.0" Length="1216">
+          <Variables>
+            <Variable>NoiseTextureSampler</Variable>
+            <Variable>NormalTextureSampler</Variable>
+            <Variable>waterSimParams1</Variable>
+            <Variable>waterSimParams2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_RippleDropletSprite" OffsetBy1="false" File="watertex/PS_RippleDropletSprite.hlsl" DataType="hlsl" Model="3.0" Length="380">
+        </Shader>
+        <Shader Name="PS_RippleSimulationUpdate" OffsetBy1="false" File="watertex/PS_RippleSimulationUpdate.hlsl" DataType="hlsl" Model="3.0" Length="664">
+          <Variables>
+            <Variable>WaterRippleSampler</Variable>
+            <Variable>g_vRippleAttributes</Variable>
+            <Variable>g_vRippleTexelSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_RippleNormalUpdate" OffsetBy1="false" File="watertex/PS_RippleNormalUpdate.hlsl" DataType="hlsl" Model="3.0" Length="604">
+          <Variables>
+            <Variable>WaterRippleSampler</Variable>
+            <Variable>g_fRippleRainStrength</Variable>
+            <Variable>g_vRippleTexelSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float4" Count="0" Slot="196" Group="2" FirstName="waterSimParams1" SecondName="waterSimParams1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="197" Group="2" FirstName="waterSimParams2" SecondName="waterSimParams2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="NormalTextureSampler" SecondName="waternormalmaptexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="NoiseTextureSampler" SecondName="perlintexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="WaterRippleSampler" SecondName="waterRippleTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;3;5;1;4;1;6;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="198" Group="3" FirstName="g_vRippleTexelSize" SecondName="RippleTexelSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.00390625;0.00390625;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="199" Group="2" FirstName="g_fRippleRainStrength" SecondName="RippleRainStrength" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="200" Group="2" FirstName="g_vRippleAttributes" SecondName="RippleAttributes" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.0329999998;200;0.99000001;0.0500000007</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="waterTex">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="rippleTex">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

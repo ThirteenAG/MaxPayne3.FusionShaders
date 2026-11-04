@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="81">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_TransformUnlit" OffsetBy1="false" File="character_decal_map/VS_TransformUnlit.hlsl" DataType="hlsl" Model="3.0" Length="324">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_Blit" OffsetBy1="false" File="character_decal_map/VS_Blit.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="12" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_TexturedPreAlpha" OffsetBy1="false" File="character_decal_map/PS_TexturedPreAlpha.hlsl" DataType="hlsl" Model="3.0" Length="280">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Textured" OffsetBy1="false" File="character_decal_map/PS_Textured.hlsl" DataType="hlsl" Model="3.0" Length="220">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedSpray" OffsetBy1="false" File="character_decal_map/PS_TexturedSpray.hlsl" DataType="hlsl" Model="3.0" Length="220">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedRivulet" OffsetBy1="false" File="character_decal_map/PS_TexturedRivulet.hlsl" DataType="hlsl" Model="3.0" Length="456">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedDeformation" OffsetBy1="false" File="character_decal_map/PS_TexturedDeformation.hlsl" DataType="hlsl" Model="3.0" Length="204">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedEnvBlood" OffsetBy1="false" File="character_decal_map/PS_TexturedEnvBlood.hlsl" DataType="hlsl" Model="3.0" Length="344">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedEnvSmear" OffsetBy1="false" File="character_decal_map/PS_TexturedEnvSmear.hlsl" DataType="hlsl" Model="3.0" Length="308">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedEnvRivulet" OffsetBy1="false" File="character_decal_map/PS_TexturedEnvRivulet.hlsl" DataType="hlsl" Model="3.0" Length="324">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitUV" OffsetBy1="false" File="character_decal_map/PS_BlitUV.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Blit" OffsetBy1="false" File="character_decal_map/PS_Blit.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>SeamTextureSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitForPlayer" OffsetBy1="false" File="character_decal_map/PS_BlitForPlayer.hlsl" DataType="hlsl" Model="3.0" Length="316">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>SeamTextureSampler</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="SeamTextureSampler" SecondName="SeamTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="DrawBloodPreAlpha">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawBlood">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawSpray">
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawRivulet">
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawDeformation">
+      <Pass VS="0" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawEnvBlood">
+      <Pass VS="0" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawEnvSmear">
+      <Pass VS="0" PS="7" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawEnvRivulet">
+      <Pass VS="0" PS="8" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawDisplayBloodUVs">
+      <Pass VS="1" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawDisplaySeamMask">
+      <Pass VS="1" PS="10" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="DrawPostBloodSeamMask">
+      <Pass VS="1" PS="11" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

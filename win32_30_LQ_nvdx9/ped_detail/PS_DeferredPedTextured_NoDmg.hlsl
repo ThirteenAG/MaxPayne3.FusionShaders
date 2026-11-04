@@ -1,0 +1,137 @@
+sampler2D BumpSampler : register(s4);
+sampler2D DetailBumpSampler : register(s6);
+sampler2D DiffuseSampler : register(s0);
+sampler2D SpecSampler : register(s5);
+sampler3D VolumeSampler : register(s7);
+float bumpiness : register(c197);
+float detailBumpiness : register(c203);
+float4 detailSettings : register(c206);
+float detailUVScale : register(c204);
+float4 gAmbientOcclusionEffect : register(c63);
+float4 gStencil : register(c61);
+row_major float4x4 gViewInverse : register(c12);
+float4 globalScalars : register(c35);
+float4 matMaterialColorScale : register(c202);
+float4 specMapExpMask : register(c201);
+float3 specMapIntMask : register(c200);
+float specularFactor : register(c199);
+
+struct PS_IN
+{
+	float2 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float3 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+	float3 texcoord7 : TEXCOORD7;
+};
+
+struct PS_OUT
+{
+	float4 color : COLOR;
+	float4 color2 : COLOR2;
+	float4 color1 : COLOR1;
+	float4 color3 : COLOR3;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float3 r3;
+	float3 r4;
+	float3 r5;
+	r0 = tex2D(SpecSampler, i.texcoord.xy);
+	r1.x = r0.z * 16;
+	r1.y = frac(r1.x);
+	r1.x = r1.x + -r1.y;
+	r1.y = (-r1.y >= 0) ? 0 : 1;
+	r1.y = (r0.z >= 0) ? 0 : r1.y;
+	r1.x = r1.y + r1.x;
+	r1.x = r1.x + 0.5;
+	r1.z = r1.x * 0.0625;
+	r1.xy = detailSettings.zw * i.texcoord.xy;
+	r1 = tex3D(VolumeSampler, r1.xyz);
+	r1.xyz = r1.yzx * 2 + -1;
+	r1.w = detailSettings.x * i.texcoord2.w;
+	r1.z = r1.z * r1.w + 1;
+	r2 = tex2D(DiffuseSampler, i.texcoord.xy);
+	r2.xyz = r2.xyz * matMaterialColorScale.xxx;
+	r1.w = r2.w * i.texcoord2.w;
+	r1.w = r1.w * globalScalars.x;
+	o.color.xyz = r1.zzz * r2.xyz;
+	r2 = tex2D(BumpSampler, i.texcoord.xy);
+	r2.z = -r2.w + 1;
+	r2.z = -r2.x + r2.z;
+	r2.xy = (r2.zz >= 0) ? r2.wy : r2.xy;
+	r2.xy = r2.xy * 2 + -1;
+	r2.xy = r2.xy * bumpiness.xx;
+	r2.z = dot(r2.xy, -r2.xy) + 1;
+	r3.x = max(r2.z, 0);
+	r2.z = rsqrt(r3.x);
+	r2.z = 1 / r2.z;
+	r3 = r2.xxx * i.texcoord4.xyz;
+	r2.xzw = r2.zzz * i.texcoord1.xyz + r3.xyz;
+	r2.xyz = r2.yyy * i.texcoord5.xyz + r2.xzw;
+	r2.xyz = r2.xyz + 1E-05;
+	r3 = normalize(r2.xyz);
+	r2.xy = detailUVScale.xx * i.texcoord.xy;
+	r2 = tex2D(DetailBumpSampler, r2.xy);
+	r2.z = -r2.w + 1;
+	r2.z = -r2.x + r2.z;
+	r2.xy = (r2.zz >= 0) ? r2.wy : r2.xy;
+	r2.xy = r2.xy + -0.5;
+	r2.xy = r2.xy * detailBumpiness.xx;
+	r3.xy = r2.xy * 2 + r3.xy;
+	r2.xyz = r3.xyz + 1E-05;
+	r2.w = dot(r2.xyz, r2.xyz);
+	r2.w = rsqrt(r2.w);
+	r3 = r2.xyz * r2.www + 1E-05;
+	r2.xyz = r2.www * r2.xyz;
+	r4 = normalize(r3.xyz);
+	r3 = -gViewInverse[3].xyz + i.texcoord7.xyz;
+	r3 = r3.xyz + 1E-05;
+	r5 = normalize(r3.xyz);
+	r2.w = dot(r5.xyz, r4.xyz);
+	r3.x = r2.w * 1.5 + 1;
+	r2.w = (-r2.w >= 0) ? r3.x : 1;
+	r3.x = r2.w * i.texcoord2.y;
+	r3.y = dot(r0.xyz, specMapIntMask.xyz);
+	r0.x = dot(r0, specMapExpMask);
+	r0.x = r0.x * specularFactor.x;
+	r3.z = max(1, r0.x);
+	r0.xy = r3.zy * matMaterialColorScale.ww;
+	r0.y = saturate(r0.y * 5);
+	r0.y = r0.y * r3.x;
+	r0.z = saturate(r0.x * -0.01 + 1);
+	r0.x = r0.x * 0.0051020407;
+	r0.x = saturate(r0.x);
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	r0.x = rsqrt(r0.x);
+	o.color2.y = 1 / r0.x;
+	r0.x = r0.y * r0.z;
+	r0.x = (r2.w >= 0) ? r0.x : 0;
+	r0.x = r3.y * matMaterialColorScale.w + r0.x;
+	o.color2.x = saturate(r1.z * r0.x);
+	r0.xyz = r1.yyy * i.texcoord5.xyz;
+	r0.xyz = i.texcoord4.xyz * r1.xxx + r0.xyz;
+	r0.xyz = r0.xyz * detailSettings.yyy;
+	r0.xyz = r0.xyz * i.texcoord2.www + r2.xyz;
+	r0.xyz = r0.xyz + 1E-05;
+	r1.xyz = normalize(r0.xyz);
+	o.color1.xyz = r1.xyz * 0.5 + 0.5;
+	r0.x = saturate(gAmbientOcclusionEffect.z);
+	r0.x = saturate(r0.x + i.texcoord2.x);
+	o.color2.z = r0.x * gAmbientOcclusionEffect.w;
+	o.color.w = r1.w;
+	o.color1.w = r1.w;
+	o.color2.w = r1.w;
+	r0.xw = float2(1, 0);
+	o.color3 = r0.wwwx * gStencil.x;
+
+	return o;
+}

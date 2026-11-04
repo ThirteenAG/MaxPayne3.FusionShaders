@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_water" OffsetBy1="false" File="water/VS_water.hlsl" DataType="hlsl" Model="5.0" Length="4036">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>waterRenderSimParam</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="WaterSim" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="3" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_litwater" OffsetBy1="false" File="water/PS_litwater.hlsl" DataType="hlsl" Model="5.0" Length="14600">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeYMinThresholds</Variable>
+            <Variable>gCascadeYMaxThresholds</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>waterRenderSimParam</Variable>
+            <Variable>waterColour</Variable>
+            <Variable>waterIntensity</Variable>
+            <Variable>waterReflectionScale</Variable>
+            <Variable>viewProj</Variable>
+            <Variable>causticBlend</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>SurfaceTextureSampler</Variable>
+            <Variable>ReflectTextureSampler</Variable>
+            <Variable>DepthBufferSampler</Variable>
+            <Variable>NormBufferSampler</Variable>
+            <Variable>WaterRainRippleNormalSampler</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="ShadowParam" Slot="8"/>
+            <Buffer Name="WaterSim" Slot="1"/>
+            <Buffer Name="WaterAttributes" Slot="4"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_LitwaterNoAlpha" OffsetBy1="false" File="water/PS_LitwaterNoAlpha.hlsl" DataType="hlsl" Model="5.0" Length="12664">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeYMinThresholds</Variable>
+            <Variable>gCascadeYMaxThresholds</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>waterRenderSimParam</Variable>
+            <Variable>waterColour</Variable>
+            <Variable>waterIntensity</Variable>
+            <Variable>waterReflectionScale</Variable>
+            <Variable>viewProj</Variable>
+            <Variable>causticBlend</Variable>
+            <Variable>SurfaceTextureSampler</Variable>
+            <Variable>ReflectTextureSampler</Variable>
+            <Variable>WaterRainRippleNormalSampler</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="ShadowParam" Slot="8"/>
+            <Buffer Name="WaterSim" Slot="1"/>
+            <Buffer Name="WaterAttributes" Slot="4"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="256" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+    <CBuffer Name="direction_light" Size="48" VS="10" PS="10" CS="10" DS="10" GS="10" HS="10"/>
+    <CBuffer Name="rage_globals" Size="464" VS="5" PS="5" CS="5" DS="5" GS="5" HS="5"/>
+    <CBuffer Name="ShadowParam" Size="240" VS="8" PS="8" CS="8" DS="8" GS="8" HS="8"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="3" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="3" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="3" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="18" Group="2" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="19" Group="2" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="2" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="globalScalars2" SecondName="globalScalars2" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="2" FirstName="globalScalars3" SecondName="globalScalars3" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="51" Group="2" FirstName="globalScalars4" SecondName="globalScalars4" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="2" FirstName="globalFogParams" SecondName="globalFogParams" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="38" Group="2" FirstName="globalFogColor" SecondName="globalFogColor" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="40" Group="2" FirstName="globalFogOffsetN" SecondName="globalFogOffsetN" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="50" Group="2" FirstName="globalFogColorN" SecondName="globalFogColorN" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="2" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="42" Group="2" FirstName="globalDayNightEffects" SecondName="globalDayNightEffects" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;0;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="43" Group="2" FirstName="ColorCorrectTopAndPedReflectScale" SecondName="ColorCorrectTopAndPedReflectScale" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="44" Group="2" FirstName="ColorCorrectBottomOffset" SecondName="ColorCorrectBottomOffset" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="45" Group="2" FirstName="ColorShift" SecondName="ColorShift" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="46" Group="2" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="75" Group="2" FirstName="deSatContrastGammaIFX" SecondName="deSatContrastGammaIFX" Offset="224" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="47" Group="2" FirstName="colorize" SecondName="Colorize" Offset="240" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="48" Group="2" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="65" Group="2" FirstName="gToneMapScalers" SecondName="ToneMapScalers" Offset="16" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="32" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="64" Group="2" FirstName="gWaterGlobals" SecondName="WaterGlobals" Offset="48" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="66" Group="2" FirstName="ColorCorrectTopScreenEdge" SecondName="ColorCorrectTopScreenEdge" Offset="64" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="67" Group="2" FirstName="ColorCorrectBottomOffsetScreenEdge" SecondName="ColorCorrectBottomOffsetScreenEdge" Offset="80" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="2" FirstName="gScreenSpaceTessFactors" SecondName="gScreenSpaceTessFactors" Offset="96" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;3;1.5;0.0666666701</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="33" Group="2" FirstName="gTessFactors" SecondName="gTessFactors" Offset="112" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;0.25;1;5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="2" FirstName="gFrustumPlaneEquation_Left" SecondName="gFrustumPlaneEquation_Left" Offset="128" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="gFrustumPlaneEquation_Right" SecondName="gFrustumPlaneEquation_Right" Offset="144" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="gFrustumPlaneEquation_Top" SecondName="gFrustumPlaneEquation_Top" Offset="160" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="37" Group="2" FirstName="gFrustumPlaneEquation_Bottom" SecondName="gFrustumPlaneEquation_Bottom" Offset="176" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="38" Group="2" FirstName="gTessParameters" SecondName="gTessParameters" Offset="192" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>5;0.100000001;0.5;0.200000003</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="14" Group="2" FirstName="WaterRainRippleNormalSampler" SecondName="waterRainRippleNormalTexture" Offset="14" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;3;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="2" FirstName="gShadowParam18192021" SecondName="ShadowParam18192021" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="53" Group="2" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="2" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="55" Group="2" FirstName="gShadowParam4567" SecondName="ShadowParam4567" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="56" Group="2" FirstName="gShadowParam891113" SecondName="ShadowParam891113" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="92" Group="2" FirstName="gCascadeZScales" SecondName="CascadeZScales" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="93" Group="2" FirstName="gCascadeZOffsets" SecondName="CascadeZOffsets" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="94" Group="2" FirstName="gCascadeXMinThresholds" SecondName="CascadeXMinThresholds" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="95" Group="2" FirstName="gCascadeXMaxThresholds" SecondName="CascadeXMaxThresholds" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="99" Group="2" FirstName="gCascadeYMinThresholds" SecondName="CascadeYMinThresholds" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4" Count="0" Slot="100" Group="2" FirstName="gCascadeYMaxThresholds" SecondName="CascadeYMaxThresholds" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="2" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3591388184"/>
+    <Variable Type="Texture" Count="0" Slot="15" Group="2" FirstName="gShadowZSamplerDir" SecondName="ShadowZTextureDir" Offset="15" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;6;0;5;2;4;2;13;2</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="WaterSim" Size="16" VS="1" PS="1" CS="8" DS="8" GS="8" HS="8"/>
+    <CBuffer Name="WaterAttributes" Size="64" VS="8" PS="4" CS="8" DS="8" GS="8" HS="8"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="StencilCopySampler" SecondName="StencilCopyTexture" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="101" Group="3" FirstName="waterRenderSimParam" SecondName="waterRenderSimParam" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3952551978"/>
+    <Variable Type="Float4" Count="0" Slot="102" Group="2" FirstName="waterColour" SecondName="waterColour" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="515324504"/>
+    <Variable Type="Float" Count="0" Slot="103" Group="2" FirstName="waterIntensity" SecondName="waterIntensity" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="515324504"/>
+    <Variable Type="Float" Count="0" Slot="104" Group="2" FirstName="waterReflectionScale" SecondName="waterReflectionScale" Offset="20" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="515324504"/>
+    <Variable Type="Float4" Count="0" Slot="105" Group="2" FirstName="viewProj" SecondName="viewProj" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="515324504"/>
+    <Variable Type="Float" Count="0" Slot="106" Group="2" FirstName="causticBlend" SecondName="causticBlend" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="515324504"/>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="SurfaceTextureSampler" SecondName="waternormalmaptexture" Offset="1" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;3;6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="ReflectTextureSampler" SecondName="reflectiontexture" Offset="2" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="DepthBufferSampler" SecondName="depthbuffertexture" Offset="3" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="NormBufferSampler" SecondName="normbuffertexture" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="water">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="25" Value="1"/>
+          <Param Type="24" Value="1"/>
+          <Param Type="26" Value="1"/>
+          <Param Type="27" Value="1"/>
+        </Params>
+      </Pass>
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

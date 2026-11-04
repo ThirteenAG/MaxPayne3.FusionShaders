@@ -1,0 +1,133 @@
+float4 AirResist : register(c219);
+float WindStr : register(c220);
+float4 gAmbientOcclusionEffect : register(c63);
+row_major float4x4 gViewInverse : register(c12);
+float4 gWindParams : register(c218);
+row_major float4x4 gWorld : register(c0);
+row_major float4x4 gWorldViewProj : register(c8);
+float4 globalScalars : register(c35);
+float4 globalScalars2 : register(c36);
+float4 globalScalars3 : register(c49);
+float4 globalScalars4 : register(c51);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 color : COLOR;
+	float4 color1 : COLOR1;
+	float4 texcoord : TEXCOORD;
+	float4 normal : NORMAL;
+	float4 tangent : TANGENT;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float3 texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float4 texcoord5 : TEXCOORD5;
+	float3 texcoord6 : TEXCOORD6;
+	float3 texcoord7 : TEXCOORD7;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float3 r2;
+	float3 r3;
+	float2 r4;
+	r0.xyz = gWorld[1].xyz * i.tangent.yyy;
+	r0.xyz = i.tangent.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.tangent.zzz * gWorld[2].xyz + r0.xyz;
+	r0.xyz = r0.xyz + 1E-05;
+	r1.xyz = normalize(r0.xyz);
+	r0.xyz = gWorld[1].xyz * i.position.yyy;
+	r0.xyz = i.position.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.position.zzz * gWorld[2].xyz + r0.xyz;
+	r0.xyz = r0.xyz + gWorld[3].xyz;
+	r2 = -r0.xyz + gViewInverse[3].xyz;
+	o.texcoord7 = r0.xyz;
+	o.texcoord6.x = dot(r1.xyz, r2.xyz);
+	r0.xyz = gWorld[1].xyz * i.normal.yyy;
+	r0.xyz = i.normal.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.normal.zzz * gWorld[2].xyz + r0.xyz;
+	r0.xyz = r0.xyz + 1E-05;
+	r3 = normalize(r0.xyz);
+	r0.xyz = r1.zxy * r3.yzx;
+	r0.xyz = r1.yzx * r3.zxy + -r0.xyz;
+	o.texcoord4.xyz = r1.xyz;
+	r0.xyz = r0.xyz * i.tangent.www;
+	o.texcoord6.y = dot(r0.xyz, r2.xyz);
+	o.texcoord5.xyz = r0.xyz;
+	o.texcoord6.z = dot(r3.xyz, r2.xyz);
+	o.texcoord3 = r2.xyz;
+	o.texcoord2.y = globalScalars2.w * i.color.y;
+	r0.xy = float2(1E-05, 1);
+	r0.z = i.color.x * globalScalars.z + -r0.y;
+	r0.z = gAmbientOcclusionEffect.y * r0.z + r0.y;
+	r0.w = 1 / gAmbientOcclusionEffect.y;
+	r0.z = r0.w * r0.z;
+	o.texcoord2.x = min(r0.z, 1);
+	r0.z = saturate(WindStr.x);
+	r1.xyz = float3(6, 10, 10) * i.position.xxz;
+	r0.w = AirResist.w;
+	r2.xy = r0.ww * float2(4, 1.5) + 1;
+	r0.w = globalScalars3.y * r2.y + r1.x;
+	r1.x = r1.z + r1.y;
+	r1.x = i.position.y * 10 + r1.x;
+	r0.w = r0.w * 0.15915494 + 0.5;
+	r0.w = frac(r0.w);
+	r0.w = r0.w * 6.2831855 + -3.1415927;
+	r4.y = sin(r0.w);
+	r0.z = r0.z * abs(r4.y);
+	r0.w = r2.y * globalScalars3.y;
+	r1.yzw = r2.xxx * i.color1.xxz;
+	r1.yzw = -r1.yzw * i.normal.xyz;
+	r1.x = r0.w * gWindParams.z + r1.x;
+	r0.w = r0.w * gWindParams.w;
+	r0.w = i.position.y * 4 + r0.w;
+	r0.w = r0.w * 0.15915494 + 0.5;
+	r0.w = frac(r0.w);
+	r0.w = r0.w * 6.2831855 + -3.1415927;
+	r2.y = sin(r0.w);
+	r0.w = r1.x * 0.15915494 + 0.5;
+	r0.w = frac(r0.w);
+	r0.w = r0.w * 6.2831855 + -3.1415927;
+	r4.y = sin(r0.w);
+	r0.z = r0.z * abs(r4.y);
+	r0.z = abs(r2.y) * r0.z;
+	r0.w = saturate(dot(AirResist.xzy, r3.xyz));
+	o.texcoord1.xyz = r3.xyz;
+	r0.w = -r0.w + 1;
+	r0.y = r0.w * -AirResist.w + r0.y;
+	r0.w = (0.8 < r0.y) ? 1 : 0;
+	r1.x = lerp(r0.y, 1, r0.w);
+	r1.xyz = r1.xxx * r1.yzw;
+	r2.x = r0.x + globalScalars3.z;
+	r2.y = r0.x + globalScalars4.z;
+	r2.z = 1E-05;
+	r3 = normalize(r2.xyz);
+	r0.x = dot(r3.xyz, i.normal.xyz);
+	r0.x = max(r0.x, 0.25);
+	r0.x = min(r0.x, 1);
+	r0.xyw = r0.xxx * r1.xyz;
+	r0.xyz = r0.xyw * r0.zzz + i.position.xyz;
+	r1 = r0.y * gWorldViewProj[1];
+	r1 = r0.x * gWorldViewProj[0] + r1;
+	r0 = r0.z * gWorldViewProj[2] + r1;
+	r0 = r0 + gWorldViewProj[3];
+	o.position = r0;
+	o.texcoord1.w = r0.w;
+	o.texcoord = float4(1, 1, 0, 0) * i.texcoord.xyxx;
+	o.texcoord2.zw = i.color.zw;
+	o.texcoord4.w = i.position.z;
+	o.texcoord5.w = i.tangent.w;
+
+	return o;
+}

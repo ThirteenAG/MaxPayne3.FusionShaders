@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="89">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="13" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_Transform" OffsetBy1="false" File="emissive_uvanim/VS_Transform.hlsl" DataType="hlsl" Model="3.0" Length="1164">
+          <Variables>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkin" OffsetBy1="false" File="emissive_uvanim/VS_TransformSkin.hlsl" DataType="hlsl" Model="3.0" Length="1596">
+          <Variables>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformUnlit" OffsetBy1="false" File="emissive_uvanim/VS_TransformUnlit.hlsl" DataType="hlsl" Model="3.0" Length="360">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkinUnlit" OffsetBy1="false" File="emissive_uvanim/VS_TransformSkinUnlit.hlsl" DataType="hlsl" Model="3.0" Length="804">
+          <Variables>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformD" OffsetBy1="false" File="emissive_uvanim/VS_TransformD.hlsl" DataType="hlsl" Model="3.0" Length="648">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkinD" OffsetBy1="false" File="emissive_uvanim/VS_TransformSkinD.hlsl" DataType="hlsl" Model="3.0" Length="1064">
+          <Variables>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_cShadowmapGen" OffsetBy1="false" File="emissive_uvanim/VS_cShadowmapGen.hlsl" DataType="hlsl" Model="3.0" Length="452">
+          <Variables>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gWorld</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_WarpDepth" OffsetBy1="false" File="emissive_uvanim/VS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="948">
+          <Variables>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gWorld</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_cShadowmapGenSkin" OffsetBy1="false" File="emissive_uvanim/VS_cShadowmapGenSkin.hlsl" DataType="hlsl" Model="3.0" Length="1516">
+          <Variables>
+            <Variable>clothVertexSampler</Variable>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>invVertexBufferSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_WarpDepthSkin" OffsetBy1="false" File="emissive_uvanim/VS_WarpDepthSkin.hlsl" DataType="hlsl" Model="3.0" Length="1980">
+          <Variables>
+            <Variable>clothVertexSampler</Variable>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>invVertexBufferSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_Transform_paraboloid" OffsetBy1="false" File="emissive_uvanim/VS_Transform_paraboloid.hlsl" DataType="hlsl" Model="3.0" Length="848">
+          <Variables>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformBasic" OffsetBy1="false" File="emissive_uvanim/VS_TransformBasic.hlsl" DataType="hlsl" Model="3.0" Length="672">
+          <Variables>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkinBasic" OffsetBy1="false" File="emissive_uvanim/VS_TransformSkinBasic.hlsl" DataType="hlsl" Model="3.0" Length="1104">
+          <Variables>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="13" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_Textured_Eight" OffsetBy1="false" File="emissive_uvanim/PS_Textured_Eight.hlsl" DataType="hlsl" Model="3.0" Length="716">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalAnimUV0</Variable>
+            <Variable>globalAnimUV1</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedUnlit" OffsetBy1="false" File="emissive_uvanim/PS_TexturedUnlit.hlsl" DataType="hlsl" Model="3.0" Length="716">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalAnimUV0</Variable>
+            <Variable>globalAnimUV1</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredTextured" OffsetBy1="false" File="emissive_uvanim/PS_DeferredTextured.hlsl" DataType="hlsl" Model="3.0" Length="688">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredTextured_AlphaStipple" OffsetBy1="false" File="emissive_uvanim/PS_DeferredTextured_AlphaStipple.hlsl" DataType="hlsl" Model="3.0" Length="972">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>stipplePattern</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_CascadeCaster" OffsetBy1="false" File="emissive_uvanim/PS_CascadeCaster.hlsl" DataType="hlsl" Model="3.0" Length="368">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_WarpDepth" OffsetBy1="false" File="emissive_uvanim/PS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="408">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Textured_Mirror" OffsetBy1="false" File="emissive_uvanim/PS_Textured_Mirror.hlsl" DataType="hlsl" Model="3.0" Length="876">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>emissiveReflectMultiplier</Variable>
+            <Variable>globalAnimUV0</Variable>
+            <Variable>globalAnimUV1</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedBasic_paraboloid" OffsetBy1="false" File="emissive_uvanim/PS_TexturedBasic_paraboloid.hlsl" DataType="hlsl" Model="3.0" Length="736">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedBasic_Reflection" OffsetBy1="false" File="emissive_uvanim/PS_TexturedBasic_Reflection.hlsl" DataType="hlsl" Model="3.0" Length="616">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredImposter" OffsetBy1="false" File="emissive_uvanim/PS_DeferredImposter.hlsl" DataType="hlsl" Model="3.0" Length="220">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Textured_Zero" OffsetBy1="false" File="emissive_uvanim/PS_Textured_Zero.hlsl" DataType="hlsl" Model="3.0" Length="716">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalAnimUV0</Variable>
+            <Variable>globalAnimUV1</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Textured_Four" OffsetBy1="false" File="emissive_uvanim/PS_Textured_Four.hlsl" DataType="hlsl" Model="3.0" Length="716">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+            <Variable>emissiveMultiplier</Variable>
+            <Variable>globalAnimUV0</Variable>
+            <Variable>globalAnimUV1</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float3x4" Count="40" Slot="76" Group="1" FirstName="gBoneMtx" SecondName="WorldMatrixArray" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="18" Group="1" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="globalScalars2" SecondName="globalScalars2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="1" FirstName="globalFogParams" SecondName="globalFogParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="47" Group="2" FirstName="colorize" SecondName="Colorize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="61" Group="2" FirstName="gStencil" SecondName="Stencil" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="62" Group="2" FirstName="stipplePattern" SecondName="stipplePatterns" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.100000001;0.349999994;0.25;0.150000006</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="1" FirstName="clothVertexSampler" SecondName="clothVertexTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;6;0;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="1" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="53" Group="3" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="1" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="1" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float3" Count="0" Slot="196" Group="2" FirstName="globalAnimUV0" SecondName="globalAnimUV0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="197" Group="2" FirstName="globalAnimUV1" SecondName="globalAnimUV1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>5;3;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="198" Group="2" FirstName="emissiveMultiplier" SecondName="EmissiveMultiplier" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Emissive HDR Multiplier"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="255"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="199" Group="2" FirstName="emissiveReflectMultiplier" SecondName="EmissiveReflectMultiplier" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Emissive Reflection HDR Multiplier"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="255"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="drawskinned">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_drawskinned">
+      <Pass VS="3" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferred_draw">
+      <Pass VS="4" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="15"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_draw">
+      <Pass VS="4" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="15"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferred_drawskinned">
+      <Pass VS="5" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="15"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_drawskinned">
+      <Pass VS="5" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="15"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="cascade_draw">
+      <Pass VS="6" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="wd_draw">
+      <Pass VS="7" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cascade_drawskinned">
+      <Pass VS="8" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="wd_drawskinned">
+      <Pass VS="9" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="mirror_draw">
+      <Pass VS="0" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="mirror_drawskinned">
+      <Pass VS="1" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="paraboloid_draw">
+      <Pass VS="10" PS="8" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="reflection_draw">
+      <Pass VS="11" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="reflection_drawskinned">
+      <Pass VS="12" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="imposterdeferred_drawskinned">
+      <Pass VS="5" PS="10" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight0_draw">
+      <Pass VS="0" PS="11" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight0_drawskinned">
+      <Pass VS="1" PS="11" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight4_draw">
+      <Pass VS="0" PS="12" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight4_drawskinned">
+      <Pass VS="1" PS="12" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

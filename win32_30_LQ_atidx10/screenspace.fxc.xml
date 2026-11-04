@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="6" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_screenTransformSSAO" OffsetBy1="false" File="screenspace/VS_screenTransformSSAO.hlsl" DataType="hlsl" Model="3.0" Length="344">
+          <Variables>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_screenTransformS_SSAO" OffsetBy1="false" File="screenspace/VS_screenTransformS_SSAO.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_screenTransform" OffsetBy1="false" File="screenspace/VS_screenTransform.hlsl" DataType="hlsl" Model="3.0" Length="168">
+        </Shader>
+        <Shader Name="VS_volumeTransformP" OffsetBy1="false" File="screenspace/VS_volumeTransformP.hlsl" DataType="hlsl" Model="3.0" Length="348">
+          <Variables>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_screenTransformS" OffsetBy1="false" File="screenspace/VS_screenTransformS.hlsl" DataType="hlsl" Model="3.0" Length="536">
+          <Variables>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_SunRaysExtrude" OffsetBy1="false" File="screenspace/VS_SunRaysExtrude.hlsl" DataType="hlsl" Model="3.0" Length="312">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="19" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_dbgUpscaleSSAO" OffsetBy1="false" File="screenspace/PS_dbgUpscaleSSAO.hlsl" DataType="hlsl" Model="3.0" Length="1228">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gDeferredLightSampler2</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_dbgUpscaleSSAO_2" OffsetBy1="false" File="screenspace/PS_dbgUpscaleSSAO_2.hlsl" DataType="hlsl" Model="3.0" Length="1044">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_dbgSSAO_SMAO_QS" OffsetBy1="false" File="screenspace/PS_dbgSSAO_SMAO_QS.hlsl" DataType="hlsl" Model="3.0" Length="2464">
+          <Variables>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+            <Variable>gDeferredLightColourAndIntensity</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>g_fSSAOKernelScale</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SSAO_blur_bilateral_X" OffsetBy1="false" File="screenspace/PS_SSAO_blur_bilateral_X.hlsl" DataType="hlsl" Model="3.0" Length="996">
+          <Variables>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>g_fSSAOBilateralCoef</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SSAO_blur_bilateral_Y" OffsetBy1="false" File="screenspace/PS_SSAO_blur_bilateral_Y.hlsl" DataType="hlsl" Model="3.0" Length="960">
+          <Variables>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>g_fSSAOBilateralCoef</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_volume_blurX" OffsetBy1="false" File="screenspace/PS_volume_blurX.hlsl" DataType="hlsl" Model="3.0" Length="556">
+          <Variables>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_volume_blurY" OffsetBy1="false" File="screenspace/PS_volume_blurY.hlsl" DataType="hlsl" Model="3.0" Length="556">
+          <Variables>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_dbgDownscaleSSAO" OffsetBy1="false" File="screenspace/PS_dbgDownscaleSSAO.hlsl" DataType="hlsl" Model="3.0" Length="432">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_StoreAmbScaleSSAO" OffsetBy1="false" File="screenspace/PS_StoreAmbScaleSSAO.hlsl" DataType="hlsl" Model="3.0" Length="352">
+          <Variables>
+            <Variable>GBufferTextureSampler2</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_waterCaustics" OffsetBy1="false" File="screenspace/PS_waterCaustics.hlsl" DataType="hlsl" Model="3.0" Length="2472">
+          <Variables>
+            <Variable>GBufferTextureSampler0</Variable>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeYMaxThresholds</Variable>
+            <Variable>gCascadeYMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDeferredLightColourAndIntensity</Variable>
+            <Variable>gDeferredLightRadiusProjShearParams</Variable>
+            <Variable>gDeferredLightSampler</Variable>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gDeferredLightVolumeParams</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_GenerateVolumetricLightShafts" OffsetBy1="false" File="screenspace/PS_GenerateVolumetricLightShafts.hlsl" DataType="hlsl" Model="3.0" Length="8780">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_GenerateVolumetricLightShaftsHQ" OffsetBy1="false" File="screenspace/PS_GenerateVolumetricLightShaftsHQ.hlsl" DataType="hlsl" Model="3.0" Length="11180">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_GenerateVolumetricLightShaftsLQ" OffsetBy1="false" File="screenspace/PS_GenerateVolumetricLightShaftsLQ.hlsl" DataType="hlsl" Model="3.0" Length="6380">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_GenerateVolumetricLightShaftsVLQ" OffsetBy1="false" File="screenspace/PS_GenerateVolumetricLightShaftsVLQ.hlsl" DataType="hlsl" Model="3.0" Length="5180">
+          <Variables>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SunRaysMakeCutout" OffsetBy1="false" File="screenspace/PS_SunRaysMakeCutout.hlsl" DataType="hlsl" Model="3.0" Length="300">
+          <Variables>
+            <Variable>deferredLightDownsampleDepthSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SunRaysExtrude" OffsetBy1="false" File="screenspace/PS_SunRaysExtrude.hlsl" DataType="hlsl" Model="3.0" Length="1528">
+          <Variables>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gDeferredLightSampler2</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SSLRBlur" OffsetBy1="false" File="screenspace/PS_SSLRBlur.hlsl" DataType="hlsl" Model="3.0" Length="544">
+          <Variables>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_SSLRBlurPacked" OffsetBy1="false" File="screenspace/PS_SSLRBlurPacked.hlsl" DataType="hlsl" Model="3.0" Length="556">
+          <Variables>
+            <Variable>gDeferredLightSampler1</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="19" Group="2" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="globalScalars2" SecondName="globalScalars2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="3" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="2" FirstName="gShadowParam18192021" SecondName="ShadowParam18192021" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="53" Group="2" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="2" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="55" Group="2" FirstName="gShadowParam4567" SecondName="ShadowParam4567" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="56" Group="2" FirstName="gShadowParam891113" SecondName="ShadowParam891113" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="92" Group="2" FirstName="gCascadeZScales" SecondName="CascadeZScales" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="93" Group="2" FirstName="gCascadeZOffsets" SecondName="CascadeZOffsets" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="94" Group="2" FirstName="gCascadeXMinThresholds" SecondName="CascadeXMinThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="95" Group="2" FirstName="gCascadeXMaxThresholds" SecondName="CascadeXMaxThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="99" Group="2" FirstName="gCascadeYMinThresholds" SecondName="CascadeYMinThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="100" Group="2" FirstName="gCascadeYMaxThresholds" SecondName="CascadeYMaxThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="2" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="15" Group="2" FirstName="gShadowZSamplerDir" SecondName="ShadowZTextureDir" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="13" Group="2" FirstName="GBufferTextureSampler2" SecondName="gbufferTexture2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float4" Count="0" Slot="110" Group="2" FirstName="gDeferredLightRadiusProjShearParams" SecondName="deferredLightRadiusProjectionShearParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="117" Group="2" FirstName="gDeferredLightColourAndIntensity" SecondName="deferredLightColourAndIntensity" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="118" Group="3" FirstName="gooDeferredLightScreenSize" SecondName="deferredLightScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="119" Group="3" FirstName="gDeferredProjParams" SecondName="deferredProjectionParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="121" Group="2" FirstName="gDeferredLightVolumeParams" SecondName="deferredLightVolumeParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="gDeferredLightSampler" SecondName="deferredLightTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="gDeferredLightSampler1" SecondName="deferredLightTexture1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="gDeferredLightSampler2" SecondName="deferredLightTexture2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="8" Group="2" FirstName="GBufferTextureSampler0" SecondName="gbufferTexture0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="10" Group="2" FirstName="GBufferTextureSamplerDepth" SecondName="gbufferTextureDepth" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="122" Group="2" FirstName="g_fSSAOBilateralCoef" SecondName="SSAOBilateralCoefficient" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.063000001</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="137" Group="2" FirstName="g_fSSAOKernelScale" SecondName="SSAOKernelScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>4</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="12" Group="2" FirstName="deferredLightDownsampleDepthSampler" SecondName="deferredLightDownsampleDepthTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;5;1;4;1;6;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="138" Group="0" FirstName="TexelSize" SecondName="TexelSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="UpscaleSSAO">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="19" Value="4"/>
+          <Param Type="20" Value="0"/>
+          <Param Type="21" Value="0"/>
+          <Param Type="22" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="ComputeSSAO">
+      <Pass VS="1" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="BlurSSAO">
+      <Pass VS="1" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="1" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="6" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="1" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="1" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="6" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="DownscaleSSAO">
+      <Pass VS="1" PS="8" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="StoreAmbScaleSSAO">
+      <Pass VS="2" PS="9" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="waterCaustics">
+      <Pass VS="3" PS="10" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="volumetricLightShafts">
+      <Pass VS="4" PS="11" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="volumetricLightShaftsHQ">
+      <Pass VS="4" PS="12" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="volumetricLightShaftsLQ">
+      <Pass VS="4" PS="13" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="volumetricLightShaftsVLQ">
+      <Pass VS="4" PS="14" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="SunRays">
+      <Pass VS="4" PS="15" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="5" PS="16" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="17" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="2" PS="18" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

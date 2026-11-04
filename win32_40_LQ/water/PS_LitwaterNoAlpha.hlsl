@@ -1,0 +1,281 @@
+cbuffer rage_matrices : register(b0)
+{
+	row_major float4x4 gWorld : packoffset(c0);
+	row_major float4x4 gWorldView : packoffset(c4);
+	row_major float4x4 gWorldViewProj : packoffset(c8);
+	row_major float4x4 gViewInverse : packoffset(c12);
+};
+
+cbuffer direction_light : register(b10)
+{
+	float4 gDepthFxParams : packoffset(c0);
+	float4 gDirectionalLight : packoffset(c1);
+	float4 gDirectionalColour : packoffset(c2);
+};
+
+cbuffer rage_globals : register(b5)
+{
+	float4 globalScalars : packoffset(c0);
+	float4 globalScalars2 : packoffset(c1);
+	float4 globalScalars3 : packoffset(c2);
+	float4 globalScalars4 : packoffset(c3);
+	float4 globalFogParams : packoffset(c4);
+	float4 globalFogColor : packoffset(c5);
+	float4 globalFogOffsetN : packoffset(c6);
+	float4 globalFogColorN : packoffset(c7);
+	float4 globalScreenSize : packoffset(c8);
+	float4 globalDayNightEffects : packoffset(c9);
+	float4 ColorCorrectTopAndPedReflectScale : packoffset(c10);
+	float4 ColorCorrectBottomOffset : packoffset(c11);
+	float4 ColorShift : packoffset(c12);
+	float4 deSatContrastGamma : packoffset(c13);
+	float4 deSatContrastGammaIFX : packoffset(c14);
+	float4 colorize : packoffset(c15);
+	float4 globalUmScalars : packoffset(c16);
+	float4 gToneMapScalers : packoffset(c17);
+};
+
+cbuffer ShadowParam : register(b8)
+{
+	float4 gShadowParam18192021 : packoffset(c0);
+	float4 gShadowParam14151617 : packoffset(c1);
+	float4 gShadowParam0123 : packoffset(c2);
+	float4 gShadowParam4567 : packoffset(c3);
+	float4 gShadowParam891113 : packoffset(c4);
+	float4 gCascadeZScales : packoffset(c5);
+	float4 gCascadeZOffsets : packoffset(c6);
+	float4 gCascadeXMinThresholds : packoffset(c7);
+	float4 gCascadeXMaxThresholds : packoffset(c8);
+	float4 gCascadeYMinThresholds : packoffset(c9);
+	float4 gCascadeYMaxThresholds : packoffset(c10);
+	row_major float4x4 gShadowMatrix : packoffset(c11);
+};
+
+cbuffer WaterSim : register(b1)
+{
+	float4 waterRenderSimParam : packoffset(c0);
+};
+
+cbuffer WaterAttributes : register(b4)
+{
+	float4 waterColour : packoffset(c0);
+	float waterIntensity : packoffset(c1);
+	float waterReflectionScale : packoffset(c1.y);
+};
+
+SamplerState SurfaceTextureSampler : register(s1);
+SamplerState ReflectTextureSampler : register(s2);
+SamplerState WaterRainRippleNormalSampler : register(s14);
+SamplerComparisonState gShadowZSamplerDir : register(s15);
+Texture2D SurfaceTextureSampler_tex : register(t1);
+Texture2D ReflectTextureSampler_tex : register(t2);
+Texture2D WaterRainRippleNormalSampler_tex : register(t14);
+Texture2D ShadowZTextureDir : register(t15);
+
+struct PS_IN
+{
+	float4 sv_position : SV_Position;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float4 texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float4 texcoord5 : TEXCOORD5;
+};
+
+float4 main(PS_IN i) : SV_Target
+{
+	float4 o;
+
+	float4 r0;
+	int4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float4 r5;
+	float4 r6;
+	int4 r7;
+	int3 r8;
+	float3 r9;
+	float3 r10;
+	r0.z = 1;
+	r1 = asint(i.texcoord2.xyxy * float4(0.00200000009, 0.00200000009, 0.00999999978, 0.00999999978));
+	r2 = SurfaceTextureSampler_tex.Sample(SurfaceTextureSampler, asfloat(r1.zw));
+	r1 = asint(SurfaceTextureSampler_tex.Sample(SurfaceTextureSampler, asfloat(r1.xy)));
+	r1.xy = asint(asfloat(r1.zw) + float2(-0.5, -0.5));
+	r1.xy = asint(asfloat(r1.xy) * float2(0.0511999987, 0.0511999987));
+	r2.xy = r2.zw + float2(-0.5, -0.5);
+	r1.z = 1065353216;
+	r3.xyz = i.texcoord2.xyz + -(i.texcoord3.xyz);
+	r0.w = dot(r3.xyz, r3.xyz);
+	r3.xyz = r3.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r0.w = -(r0.w) * 0.000399999990 + 1;
+	r0.w = max(r0.w, 0);
+	r1.w = asint(-(r0.w) + 1);
+	r1.xyz = asint(asfloat(r1.www) * asfloat(r1.xyz));
+	r1.w = asint(r0.w / i.texcoord1.z);
+	r1.xyz = asint(i.texcoord1.xyz * asfloat(r1.www) + asfloat(r1.xyz));
+	r4 = r2.xyxy * float4(0.256000012, 0.256000012, 1.02400005, 1.02400005) + asfloat(r1.xyxy);
+	r2.xy = r2.xy * float2(0.128000006, 0.128000006);
+	r2.xy = asfloat(r1.xy) * float2(0.5, 0.5) + r2.xy;
+	r2.xy = r2.xy + float2(0.00000999999975, 0.00000999999975);
+	r5 = i.texcoord2.xyxy * float4(0.0454545468, 0.0454545468, 0.300000012, 0.300000012);
+	r6 = SurfaceTextureSampler_tex.Sample(SurfaceTextureSampler, r5.xy);
+	r5 = WaterRainRippleNormalSampler_tex.Sample(WaterRainRippleNormalSampler, r5.zw);
+	r6 = r6.zwzw + float4(-0.5, -0.5, -0.5, -0.5);
+	r6 = r0.w * r6;
+	r4 = r6 * float4(0.116363637, 0.116363637, 0.465454549, 0.465454549) + r4;
+	r0.xy = r4.zw;
+	r0.xyz = r0.xyz + -(asfloat(r1.xyz));
+	r0.xyz = waterRenderSimParam.yyy * r0.xyz + asfloat(r1.xyz);
+	r0.xyz = r0.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r1.w = asint(dot(r0.xyz, r0.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r0.xyz = r0.xyz * asfloat(r1.www);
+	r2.z = 0.200010002;
+	r1.w = asint(dot(r2.xyz, r2.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r2.xyz = asfloat(r1.www) * r2.xyz;
+	r1.w = (i.texcoord3.z < waterRenderSimParam.z) ? -1 : 0;
+	r6.xyz = (r1.www != 0) ? r2.xyz : r0.xyz;
+	r7.xy = asint(i.texcoord2.xy);
+	r7.z = asint(r0.w * i.texcoord2.z);
+	r7.xyz = asint(r6.xyz * float3(0.5, 0.5, 0.5) + asfloat(r7.xyz));
+	r2.w = dot(r6.xyz, -(gDirectionalLight.xyz));
+	r6.xyz = asfloat(r7.yyy) * gShadowMatrix[1].xyz;
+	r6.xyz = asfloat(r7.xxx) * gShadowMatrix[0].xyz + r6.xyz;
+	r6.xyz = asfloat(r7.zzz) * gShadowMatrix[2].xyz + r6.xyz;
+	r6.xyz = r6.xyz + gShadowMatrix[3].xyz;
+	r7.xy = asint(r6.xy + -(gShadowParam18192021.zw));
+	r7.zw = (asfloat(r7.xx) >= gCascadeXMaxThresholds.xy) ? -1 : 0;
+	r7.zw = r7.zw & int2(1065353216, 1065353216);
+	r8.xy = (gCascadeXMinThresholds.xy >= asfloat(r7.xx)) ? -1 : 0;
+	r8.xy = r8.xy & int2(1065353216, 1065353216);
+	r7.zw = asint(asfloat(r7.zw) + asfloat(r8.xy));
+	r8.xy = (asfloat(r7.yy) >= gCascadeYMaxThresholds.xy) ? -1 : 0;
+	r8.xy = r8.xy & int2(1065353216, 1065353216);
+	r7.zw = asint(asfloat(r7.zw) + asfloat(r8.xy));
+	r8.xy = (gCascadeYMinThresholds.xy >= asfloat(r7.yy)) ? -1 : 0;
+	r8.xy = r8.xy & int2(1065353216, 1065353216);
+	r7.zw = asint(asfloat(r7.zw) + asfloat(r8.xy));
+	r8.yz = asint(min(asfloat(r7.zw), float2(1, 1)));
+	r8.x = 1065353216;
+	r9.x = dot(asfloat(r8.xyz), gShadowParam0123.xyz);
+	r9.y = dot(asfloat(r8.xyz), gShadowParam4567.xyz);
+	r9.z = dot(asfloat(r8.xyz), gCascadeZScales.xyz);
+	r10.x = dot(asfloat(r8.xyz), gShadowParam891113.xyz);
+	r10.y = dot(asfloat(r8.xyz), gShadowParam14151617.xyz);
+	r10.z = dot(asfloat(r8.xyz), gCascadeZOffsets.xyz);
+	r6.xyz = r6.zxy * r9.zxy + r10.zxy;
+	r6.x = saturate(r6.x);
+	r3.w = -(r6.x) + 0.999999523;
+	r3.w = ShadowZTextureDir.SampleCmpLevelZero(gShadowZSamplerDir, r6.yz, r3.w);
+	r6.x = -(gCascadeXMinThresholds.w);
+	r6.y = -(gCascadeXMaxThresholds.w);
+	r6.xy = saturate(abs(asfloat(r7.xy)) * float2(4, 4) + r6.xy);
+	r4.w = max(r6.y, r6.x);
+	r3.w = r3.w + r4.w;
+	r3.w = r3.w * 1.25;
+	r3.w = min(r3.w, 1);
+	r4.w = r3.w * -2 + 3;
+	r3.w = r3.w * r3.w;
+	r3.w = r3.w * r4.w;
+	r6.xyz = r3.www * gDirectionalColour.xyz;
+	r3.w = dot(r3.xyz, r3.xyz);
+	r3.w = rsqrt(r3.w);
+	r2.xyz = r3.xyz * r3.www + r2.xyz;
+	r3.xyz = r3.www * r3.xyz;
+	r2.xyz = r2.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r3.w = dot(r2.xyz, r2.xyz);
+	r3.w = rsqrt(r3.w);
+	r2.xyz = r2.xyz * r3.www;
+	r3.w = dot(r3.xyz, r0.xyz);
+	r3.w = r3.w + r3.w;
+	r0.xyz = r0.xyz * -(r3.www) + r3.xyz;
+	r0.xyz = (r1.www != 0) ? r2.xyz : r0.xyz;
+	r1.w = (r1.w != 0) ? 1120403457 : 1140850688;
+	r0.x = saturate(dot(-(gDirectionalLight.xyz), r0.xyz));
+	r0.x = r0.x + 0.00000999999975;
+	r0.x = log2(r0.x);
+	r0.x = r0.x * asfloat(r1.w);
+	r0.x = exp2(r0.x);
+	r0.y = saturate(r2.w * 2 + -0.5);
+	r0.z = saturate(r2.w + -0.25);
+	r0.z = r0.z * 1.33333337;
+	r2.xyz = r0.zzz * r6.xyz;
+	r2.xyz = r2.xyz * gToneMapScalers.zzz;
+	r0.x = r0.y * r0.x;
+	r0.xyz = r0.xxx * r6.xyz;
+	r0.xyz = r0.xyz * gDirectionalLight.www;
+	r0.xyz = r0.xyz * gToneMapScalers.zzz;
+	r0 = r0 * float4(10, 10, 10, 0.0500000007);
+	r6.xyz = -(i.texcoord2.xyz) + gViewInverse[3].xyz;
+	r1.w = asint(dot(r6.xyz, r6.xyz));
+	r1.w = asint(sqrt(asfloat(r1.w)));
+	r1.w = asint(asfloat(r1.w) + 1);
+	r1.w = asint(2 / asfloat(r1.w));
+	r1.w = asint(min(asfloat(r1.w), 1));
+	r5.xy = r5.xy * float2(2, 2) + float2(-1, -1);
+	r6.z = r5.z + r5.z;
+	r6.xy = asfloat(r1.ww) * r5.xy;
+	r5.xyz = r6.xyz + float3(0.00000999999975, 0.00000999999975, -0.999989986);
+	r1.w = asint(dot(r5.xyz, r5.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r5.xyz = asfloat(r1.www) * r5.xyz;
+	r4.z = 1;
+	r4.xyz = -(asfloat(r1.xyz)) + r4.xyz;
+	r1.xyz = asint(waterRenderSimParam.yyy * r4.xyz + asfloat(r1.xyz));
+	r1.xyz = asint(asfloat(r1.xyz) + float3(0.00000999999975, 0.00000999999975, 0.00000999999975));
+	r1.w = asint(dot(asfloat(r1.xyz), asfloat(r1.xyz)));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r1.xyz = asint(asfloat(r1.www) * asfloat(r1.xyz));
+	r4.xyz = r5.xxx * asfloat(r1.xzy);
+	r4.xyz = asfloat(r1.xyz) * r5.zzz + r4.xyz;
+	r5.xz = asfloat(r1.yz) * asfloat(r1.yx);
+	r5.xzw = asfloat(r1.zyy) * asfloat(r1.zxx) + -(r5.xzz);
+	r4.xyz = r5.xzw * r5.yyy + r4.xyz;
+	r4.xyz = r4.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r1.w = asint(dot(r4.xyz, r4.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r4.xyz = r4.xyz * asfloat(r1.www) + -(asfloat(r1.xyz));
+	r1.xyz = asint(waterRenderSimParam.www * r4.xyz + asfloat(r1.xyz));
+	r1.xyz = asint(asfloat(r1.xyz) + float3(0.00000999999975, 0.00000999999975, 0.00000999999975));
+	r1.w = asint(dot(asfloat(r1.xyz), asfloat(r1.xyz)));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r1.xyz = asint(asfloat(r1.www) * asfloat(r1.xyz));
+	r4.xyz = r3.xyz * float3(1, 1, 0) + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r1.z = asint(dot(r3.xyz, asfloat(r1.xyz)));
+	r1.z = asint(saturate(asfloat(asint(-(asfloat(r1.z))))));
+	r1.z = asint(-(asfloat(r1.z)) + 1.00001001);
+	r1.w = asint(dot(r4.xyz, r4.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r3.xy = asfloat(r1.ww) * r4.xy;
+	r3.zw = float2(1, -1);
+	r4 = asfloat(r1.xyyx) * r3.yyxz;
+	r1.xy = asint(r4.zw * r3.wx + r4.xy);
+	r1.w = asint(i.texcoord.z * 0.0299999993);
+	r1.w = asint(0.5 / asfloat(r1.w));
+	r1.w = asint(min(asfloat(r1.w), 2));
+	r3.xy = i.texcoord.xy / i.texcoord.zz;
+	r3.xy = r3.xy * float2(-0.5, -0.5) + float2(0.5, 0.5);
+	r3.xy = asfloat(r1.xy) * -(asfloat(r1.ww)) + r3.xy;
+	r1.x = asint(i.texcoord3.w + 1);
+	r0.w = asfloat(r1.x) * 0.5 + r0.w;
+	r0.w = r0.w + 0.00499999989;
+	r3.z = max(r0.w, r3.y);
+	r3 = ReflectTextureSampler_tex.SampleLevel(ReflectTextureSampler, r3.xz, 0);
+	r1.xyw = asint(r3.xyz * r3.xyz);
+	r1.xyw = asint(asfloat(r1.xyw) * waterReflectionScale);
+	r0.xyz = asfloat(r1.xyw) * float3(16, 16, 16) + r0.xyz;
+	r0.xyz = -(waterColour.xyz) * r2.xyz + r0.xyz;
+	r1.xyw = asint(r2.xyz * waterColour.xyz);
+	r0.w = asfloat(r1.z) * asfloat(r1.z);
+	r0.w = r0.w * r0.w;
+	r0.w = r0.w * asfloat(r1.z);
+	r0.w = r0.w * 0.949999988 + 0.0500000007;
+	r0.xyz = r0.www * r0.xyz + asfloat(r1.xyw);
+	o.xyz = r0.xyz * globalScalars.yyy;
+	o.w = 0;
+
+	return o;
+}

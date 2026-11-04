@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="984">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_RenderParticulates" OffsetBy1="false" File="rmptfx_particulates/VS_RenderParticulates.hlsl" DataType="hlsl" Model="4.1" Length="856">
+        </Shader>
+        <Shader Name="VS_RenderLightScattering" OffsetBy1="false" File="rmptfx_particulates/VS_RenderLightScattering.hlsl" DataType="hlsl" Model="4.1" Length="620">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="3" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_RenderParticulates" OffsetBy1="false" File="rmptfx_particulates/PS_RenderParticulates.hlsl" DataType="hlsl" Model="4.1" Length="544">
+        </Shader>
+        <Shader Name="PS_RenderLightScattering" OffsetBy1="false" File="rmptfx_particulates/PS_RenderLightScattering.hlsl" DataType="hlsl" Model="4.1" Length="624">
+          <Variables>
+            <Variable>HybridAdd</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="CacheHybrid" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="CacheHybrid" Size="16" VS="8" PS="1" CS="8" DS="8" GS="8" HS="8"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float" Count="0" Slot="98" Group="2" FirstName="HybridAdd" SecondName="HybridAdd" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1642837276">
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Unused2" Count="0" Slot="101" Group="0" FirstName="HybridAddRatio" SecondName="HybridAddRatio" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Hybrid Add Ratio"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Unused2" Count="0" Slot="102" Group="0" FirstName="HDRIntensityMultiplier" SecondName="HDRIntensityMultiplier" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="HDR Intensity Multiplier"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="255"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="UAVBuffer" Count="0" Slot="103" Group="0" FirstName="TexelSize" SecondName="TexelSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+          <Param Type="23" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="RenderLightScattering">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

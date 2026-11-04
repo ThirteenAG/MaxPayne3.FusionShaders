@@ -1,0 +1,136 @@
+float gDistanceScale : register(c134);
+float gLifeTimeScale : register(c133);
+row_major float4x4 gViewInverse : register(c12);
+row_major float4x4 gWorld : register(c0);
+row_major float4x4 gWorldView : register(c4);
+row_major float4x4 gWorldViewProj : register(c8);
+float4 vCustomData[4] : register(c137);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float2 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float4 texcoord5 : TEXCOORD5;
+	float3 texcoord6 : TEXCOORD6;
+	float4 texcoord7 : TEXCOORD7;
+	float4 color : COLOR;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float3 r3;
+	float3 r4;
+	r0.x = vCustomData[0].z + vCustomData[0].y;
+	r0.x = r0.x + -0.14;
+	r0.x = max(r0.x, 0);
+	r1 = vCustomData[0];
+	r0.yz = r0.xx * 3 + r1.xx;
+	o.texcoord5.w = r0.z * 0.009765625;
+	r2.xyz = float3(1, 256, 65536);
+	r2.yzw = r2.xyz * vCustomData[2].yyy;
+	r2.yzw = frac(r2.yzw);
+	r2.yzw = r2.yzw * 0.1;
+	r3 = float3(10, 1.05, 2);
+	r0.w = vCustomData[1].w * -r3.y + r3.z;
+	r0.w = max(r0.w, 0.1);
+	r0.w = r0.w * vCustomData[0].w;
+	r1.x = -0.009765625 + i.position.z;
+	r1.x = max(r1.x, 0);
+	r1.x = min(r1.x, 0.030273438);
+	r1.x = r1.x * vCustomData[0].w;
+	r3.y = 33.032257;
+	r1.x = r1.x * r3.y + 0.025;
+	r3.y = abs(vCustomData[3].y);
+	r4.z = min(r1.x, r3.y);
+	r1.x = 1 / r3.y;
+	r3.y = r4.z * 2.2;
+	r3.y = min(r3.y, 5);
+	r0.w = r0.w * 0.49 + -r3.y;
+	r0.w = max(r0.w, 0);
+	o.color.xyz = r0.www * r2.yzw;
+	r0.w = r1.z * -gLifeTimeScale.x + r2.x;
+	r0.w = r4.z * -gDistanceScale.x + r0.w;
+	r0.w = r1.y * -1.05 + r0.w;
+	r2.w = 1E-07;
+	o.color.w = saturate(vCustomData[1].x * -r2.w + r0.w);
+	r0.w = -r4.z * gWorldView[1].z;
+	r1.yz = i.position.xy;
+	r0.yz = r0.yz * r1.yz;
+	r1.y = r1.x * abs(r4.z);
+	r1.x = r1.x * vCustomData[0].w;
+	r1.xz = r1.xx * vCustomData[3].xz;
+	r4.xy = vCustomData[3].xz * r1.yy + r0.yz;
+	r0.y = r4.x * gWorldView[0].z + r0.w;
+	r0.y = r4.y * gWorldView[2].z + r0.y;
+	r0.y = r0.y + gWorldView[3].z;
+	o.texcoord3 = -r0.y;
+	r0.yzw = r4.xyz + -i.position.xyz;
+	r0.y = dot(r0.yzw, r0.yzw);
+	r0.y = rsqrt(r0.y);
+	r0.y = 1 / r0.y;
+	r0.y = -r0.y + vCustomData[0].w;
+	r0.z = 1 / vCustomData[2].w;
+	r0.y = saturate(r0.z * r0.y);
+	r0.y = r0.y + -1;
+	r2.x = 0;
+	r0.z = (r2.x < vCustomData[2].w) ? 1 : 0;
+	o.texcoord7.w = r0.z * r0.y + 1;
+	r2 = -r4.z * gWorld[1];
+	r2 = r4.x * gWorld[0] + r2;
+	r2 = r4.y * gWorld[2] + r2;
+	r2 = r2 + gWorld[3];
+	r0.yzw = -r2.xyz + gViewInverse[3].xyz;
+	o.texcoord4 = r2;
+	r2.xyz = normalize(r0.yzw);
+	r0.yzw = -r1.www * gWorld[1].xyz;
+	r0.yzw = r1.xxx * gWorld[0].xyz + r0.yzw;
+	r0.yzw = r1.zzz * gWorld[2].xyz + r0.yzw;
+	r1.xyz = normalize(r0.yzw);
+	r0.yzw = r2.xyz * r1.yzx;
+	r0.yzw = r1.xyz * r2.yzx + -r0.yzw;
+	r1.w = dot(r0.yzw, r0.yzw);
+	r1.w = rsqrt(r1.w);
+	r0.yzw = r0.yzw * r1.www;
+	r2.xyz = r1.yzx * r0.yzw;
+	r0.yzw = r0.wyz * r1.zxy + -r2.xyz;
+	o.texcoord6 = r1.xyz;
+	r1.x = dot(r0.yzw, r0.yzw);
+	r1.x = rsqrt(r1.x);
+	o.texcoord7.xyz = r0.yzw * r1.xxx;
+	r0.x = r0.x * r4.z;
+	r1 = -r4.z * gWorldViewProj[1];
+	r1 = r4.x * gWorldViewProj[0] + r1;
+	r1 = r4.y * gWorldViewProj[2] + r1;
+	r1 = r1 + gWorldViewProj[3];
+	r0.y = r3.x * vCustomData[1].z;
+	r0.y = i.position.z * 1000 + r0.y;
+	r0.y = r0.y * 0.15915494 + 0.5;
+	r0.y = frac(r0.y);
+	r0.y = r0.y * 6.2831855 + -3.1415927;
+	r2.y = sin(r0.y);
+	r0.y = r2.y + 0.5;
+	r0.x = r0.y * r0.x;
+	r1.y = r0.x * 0.003 + r1.y;
+	o.position = r1;
+	o.texcoord = i.texcoord.xy;
+	o.texcoord1 = r1;
+	o.texcoord2 = r1;
+	o.texcoord5.xyz = gWorld[3].xyz;
+
+	return o;
+}

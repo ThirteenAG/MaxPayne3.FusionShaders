@@ -1,0 +1,47 @@
+cbuffer rage_matrices : register(b0)
+{
+	row_major float4x4 gWorld : packoffset(c0);
+};
+
+struct VS_IN
+{
+	float3 position : POSITION;
+	float4 color : COLOR;
+	float2 texcoord : TEXCOORD;
+	float3 normal : NORMAL;
+};
+
+struct VS_OUT
+{
+	float4 texcoord8 : TEXCOORD8;
+	float4 color : COLOR;
+	float2 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord6 : TEXCOORD6;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	o.texcoord8.xyz = i.position.xyz + float3(0, 0, -0.0000999999975);
+	o.texcoord8.w = 1;
+	o.color = i.color;
+	o.texcoord = i.texcoord.xy;
+	r0.xyz = i.normal.yyy * gWorld[1].xyz;
+	r0.xyz = i.normal.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.normal.zzz * gWorld[2].xyz + r0.xyz;
+	r0.xyz = r0.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r0.w = dot(r0.xyz, r0.xyz);
+	r0.w = rsqrt(r0.w);
+	o.texcoord1.xyz = r0.www * r0.xyz;
+	o.texcoord1.w = 1;
+	r0.xyz = i.position.yyy * gWorld[1].xyz;
+	r0.xyz = i.position.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.position.zzz * gWorld[2].xyz + r0.xyz;
+	o.texcoord6.xyz = r0.xyz + gWorld[3].xyz;
+	o.texcoord6.w = 1;
+
+	return o;
+}

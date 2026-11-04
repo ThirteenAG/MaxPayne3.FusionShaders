@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="200">
+  <PresetParams>
+    <Preset Name="drawBucket" Unused0="0" Value="4"/>
+  </PresetParams>
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="RopeCurveGenerateVS" OffsetBy1="false" File="rage_curvedModel/RopeCurveGenerateVS.hlsl" DataType="hlsl" Model="5.0" Length="4972">
+          <Variables>
+            <Variable>DiffuseColour</Variable>
+            <Variable>SegmentSize</Variable>
+            <Variable>curveCoeffs</Variable>
+            <Variable>approxTangent</Variable>
+            <Variable>velocity</Variable>
+            <Variable>uvScales</Variable>
+            <Variable>radius</Variable>
+            <Variable>MotionBlurAmt</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ModelCurveVS" OffsetBy1="false" File="rage_curvedModel/ModelCurveVS.hlsl" DataType="hlsl" Model="5.0" Length="5068">
+          <Variables>
+            <Variable>DiffuseColour</Variable>
+            <Variable>SegmentSize</Variable>
+            <Variable>curveCoeffs</Variable>
+            <Variable>approxTangent</Variable>
+            <Variable>velocity</Variable>
+            <Variable>uvScales</Variable>
+            <Variable>radius</Variable>
+            <Variable>MotionBlurAmt</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="3" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="RopePS" OffsetBy1="false" File="rage_curvedModel/RopePS.hlsl" DataType="hlsl" Model="5.0" Length="3888">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+            <Variable>gLightPosDir</Variable>
+            <Variable>gLightDir</Variable>
+            <Variable>gLightColor</Variable>
+            <Variable>gLightType</Variable>
+            <Variable>gLightAmbient</Variable>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_lighting" Slot="2"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="RopeModelPS" OffsetBy1="false" File="rage_curvedModel/RopeModelPS.hlsl" DataType="hlsl" Model="5.0" Length="3724">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+            <Variable>gLightPosDir</Variable>
+            <Variable>gLightDir</Variable>
+            <Variable>gLightColor</Variable>
+            <Variable>gLightType</Variable>
+            <Variable>gLightAmbient</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_lighting" Slot="2"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="272" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+    <CBuffer Name="rage_lighting" Size="224" VS="2" PS="2" CS="2" DS="2" GS="2" HS="2"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="3" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="3" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="3" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="59" Group="3" FirstName="gConverengeDepth" SecondName="ConverengeDepth" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="4" Slot="16" Group="2" FirstName="gLightPosDir" SecondName="Position" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3661207622">
+      <Annotations>
+        <Annotation Name="Object" Type="string" Value="PointDirLight"/>
+        <Annotation Name="Space" Type="string" Value="World"/>
+      </Annotations>
+      <Values>1403;1441;1690;0;0;0;0;0;0;0;0;0;0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="4" Slot="20" Group="2" FirstName="gLightDir" SecondName="Direction" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3661207622">
+      <Annotations>
+        <Annotation Name="Object" Type="string" Value="Light Direction"/>
+        <Annotation Name="Space" Type="string" Value="World"/>
+      </Annotations>
+      <Values>0;0;-1;0;0;0;0;0;0;0;0;0;0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="4" Slot="39" Group="2" FirstName="gLightColor" SecondName="Diffuse" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3661207622">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Light Color"/>
+        <Annotation Name="Object" Type="string" Value="LightPos"/>
+      </Annotations>
+      <Values>1;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="28" Group="2" FirstName="gLightType" SecondName="LightType" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3661207622">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="The type of each light source"/>
+      </Annotations>
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="26" Group="2" FirstName="gLightAmbient" SecondName="Ambient" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3661207622">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="$Globals" Size="3328" VS="1" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float3" Count="0" Slot="49" Group="1" FirstName="DiffuseColour" SecondName="DiffuseColour" Offset="16" Variant="3" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIWidget" Type="string" Value="Diffuse Colour"/>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Colour"/>
+      </Annotations>
+      <Values>0.899999976;0.699999988;0.400000006</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="50" Group="1" FirstName="SegmentSize" SecondName="SegmentSize" Offset="32" Variant="3" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float4" Count="60" Slot="148" Group="1" FirstName="curveCoeffs" SecondName="CurveCoefficients" Offset="64" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float4" Count="21" Slot="85" Group="1" FirstName="approxTangent" SecondName="ApproximateTangent" Offset="80" Variant="5" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float4" Count="21" Slot="106" Group="1" FirstName="velocity" SecondName="Velocities" Offset="160" Variant="6" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="51" Group="1" FirstName="uvScales" SecondName="UVScales" Offset="48" Variant="3" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="52" Group="1" FirstName="radius" SecondName="Radius" Offset="64" Variant="3" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="53" Group="1" FirstName="MotionBlurAmt" SecondName="MotionBlurAmount" Offset="80" Variant="3" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;6;2;5;2;4;2;7;0</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="drawCurved">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="6" Value="3"/>
+          <Param Type="2" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="6" Value="3"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

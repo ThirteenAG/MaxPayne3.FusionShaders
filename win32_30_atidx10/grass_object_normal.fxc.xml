@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="16505">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="6" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_Transform_Grass_Deferred" OffsetBy1="false" File="grass_object_normal/VS_Transform_Grass_Deferred.hlsl" DataType="hlsl" Model="3.0" Length="3652">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>g_fCollisionSqScale</Variable>
+            <Variable>g_fEnableSpringForces</Variable>
+            <Variable>g_fGrassSpringRigidity</Variable>
+            <Variable>g_fGrassSpringScale</Variable>
+            <Variable>g_vCollisionParams</Variable>
+            <Variable>g_vCollisionSpheres</Variable>
+            <Variable>g_vPlayerPosition</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkinned_Grass_Deferred" OffsetBy1="false" File="grass_object_normal/VS_TransformSkinned_Grass_Deferred.hlsl" DataType="hlsl" Model="3.0" Length="4060">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>g_fCollisionSqScale</Variable>
+            <Variable>g_fEnableSpringForces</Variable>
+            <Variable>g_fGrassSpringRigidity</Variable>
+            <Variable>g_fGrassSpringScale</Variable>
+            <Variable>g_vCollisionParams</Variable>
+            <Variable>g_vCollisionSpheres</Variable>
+            <Variable>g_vPlayerPosition</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_Transform_Grass" OffsetBy1="false" File="grass_object_normal/VS_Transform_Grass.hlsl" DataType="hlsl" Model="3.0" Length="3652">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>g_fCollisionSqScale</Variable>
+            <Variable>g_fEnableSpringForces</Variable>
+            <Variable>g_fGrassSpringRigidity</Variable>
+            <Variable>g_fGrassSpringScale</Variable>
+            <Variable>g_vCollisionParams</Variable>
+            <Variable>g_vCollisionSpheres</Variable>
+            <Variable>g_vPlayerPosition</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_CascadedShadowmap_Grass" OffsetBy1="false" File="grass_object_normal/VS_CascadedShadowmap_Grass.hlsl" DataType="hlsl" Model="3.0" Length="3344">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>g_fCollisionSqScale</Variable>
+            <Variable>g_fEnableSpringForces</Variable>
+            <Variable>g_fGrassSpringRigidity</Variable>
+            <Variable>g_fGrassSpringScale</Variable>
+            <Variable>g_vCollisionParams</Variable>
+            <Variable>g_vCollisionSpheres</Variable>
+            <Variable>g_vPlayerPosition</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_CascadedShadowmapSkinned_Grass" OffsetBy1="false" File="grass_object_normal/VS_CascadedShadowmapSkinned_Grass.hlsl" DataType="hlsl" Model="3.0" Length="3752">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>g_fCollisionSqScale</Variable>
+            <Variable>g_fEnableSpringForces</Variable>
+            <Variable>g_fGrassSpringRigidity</Variable>
+            <Variable>g_fGrassSpringScale</Variable>
+            <Variable>g_vCollisionParams</Variable>
+            <Variable>g_vCollisionSpheres</Variable>
+            <Variable>g_vPlayerPosition</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_WarpDepth" OffsetBy1="false" File="grass_object_normal/VS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="948">
+          <Variables>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gWorld</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="6" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_DeferredTextured_Grass" OffsetBy1="false" File="grass_object_normal/PS_DeferredTextured_Grass.hlsl" DataType="hlsl" Model="3.0" Length="1488">
+          <Variables>
+            <Variable>BumpSampler</Variable>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>bumpiness</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>specularColorFactor</Variable>
+            <Variable>specularFactor</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredTexturedAlphaStipple_Grass" OffsetBy1="false" File="grass_object_normal/PS_DeferredTexturedAlphaStipple_Grass.hlsl" DataType="hlsl" Model="3.0" Length="1780">
+          <Variables>
+            <Variable>BumpSampler</Variable>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>bumpiness</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>specularColorFactor</Variable>
+            <Variable>specularFactor</Variable>
+            <Variable>stipplePattern</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedUnlit" OffsetBy1="false" File="grass_object_normal/PS_TexturedUnlit.hlsl" DataType="hlsl" Model="3.0" Length="300">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_CascadeCaster" OffsetBy1="false" File="grass_object_normal/PS_CascadeCaster.hlsl" DataType="hlsl" Model="3.0" Length="368">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_WarpDepth" OffsetBy1="false" File="grass_object_normal/PS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="408">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float3x4" Count="40" Slot="76" Group="1" FirstName="gBoneMtx" SecondName="WorldMatrixArray" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="2" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="97" Group="2" FirstName="gDistFadeParams" SecondName="gDistFadeParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="3" FirstName="globalScalars2" SecondName="globalScalars2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="46" Group="1" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="48" Group="1" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="61" Group="2" FirstName="gStencil" SecondName="Stencil" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="62" Group="2" FirstName="stipplePattern" SecondName="stipplePatterns" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.100000001;0.349999994;0.25;0.150000006</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="53" Group="3" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="1" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="1" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="196" Group="2" FirstName="specularFactor" SecondName="Specular" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Specular Falloff"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="512"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+      <Values>100</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="197" Group="2" FirstName="specularColorFactor" SecondName="SpecularColor" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Specular Intensity"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="198" Group="2" FirstName="bumpiness" SecondName="Bumpiness" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIName" Type="string" Value="Bumpiness"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="BumpSampler" SecondName="BumpTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Bump Texture"/>
+        <Annotation Name="UIHint" Type="string" Value="normalmap"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;5;3;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="200" Group="1" FirstName="umGlobalParams" SecondName="umGlobalParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIName" Type="string" Value="Global umParams: ScaleH/ScaleV/FreqH/FreqV"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00100000005"/>
+      </Annotations>
+      <Values>0.0250000004;0.0199999996;1;0.5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="201" Group="1" FirstName="WindGlobalParams" SecondName="windGlobalParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIName" Type="string" Value="Wind Global Params: Scale"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="202" Group="1" FirstName="g_fCollisionSqScale" SecondName="CollisionSqScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="9.99999975e-06"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIName" Type="string" Value="Collision Squared Radius Scale"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="203" Group="1" FirstName="g_fGrassSpringRigidity" SecondName="GrassSpringRigidity" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="100"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIName" Type="string" Value="Grass Spring Rigidity"/>
+      </Annotations>
+      <Values>5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="204" Group="1" FirstName="g_fGrassSpringScale" SecondName="GrassSpringScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="9.99999975e-06"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIName" Type="string" Value="Grass Spring Scale"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="205" Group="1" FirstName="g_fEnableSpringForces" SecondName="EnableSpringForces" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="5" Slot="209" Group="1" FirstName="g_vCollisionSpheres" SecondName="GrassCollisionSpheres" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="71" Group="1" FirstName="g_vPlayerPosition" SecondName="PlayerPosition0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="73" Group="1" FirstName="g_vCollisionParams" SecondName="PedCollisionParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.48999998;2.04081631</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="deferred_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferred_drawskinned">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_draw">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_drawskinned">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="2" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="2" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cascade_draw">
+      <Pass VS="3" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cascade_drawskinned">
+      <Pass VS="4" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="wd_draw">
+      <Pass VS="5" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

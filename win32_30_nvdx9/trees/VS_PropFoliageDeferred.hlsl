@@ -1,0 +1,69 @@
+float4 WindGlobalParams : register(c132);
+float4 deSatContrastGamma : register(c46);
+row_major float4x4 gWorld : register(c0);
+row_major float4x4 gWorldViewProj : register(c8);
+float4 globalScalars2 : register(c36);
+float4 globalUmScalars : register(c48);
+float4 umGlobalParams : register(c131);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 normal : NORMAL;
+	float4 color : COLOR;
+	float4 color1 : COLOR1;
+	float4 texcoord : TEXCOORD;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float3 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float3 texcoord3 : TEXCOORD3;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	r0.xyz = gWorld[1].xyz * i.normal.yyy;
+	r0.xyz = i.normal.xxx * gWorld[0].xyz + r0.xyz;
+	o.texcoord1 = i.normal.zzz * gWorld[2].xyz + r0.xyz;
+	r0.x = 6.2831855 * i.color1.y;
+	r0.zw = umGlobalParams.zw;
+	r0.yzw = r0.zzw * globalUmScalars.zzw;
+	r0.xyz = globalScalars2.yyy * r0.yzw + r0.xxx;
+	r0.xyz = r0.xyz * 0.15915494 + 0.25;
+	r0.xyz = frac(r0.xyz);
+	r0.xyz = r0.xyz * 6.2831855 + -3.1415927;
+	r0.xyz = r0.xyz * r0.xyz;
+	r1.xyz = r0.yyz * -2.523985E-07 + 2.47609E-05;
+	r1.xyz = r0.yyz * r1.xyz + -0.0013888397;
+	r1.xyz = r0.yyz * r1.xyz + 0.04166664;
+	r1.xyz = r0.yyz * r1.xyz + -0.5;
+	r0.xyz = r0.xyz * r1.xyz + 1;
+	r0.w = globalUmScalars.x * i.color1.x;
+	r1.xy = r0.ww * umGlobalParams.xx;
+	r0.w = 1 + -i.color1.z;
+	r1.w = r0.w * globalUmScalars.y;
+	r0.w = r0.w * WindGlobalParams.x;
+	r1.z = r1.w * umGlobalParams.y;
+	r0.xyz = r0.xyz * r1.xyz + i.position.xyz;
+	r1.x = r0.z * deSatContrastGamma.w;
+	r0.xy = r1.xx * r0.ww + r0.xy;
+	r1 = r0.y * gWorldViewProj[1];
+	r1 = r0.x * gWorldViewProj[0] + r1;
+	r0 = r0.z * gWorldViewProj[2] + r1;
+	o.position = r0 + gWorldViewProj[3];
+	r0.xyz = gWorld[1].xyz * i.position.yyy;
+	r0.xyz = i.position.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.position.zzz * gWorld[2].xyz + r0.xyz;
+	o.texcoord3 = r0.xyz + gWorld[3].xyz;
+	o.texcoord.xy = i.texcoord.xy;
+	o.texcoord.z = i.color.w;
+
+	return o;
+}

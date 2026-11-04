@@ -1,0 +1,23 @@
+sampler2D DiffuseSampler : register(s1);
+sampler2D DiffuseTexSampler : register(s0);
+
+struct PS_IN
+{
+	float4 color : COLOR;
+	float2 texcoord : TEXCOORD;
+};
+
+float4 main(PS_IN i) : COLOR
+{
+	float4 o;
+
+	float4 r0;
+	float4 r1;
+	r0.xy = float2(10, 0) + i.texcoord.xy;
+	r0 = tex2D(DiffuseTexSampler, r0.xy);
+	r1 = tex2D(DiffuseSampler, i.texcoord.xy);
+	r0 = (i.texcoord.x >= 0) ? r1 : r0;
+	o = r0 * i.color;
+
+	return o;
+}

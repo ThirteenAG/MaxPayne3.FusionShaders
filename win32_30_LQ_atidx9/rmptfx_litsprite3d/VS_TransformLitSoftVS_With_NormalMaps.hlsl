@@ -1,0 +1,138 @@
+float HybridAdd : register(c196);
+float4 gActiveUnit : register(c199);
+float4 gAspectRatio : register(c17);
+float gBiasToCamera : register(c205);
+float4 gInterpolationFactor : register(c220);
+float4 gPositionOffset : register(c221);
+float4 gPositionScale : register(c222);
+float4 gTextureAngleRads : register(c219);
+row_major float4x4 gViewInverse : register(c12);
+row_major float4x4 gWorldView : register(c4);
+row_major float4x4 gWorldViewProj : register(c8);
+float4 globalFogColorN : register(c50);
+float4 globalFogParams : register(c37);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 normal : NORMAL;
+	float4 color : COLOR;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord2 : TEXCOORD2;
+	float4 texcoord3 : TEXCOORD3;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord7 : TEXCOORD7;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float4 texcoord6 : TEXCOORD6;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float3 r3;
+	r0.x = abs(gViewInverse[2].z);
+	r0.y = r0.x * -0.0187293 + 0.074261;
+	r0.y = r0.y * r0.x + -0.2121144;
+	r0.y = r0.y * r0.x + 1.5707288;
+	r0.x = -r0.x + 1;
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	r0.x = r0.x * r0.y;
+	r0.y = r0.x * -2 + 3.1415927;
+	r0.z = (gViewInverse[2].z < -gViewInverse[2].z) ? 1 : 0;
+	r0.x = r0.y * r0.z + r0.x;
+	r0.x = -r0.x + 1.5707964;
+	r0 = abs(r0.x) + -gTextureAngleRads;
+	r0 = r0 * 0.15915494 + 0.5;
+	r0 = frac(r0);
+	r0 = r0 * 6.2831855 + -3.1415927;
+	r0 = r0 * r0;
+	r1 = r0 * -2.523985E-07 + 2.47609E-05;
+	r1 = r0 * r1 + -0.0013888397;
+	r1 = r0 * r1 + 0.04166664;
+	r1 = r0 * r1 + -0.5;
+	r0 = r0 * r1 + 1;
+	r0 = abs(r0) + 1E-05;
+	r1.x = log2(r0.x);
+	r1.y = log2(r0.y);
+	r1.z = log2(r0.z);
+	r1.w = log2(r0.w);
+	r0.y = 1E-05;
+	r2 = r0.y + gInterpolationFactor;
+	r1 = r1 * r2;
+	r2.x = exp2(r1.x);
+	r2.y = exp2(r1.y);
+	r2.z = exp2(r1.z);
+	r2.w = exp2(r1.w);
+	r0 = r2 * gActiveUnit + r0.y;
+	r1.x = dot(r0, r0);
+	r1.x = rsqrt(r1.x);
+	r0 = r0 * r1.x;
+	r1.x = dot(r0, gPositionScale);
+	r1 = r1.x * i.normal.xyxy;
+	r2.x = i.normal.z * 0.15915494 + 0.5;
+	r2.x = frac(r2.x);
+	r2.x = r2.x * 6.2831855 + -3.1415927;
+	sincos(r2.x, r3.y, r3.x);
+	r1.yzw = r1.yzw * r3.yyx;
+	r2.x = r1.x * r3.x + -r1.y;
+	r2.y = r1.w + r1.z;
+	r1.z = dot(r0, gPositionOffset);
+	o.texcoord6 = r0;
+	r1.xy = 0;
+	r0.x = 0.1;
+	r0.x = r0.x * gBiasToCamera.x;
+	r3 = lerp(i.position.xyz, gViewInverse[3].xyz, r0.xxx);
+	r0.xyz = r1.xyz + r3.xyz;
+	r1 = r0.y * gWorldViewProj[1];
+	r1 = r0.x * gWorldViewProj[0] + r1;
+	r0 = r0.z * gWorldViewProj[2] + r1;
+	r0 = r0 + gWorldViewProj[3];
+	r2.zw = 0;
+	o.position = r2 * gAspectRatio + r0;
+	r0.xyz = r3.xyz + -gViewInverse[3].xyz;
+	r0.w = r0.z * globalFogParams.x;
+	r0.x = dot(r0.xyz, r0.xyz);
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	r0.x = r0.x * globalFogParams.z;
+	r0.y = r0.w * -1.442695;
+	r0.y = exp2(r0.y);
+	r0.y = min(r0.y, 65504);
+	r0.y = -r0.y + 1;
+	r0.z = 1 / r0.w;
+	r0.w = (0.0001 < abs(r0.w)) ? 1 : 0;
+	r0.y = r0.z * r0.y;
+	r0.y = r0.x * r0.y + -r0.x;
+	r0.x = r0.w * r0.y + r0.x;
+	r0.x = r0.x * -globalFogParams.y;
+	r0.x = r0.x * 1.442695;
+	r0.x = exp2(r0.x);
+	r0.x = min(r0.x, 65504);
+	o.texcoord4.w = -r0.x + 1;
+	r0.z = 0.5;
+	r0.x = (r0.z < HybridAdd.x) ? 1 : 0;
+	o.texcoord3.z = r0.x * -i.texcoord3.x + 1;
+	r0 = r3.y * gWorldView[1];
+	r0 = r3.x * gWorldView[0] + r0;
+	r0 = r3.z * gWorldView[2] + r0;
+	o.texcoord7 = r0 + gWorldView[3];
+	o.texcoord = i.color;
+	o.texcoord1 = i.texcoord;
+	o.texcoord3.xy = float2(1, 0) * i.texcoord2.zz;
+	o.texcoord3.w = i.texcoord3.y;
+	o.texcoord4.xyz = globalFogColorN.xyz;
+
+	return o;
+}

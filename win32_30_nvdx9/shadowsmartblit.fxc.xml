@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_blit" OffsetBy1="false" File="shadowsmartblit/VS_blit.hlsl" DataType="hlsl" Model="3.0" Length="204">
+        </Shader>
+        <Shader Name="VS_screenTransformT" OffsetBy1="false" File="shadowsmartblit/VS_screenTransformT.hlsl" DataType="hlsl" Model="3.0" Length="204">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="10" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_rewarp" OffsetBy1="false" File="shadowsmartblit/PS_rewarp.hlsl" DataType="hlsl" Model="3.0" Length="1112">
+          <Variables>
+            <Variable>HemiCubeSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_clearf" OffsetBy1="false" File="shadowsmartblit/PS_clearf.hlsl" DataType="hlsl" Model="3.0" Length="160">
+          <Variables>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_shadblit" OffsetBy1="false" File="shadowsmartblit/PS_shadblit.hlsl" DataType="hlsl" Model="3.0" Length="284">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_dithergen" OffsetBy1="false" File="shadowsmartblit/PS_dithergen.hlsl" DataType="hlsl" Model="3.0" Length="136">
+        </Shader>
+        <Shader Name="PS_blitshaft" OffsetBy1="false" File="shadowsmartblit/PS_blitshaft.hlsl" DataType="hlsl" Model="3.0" Length="532">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_shad2minmax" OffsetBy1="false" File="shadowsmartblit/PS_shad2minmax.hlsl" DataType="hlsl" Model="3.0" Length="496">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_minmax2minmax" OffsetBy1="false" File="shadowsmartblit/PS_minmax2minmax.hlsl" DataType="hlsl" Model="3.0" Length="496">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_minmax2minmaxB" OffsetBy1="false" File="shadowsmartblit/PS_minmax2minmaxB.hlsl" DataType="hlsl" Model="3.0" Length="1216">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_shadMip" OffsetBy1="false" File="shadowsmartblit/PS_shadMip.hlsl" DataType="hlsl" Model="3.0" Length="460">
+          <Variables>
+            <Variable>SmartBlitSampler</Variable>
+            <Variable>clearcol</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="HemiCubeSampler" SecondName="HemiCubeTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="SmartBlitSampler" SecondName="SmartBlitTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;4;1;4;2;4;3;0;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="196" Group="2" FirstName="clearcol" SecondName="ClearfColour" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="rewarp">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="clearf">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="shadblit">
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="7" Value="8"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="dithergen">
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="blitshaft">
+      <Pass VS="0" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="sh2mm">
+      <Pass VS="0" PS="6" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="mm2mm">
+      <Pass VS="0" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="mm2mmb">
+      <Pass VS="0" PS="8" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="shadmip">
+      <Pass VS="1" PS="9" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

@@ -1,0 +1,77 @@
+sampler2D GBufferTextureSamplerDepth : register(s10);
+float4 gCascadeXMaxThresholds : register(c95);
+float4 gCascadeXMinThresholds : register(c94);
+float4 gCascadeYMaxThresholds : register(c100);
+float4 gCascadeYMinThresholds : register(c99);
+float4 gCascadeZOffsets : register(c93);
+float4 gCascadeZScales : register(c92);
+float4 gDeferredProjParams : register(c216);
+row_major float4x4 gShadowMatrix : register(c57);
+float4 gShadowParam0123 : register(c54);
+float4 gShadowParam14151617 : register(c53);
+float4 gShadowParam18192021 : register(c49);
+float4 gShadowParam4567 : register(c55);
+float4 gShadowParam891113 : register(c56);
+sampler2D gShadowZSamplerDir : register(s15);
+row_major float4x4 gViewInverse : register(c12);
+float4 gooDeferredLightScreenSize : register(c215);
+
+float4 main(float2 vpos : VPOS) : COLOR
+{
+	float4 o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float3 r3;
+	float3 r4;
+	r0.xy = 0.51 + vpos.xy;
+	r0.xy = r0.xy * gooDeferredLightScreenSize.zw;
+	r1 = tex2D(GBufferTextureSamplerDepth, r0.xy);
+	r0.xy = r0.xy * 2 + -1;
+	r0.z = r1.x * gDeferredProjParams.z + -gDeferredProjParams.w;
+	r1 = r0.y * gViewInverse[1];
+	r1 = r0.x * gViewInverse[0] + r1;
+	r1 = r1 + gViewInverse[2];
+	r0.x = r0.z * r1.w;
+	r0.x = 1 / r0.x;
+	r0.xyz = r1.xyz * -r0.xxx + gViewInverse[3].xyz;
+	r1.xyz = r0.yyy * gShadowMatrix[1].xyz;
+	r0.xyw = r0.xxx * gShadowMatrix[0].xyz + r1.xyz;
+	r0.xyz = r0.zzz * gShadowMatrix[2].xyz + r0.xyw;
+	r0.xyz = r0.xyz + gShadowMatrix[3].xyz;
+	r1.xy = r0.xy + -gShadowParam18192021.zw;
+	r1.zw = r1.xx + -gCascadeXMaxThresholds.xy;
+	r1.zw = (r1.zw >= 0) ? 1 : 0;
+	r2.xy = -r1.xx + gCascadeXMinThresholds.xy;
+	r2.xy = (r2.xy >= 0) ? 1 : 0;
+	r1.zw = r1.zw + r2.xy;
+	r2.xy = r1.yy + -gCascadeYMaxThresholds.xy;
+	r2.xy = (r2.xy >= 0) ? 1 : 0;
+	r1.zw = r1.zw + r2.xy;
+	r2.xy = -r1.yy + gCascadeYMinThresholds.xy;
+	r2.xy = (r2.xy >= 0) ? 1 : 0;
+	r2.yz = saturate(r1.zw + r2.xy);
+	r2.x = 1;
+	r3.x = dot(r2.xyz, gShadowParam0123.xyz);
+	r3.y = dot(r2.xyz, gShadowParam4567.xyz);
+	r3.z = dot(r2.xyz, gCascadeZScales.xyz);
+	r4.x = dot(r2.xyz, gShadowParam891113.xyz);
+	r4.y = dot(r2.xyz, gShadowParam14151617.xyz);
+	r4.z = dot(r2.xyz, gCascadeZOffsets.xyz);
+	r0.xyz = r0.zxy * r3.zxy + r4.zxy;
+	r0.x = saturate(r0.x);
+	r2 = tex2D(gShadowZSamplerDir, r0.yz);
+	r0.x = -r0.x + 1;
+	r0.x = -r2.x + r0.x;
+	r0.x = (r0.x >= 0) ? -1 : -0;
+	r2.x = -gCascadeXMinThresholds.w;
+	r2.y = -gCascadeXMaxThresholds.w;
+	r0.yz = saturate(abs(r1.xy) * 4 + r2.xy);
+	r1.x = max(r0.y, r0.z);
+	r0.x = r0.x + r1.x;
+	r0.x = r0.x + 1;
+	o = saturate(r0.x);
+
+	return o;
+}

@@ -1,0 +1,103 @@
+sampler2D DiffuseTexSampler : register(s0);
+float HybridAdd : register(c196);
+sampler2D NormalMapTexSampler : register(s1);
+float4 deSatContrastGamma : register(c46);
+float4 gAdrenoFXVars : register(c68);
+float gAmbientAmount : register(c207);
+float4 gAmbientOcclusionEffect : register(c63);
+float gAmbientShadow : register(c212);
+float gDiffuse : register(c203);
+float4 gDirectionalColour : register(c20);
+float4 gDirectionalLight : register(c19);
+float4 gLightAmbient0 : register(c33);
+float4 gLightAmbient1 : register(c34);
+float gLightIntensityClamp : register(c213);
+float gNormalArc : register(c209);
+float gSpecularExponent : register(c205);
+float gSpecularIntensity : register(c204);
+float gSuperAlpha : register(c208);
+row_major float4x4 gWorldView : register(c4);
+float gWrapBias : register(c202);
+float gWrapScale : register(c201);
+
+struct PS_IN
+{
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+};
+
+float4 main(PS_IN i) : COLOR
+{
+	float4 o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float4 r5;
+	r0 = tex2D(NormalMapTexSampler, i.texcoord1.xy);
+	r0.xyz = r0.xyz * 2 + -1;
+	r1 = tex2D(NormalMapTexSampler, i.texcoord1.zw);
+	r1.xyz = r1.xyz * 2 + -1;
+	r0.w = saturate(i.texcoord3.x);
+	r2.xyz = lerp(r0.xyz, r1.xyz, r0.www);
+	r2.w = -r2.y;
+	r0.xyz = r2.xwz + 1E-05;
+	r1.xyz = normalize(r0.xyz);
+	r0.x = r1.z * -2;
+	r0.xyz = r1.xyz * -r0.xxx + float3(0, 0, -1);
+	r0.x = saturate(dot(r0.xyz, -gDirectionalLight.xyz));
+	r0.x = r0.x + 1E-05;
+	r2.zw = float2(1E-05, 1);
+	r0.y = r2.z + gSpecularExponent.x;
+	r1.w = pow(r0.x, r0.y);
+	r0.x = gWrapScale.x;
+	r0.y = r1.w * r0.x + gWrapBias.x;
+	r0.y = r0.y * gDirectionalColour.x;
+	r0.y = r0.y * gSpecularIntensity.x;
+	r1.w = max(r0.y, 0);
+	r0.y = dot(r1.xyz, -gDirectionalLight.xyz);
+	r0.z = dot(r1.xyz, gWorldView[2].xyz);
+	r0.z = saturate(r0.z * -0.5 + 0.5);
+	r1.x = max(r0.y, -gLightIntensityClamp.x);
+	r0.y = min(gLightIntensityClamp.x, r1.x);
+	r1.x = -r0.y + 1;
+	r0.y = gNormalArc.x * r1.x + r0.y;
+	r0.x = r0.y * r0.x + gWrapBias.x;
+	r0.x = r0.x * gDirectionalColour.x;
+	r0.x = r0.x * gDiffuse.x;
+	r1.xyz = r0.xxx * i.texcoord.xyz;
+	r2.xyz = max(r1.xyz, 0);
+	r1.xyz = r1.www + r2.xyz;
+	r2.xyz = gLightAmbient0.xyz;
+	r2.xyz = -r2.xyz + gLightAmbient1.xyz;
+	r0.xyz = r0.zzz * r2.xyz + gLightAmbient0.xyz;
+	r0.xyz = r0.xyz * gAmbientOcclusionEffect.yyy;
+	r0.xyz = r0.xyz * gAmbientAmount.xxx;
+	r1.w = 1 / gAmbientOcclusionEffect.y;
+	r0.xyz = r0.xyz * r1.www;
+	r0.xyz = r0.xyz * i.texcoord.xyz;
+	r2.xyz = r0.xyz * gAmbientShadow.xxx;
+	r0.xyz = (r0.xyz >= 0) ? r2.xyz : 0;
+	r1.xyz = r0.xyz + r1.xyz;
+	r3 = tex2D(DiffuseTexSampler, i.texcoord1.xy);
+	r4 = tex2D(DiffuseTexSampler, i.texcoord1.zw);
+	r5 = lerp(r3, r4, r0.w);
+	r1.w = saturate(gSuperAlpha.x * i.texcoord.w);
+	r0 = r1.wxyz * r5.wxyz;
+	r0.y = dot(r0.yzw, float3(0.2125, 0.7154, 0.0721));
+	r0.x = saturate(r0.x);
+	r0.x = (-HybridAdd.x >= 0) ? r2.w : r0.x;
+	r1.xyz = r1.xyz * r5.xyz + -r0.yyy;
+	r2.x = gAdrenoFXVars.x;
+	r0.z = r2.x * deSatContrastGamma.x;
+	r0.yzw = r0.zzz * r1.xyz + r0.yyy;
+	r1.xyz = lerp(r0.yzw, i.texcoord4.xyz, i.texcoord4.www);
+	o.xyz = r0.xxx * r1.xyz;
+	o.w = 0;
+
+	return o;
+}

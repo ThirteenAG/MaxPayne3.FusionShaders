@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_LightVolume" OffsetBy1="false" File="light_volumes/VS_LightVolume.hlsl" DataType="hlsl" Model="5.0" Length="504">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="2" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_LightVolume" OffsetBy1="false" File="light_volumes/PS_LightVolume.hlsl" DataType="hlsl" Model="5.0" Length="500">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+  </Variables2>
+  <Techniques>
+    <Technique Name="lightShafts">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

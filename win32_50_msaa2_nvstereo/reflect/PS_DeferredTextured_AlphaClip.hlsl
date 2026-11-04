@@ -1,0 +1,134 @@
+cbuffer rage_globals : register(b5)
+{
+	float4 globalScalars : packoffset(c0);
+	float4 globalScalars2 : packoffset(c1);
+	float4 globalScalars3 : packoffset(c2);
+	float4 globalScalars4 : packoffset(c3);
+	float4 globalFogParams : packoffset(c4);
+	float4 globalFogColor : packoffset(c5);
+	float4 globalFogOffsetN : packoffset(c6);
+	float4 globalFogColorN : packoffset(c7);
+	float4 globalScreenSize : packoffset(c8);
+	float4 globalDayNightEffects : packoffset(c9);
+	float4 ColorCorrectTopAndPedReflectScale : packoffset(c10);
+	float4 ColorCorrectBottomOffset : packoffset(c11);
+	float4 ColorShift : packoffset(c12);
+	float4 deSatContrastGamma : packoffset(c13);
+	float4 deSatContrastGammaIFX : packoffset(c14);
+	float4 colorize : packoffset(c15);
+	float4 globalUmScalars : packoffset(c16);
+	float4 gToneMapScalers : packoffset(c17);
+	float4 gAmbientOcclusionEffect : packoffset(c18);
+};
+
+cbuffer AlphaTest : register(b11)
+{
+	float g_AlphaRef : packoffset(c0);
+};
+
+cbuffer CacheMegaVariables : register(b4)
+{
+	float reflectivePower : packoffset(c0);
+	float fresnelRolloff : packoffset(c0.y);
+};
+
+SamplerState DiffuseSampler : register(s0);
+SamplerState EnvironmentSampler : register(s1);
+Texture2D DiffuseSampler_tex : register(t0);
+Texture2D EnvironmentSampler_tex : register(t1);
+
+struct PS_IN
+{
+	float4 sv_position : SV_Position;
+	float4 color : COLOR;
+	float2 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float3 texcoord3 : TEXCOORD3;
+	float3 texcoord6 : TEXCOORD6;
+};
+
+struct PS_OUT
+{
+	float4 sv_target : SV_Target;
+	float4 sv_target1 : SV_Target1;
+	float4 sv_target2 : SV_Target2;
+	float4 sv_target3 : SV_Target3;
+	uint sv_coverage : SV_Coverage;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	int4 r0;
+	int4 r1;
+	int4 r2;
+	float4 r3;
+	int2 r4;
+	r0 = asint(ddx_coarse(i.texcoord.xyxy));
+	r1 = asint(ddy_coarse(i.texcoord.xyxy));
+	r1 = asint(asfloat(r1) * float4(0.25, 0.25, -0.25, -0.25));
+	r0 = asint(asfloat(r0) * float4(0.25, 0.25, -0.25, -0.25) + asfloat(r1));
+	r0 = asint(asfloat(r0) + i.texcoord.xyxy);
+	r1 = asint(DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r0.xy)));
+	r0.x = asint(asfloat(r1.w) + -0.5);
+	r0.x = (asfloat(r0.x) >= 0) ? -1 : 0;
+	r2.x = 1;
+	r2.y = r1.w;
+	r2.xy = r0.xx & r2.xy;
+	r3 = DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r0.zw));
+	r0.y = asint(r3.w + -0.5);
+	r0.y = (asfloat(r0.y) >= 0) ? -1 : 0;
+	r4.x = (2 & ~1) | (r0.x & 1);
+	r4.y = asint(asfloat(r2.y) + r3.w);
+	r0.zw = (r0.yy != 0) ? r4.xy : r2.xy;
+	r2.x = asint(asfloat(r0.w) * i.color.w);
+	r2.x = asint(asfloat(r2.x) * globalScalars.x);
+	r2.y = (g_AlphaRef >= asfloat(r2.x)) ? -1 : 0;
+	if (r2.y != 0) discard;
+	r1.xyz = asint(asfloat(r1.www) * asfloat(r1.xyz));
+	r1.xyz = r0.xxx & r1.xyz;
+	r2.yzw = asint(r3.xyz * r3.www + asfloat(r1.xyz));
+	r1.xyz = (r0.yyy != 0) ? r2.yzw : r1.xyz;
+	r0.xyw = asint(asfloat(r1.xyz) / asfloat(r0.www));
+	r1.xyz = asint(i.texcoord1.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975));
+	r1.w = asint(dot(asfloat(r1.xyz), asfloat(r1.xyz)));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r1.xyz = asint(asfloat(r1.www) * asfloat(r1.xyz));
+	r2.yzw = asint(i.texcoord3.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975));
+	r1.w = asint(dot(asfloat(r2.yzw), asfloat(r2.yzw)));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r2.yzw = asint(asfloat(r1.www) * asfloat(r2.yzw));
+	r1.w = asint(dot(-(asfloat(r2.yzw)), asfloat(r1.xyz)));
+	r1.w = asint(asfloat(r1.w) + asfloat(r1.w));
+	r3.xyz = asfloat(r1.xyz) * -(asfloat(r1.www)) + -(asfloat(r2.yzw));
+	r3.xyz = r3.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r1.w = asint(dot(r3.xyz, r3.xyz));
+	r1.w = asint(rsqrt(asfloat(r1.w)));
+	r3.xy = r3.xz * asfloat(r1.ww) + float2(1, 1);
+	r3.xy = r3.xy * float2(-0.5, -0.5);
+	r3.xyz = EnvironmentSampler_tex.Sample(EnvironmentSampler, r3.xy).xyz;
+	r1.w = asint(saturate(dot(asfloat(r2.yzw), asfloat(r1.xyz))));
+	r2.y = asint(-(fresnelRolloff) + 1);
+	r1.w = asint(-(asfloat(r1.w)) + 1.00001001);
+	r2.z = asint(asfloat(r1.w) * asfloat(r1.w));
+	r2.z = asint(asfloat(r2.z) * asfloat(r2.z));
+	r1.w = asint(asfloat(r1.w) * asfloat(r2.z));
+	r1.w = asint(fresnelRolloff * asfloat(r1.w) + asfloat(r2.y));
+	r2.yzw = asint(asfloat(r1.www) * r3.xyz);
+	r2.yzw = asint(asfloat(r2.yzw) * reflectivePower);
+	r2.yzw = asint(asfloat(r2.yzw) * globalScalars.www);
+	r1.w = asint(saturate(i.color.x + -1));
+	o.sv_target.xyz = asfloat(r1.www) * globalScalars2.zzz + asfloat(r0.xyw);
+	o.sv_target1.xyz = asfloat(r1.xyz) * float3(0.5, 0.5, 0.5) + float3(0.5, 0.5, 0.5);
+	o.sv_target2.z = i.color.x * gAmbientOcclusionEffect.w;
+	r0.xyw = asint(saturate(asfloat(r2.yzw) * float3(0.0625, 0.0625, 0.0625)));
+	o.sv_target3.xyz = sqrt(asfloat(r0.xyw));
+	o.sv_target.w = asfloat(r2.x);
+	o.sv_target1.w = asfloat(r2.x);
+	o.sv_target2.xyw = float3(0, 0.25, 1000);
+	o.sv_target3.w = asfloat(r2.x);
+	o.sv_coverage = r0.z;
+
+	return o;
+}

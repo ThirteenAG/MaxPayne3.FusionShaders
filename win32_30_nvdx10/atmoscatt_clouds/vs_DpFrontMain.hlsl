@@ -1,0 +1,133 @@
+float3 AzimuthColor : register(c134);
+float3 AzimuthColorEast : register(c141);
+float AzimuthHeight : register(c142);
+float AzimuthStrength : register(c145);
+float CloudShadowOffset : register(c156);
+float4 CloudThicknessEdgeSmoothDetailScaleStrength : register(c157);
+float2 DetailOffset : register(c170);
+float2 GalaxyOffset : register(c161);
+float3 SkyColor : register(c133);
+float StarFieldUVRepeat : register(c160);
+float4 SunDirection : register(c132);
+float4 TopCloudBiasDetailThresholdHeight : register(c152);
+float dpMapFarClip : register(c177);
+row_major float4x4 gWorld : register(c0);
+row_major float4x4 gWorldViewProj : register(c8);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float3 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float4 texcoord3 : TEXCOORD3;
+	float3 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	r0.xyz = gWorld[1].xyz * i.position.yyy;
+	r0.xyz = i.position.xxx * gWorld[0].xyz + r0.xyz;
+	r0.xyz = i.position.zzz * gWorld[2].xyz + r0.xyz;
+	r0.xyz = i.position.www * gWorld[3].xyz + r0.xyz;
+	r0.xyz = r0.xyz + -gWorld[3].xyz;
+	r1.xyz = r0.xyz + 1E-05;
+	o.texcoord1 = r0.xyz;
+	r0.x = dot(r1.xyz, r1.xyz);
+	r0.x = rsqrt(r0.x);
+	r2.xyz = r0.xxx * r1.xyz;
+	r0.xy = r1.xz * -r0.xx + SunDirection.xz;
+	r2.w = r2.y * 1.5;
+	r1.xyz = r2.xwz + float3(1E-05, 0.50001, 1E-05);
+	r0.z = dot(r1.xyz, r1.xyz);
+	r0.z = rsqrt(r0.z);
+	r0.zw = r0.zz * r1.xz;
+	r1.xy = abs(r0.zw) * -0.0187293 + 0.074261;
+	r1.xy = r1.xy * abs(r0.zw) + -0.2121144;
+	r1.xy = r1.xy * abs(r0.zw) + 1.5707288;
+	r1.zw = -abs(r0.zw) + 1;
+	r0.zw = (r0.zw < -r0.zw) ? 1 : 0;
+	r1.z = rsqrt(r1.z);
+	r1.w = rsqrt(r1.w);
+	r1.w = 1 / r1.w;
+	r1.z = 1 / r1.z;
+	r1.xy = r1.zw * r1.xy;
+	r1.z = r1.x * -2 + 3.1415927;
+	r0.z = r1.z * r0.z + r1.x;
+	r0.z = -r0.z + 1.5707964;
+	r1.w = 0.31773266;
+	r2.z = r0.z * r1.w + GalaxyOffset.x;
+	r0.z = r1.y * -2 + 3.1415927;
+	r0.z = r0.z * r0.w + r1.y;
+	r0.z = -r0.z + 1.5707964;
+	r2.w = r0.z * r1.w + GalaxyOffset.y;
+	r0.zw = r2.zw + 0.5;
+	o.texcoord3.xy = r0.zw * StarFieldUVRepeat.xx;
+	o.texcoord3.zw = r0.zw;
+	r1.xy = float2(0.5, 0.1);
+	r0.z = r1.y * CloudShadowOffset.x;
+	r0.xy = r0.xy * r0.zz;
+	r0.zw = i.texcoord.xy * 2 + -1;
+	r0.zw = r0.zw * r0.zw;
+	r0.z = r0.w + r0.z;
+	r0.z = -r0.z + 1;
+	o.texcoord2.xy = r0.xy * r0.zz + i.texcoord.xy;
+	r0.xy = -0.5 + i.texcoord.xy;
+	r0.zw = r0.xy * r0.xy;
+	r0.z = r0.w + r0.z;
+	r0.w = r0.z + 1E-05;
+	r0.w = rsqrt(r0.w);
+	r1.yz = r0.ww * r0.xy;
+	r0.w = (-r0.z >= r0.z) ? 1 : 0;
+	r1.yz = r0.ww * -r1.yz + r1.yz;
+	r0.zw = r0.zz * r1.yz;
+	r1.z = CloudThicknessEdgeSmoothDetailScaleStrength.z;
+	o.texcoord2.zw = r0.zw * r1.zz + DetailOffset.xy;
+	r0.zw = r0.xy * TopCloudBiasDetailThresholdHeight.ww;
+	o.texcoord4.xy = r0.xy * TopCloudBiasDetailThresholdHeight.ww + r1.xx;
+	r0.xy = r0.zw * r0.zw;
+	r0.x = r0.y + r0.x;
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	o.texcoord4.z = -r0.x + 1;
+	r0 = gWorldViewProj[1] * i.position.y;
+	r0 = i.position.x * gWorldViewProj[0] + r0;
+	r0 = i.position.z * gWorldViewProj[2] + r0;
+	r0 = r0 + gWorldViewProj[3];
+	r1.x = 1 / dpMapFarClip.x;
+	o.texcoord.z = r0.z * -r1.x + 1;
+	r1.x = r0.z * r1.x;
+	o.position.z = r1.x;
+	r1.x = saturate(r2.y * AzimuthHeight.x);
+	r1.y = r2.x * 0.5 + 0.5;
+	r1.x = -r1.x + 1;
+	r1.x = r1.x * AzimuthStrength.x;
+	r2.xyz = AzimuthColorEast.xyz;
+	r2.xyz = -r2.xyz + AzimuthColor.xyz;
+	r1.yzw = r1.yyy * r2.xyz + AzimuthColorEast.xyz;
+	o.texcoord5 = r1.yzw * r1.xxx + SkyColor.xyz;
+	r0.w = 1 / abs(r0.w);
+	r0.xyz = r0.www * r0.xyz;
+	r0.w = dot(r0.xyz, r0.xyz);
+	r0.w = rsqrt(r0.w);
+	r0.z = r0.z * r0.w + 1;
+	r0.xy = r0.ww * r0.xy;
+	r0.z = 1 / r0.z;
+	r0.xyz = r0.zzz * r0.xyx;
+	o.position.xyw = r0.xyz * float3(0.5, 1, 0) + float3(-0.5, 0, 1);
+	o.texcoord.xy = i.texcoord.xy;
+
+	return o;
+}

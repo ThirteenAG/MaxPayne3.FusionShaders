@@ -1,0 +1,155 @@
+sampler2D BloodSampler : register(s2);
+sampler2D BumpSampler : register(s4);
+float4 ClothDarken : register(c212);
+float4 ClothDarkenColor : register(c214);
+float4 ClothSweatSpec : register(c213);
+sampler2D DiffuseSampler : register(s0);
+sampler2D SpecSampler : register(s5);
+sampler3D VolumeSampler : register(s6);
+float bumpiness : register(c197);
+float4 detailSettings : register(c204);
+float4 gAmbientOcclusionEffect : register(c63);
+float4 gBloodData : register(c203);
+float4 gStencil : register(c61);
+row_major float4x4 gViewInverse : register(c12);
+float4 globalScalars : register(c35);
+float4 matMaterialColorScale : register(c202);
+float4 specMapExpMask : register(c201);
+float3 specMapIntMask : register(c200);
+float specularFactor : register(c199);
+float4 vSweatParams : register(c211);
+
+struct PS_IN
+{
+	float4 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float4 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+	float3 texcoord7 : TEXCOORD7;
+};
+
+struct PS_OUT
+{
+	float4 color : COLOR;
+	float4 color2 : COLOR2;
+	float4 color1 : COLOR1;
+	float4 color3 : COLOR3;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float3 r5;
+	float4 r6;
+	r0 = tex2D(BumpSampler, i.texcoord.xy);
+	r0.z = -r0.w + 1;
+	r0.z = -r0.x + r0.z;
+	r0.xy = (r0.zz >= 0) ? r0.wy : r0.xy;
+	r1 = tex2D(DiffuseSampler, i.texcoord.xy);
+	r0.xy = r0.xy * 2 + -1;
+	r0.xy = r0.xy * bumpiness.xx;
+	r0.z = dot(r0.xy, -r0.xy) + 1;
+	r2.x = max(r0.z, 0);
+	r0.z = rsqrt(r2.x);
+	r0.z = 1 / r0.z;
+	r2 = tex2D(SpecSampler, i.texcoord.xy);
+	r0.w = dot(r2, specMapExpMask);
+	r0.w = r0.w * specularFactor.x;
+	r2.x = dot(r2.xyz, specMapIntMask.xyz);
+	r2.y = max(1, r0.w);
+	r3.xyz = r0.xxx * i.texcoord4.xyz;
+	r0.xzw = r0.zzz * i.texcoord1.xyz + r3.xyz;
+	r0.xyz = r0.yyy * i.texcoord5.xyz + r0.xzw;
+	r0.xyz = r0.xyz + 1E-05;
+	r0.w = dot(r0.xyz, r0.xyz);
+	r0.w = rsqrt(r0.w);
+	r2.w = vSweatParams.z + -i.texcoord4.w;
+	r3.x = 1 / vSweatParams.w;
+	r3.x = saturate(r2.w * r3.x);
+	r3.x = r3.x * vSweatParams.y;
+	r2.w = (r2.w >= 0) ? r3.x : 0;
+	r3.x = -r2.w + ClothDarken.w;
+	r3.y = 1 / ClothDarken.w;
+	r3.y = r3.y * r3.x;
+	r4.xw = float2(1, 0);
+	r5 = lerp(ClothDarken.xyz, r4.xxx, r3.yyy);
+	r3.xyz = (r3.xxx >= 0) ? r5.xyz : ClothDarken.xyz;
+	r5 = lerp(ClothDarkenColor.xyz, r1.xyz, r3.xyz);
+	r1.x = lerp(r2.x, ClothSweatSpec.x, r2.w);
+	r1.y = lerp(r2.y, ClothSweatSpec.y, r2.w);
+	if (-gBloodData.w < r4.w) {
+		r3 = tex2D(BloodSampler, i.texcoord.zw);
+		r6.z = min(r3.y, r3.x);
+		r1.z = saturate(r3.x * 0.5 + r3.w);
+		r6.xy = r3.xy;
+		r2.xyw = lerp(r5.xyz, r6.xyz, r1.zzz);
+		r5 = r2.xyw;
+	}
+	r0.xyz = r0.xyz * r0.www + 1E-05;
+	r0.w = dot(r0.xyz, r0.xyz);
+	r0.w = rsqrt(r0.w);
+	r2.xyw = r0.www * r0.xyz;
+	r1.z = r1.w * i.texcoord2.w;
+	r3.xyz = r5.xyz * matMaterialColorScale.xxx;
+	r1.yw = r1.yx * matMaterialColorScale.ww;
+	r5 = -gViewInverse[3].xyz + i.texcoord7.xyz;
+	r5 = r5.xyz + 1E-05;
+	r6.xyz = normalize(r5.xyz);
+	r0.xyz = r0.xyz * r0.www + 1E-05;
+	r5 = normalize(r0.xyz);
+	r0.x = dot(r6.xyz, r5.xyz);
+	r0.y = r0.x * 1.5 + 1;
+	r0.x = (-r0.x >= 0) ? r0.y : 1;
+	r0.y = r0.x * i.texcoord2.y;
+	r0.z = saturate(r1.w * 5);
+	r0.y = r0.z * r0.y;
+	r5.x = r1.y * 0.0051020407;
+	r0.z = saturate(r1.y * -0.01 + 1);
+	r0.y = r0.y * r0.z;
+	r0.x = (r0.x >= 0) ? r0.y : 0;
+	r0.x = r1.x * matMaterialColorScale.w + r0.x;
+	r0.y = r2.z * 16;
+	r0.z = frac(r0.y);
+	r0.y = r0.y + -r0.z;
+	r0.z = (-r0.z >= 0) ? 0 : 1;
+	r0.z = (r2.z >= 0) ? 0 : r0.z;
+	r0.y = r0.z + r0.y;
+	r6.xy = detailSettings.zw * i.texcoord.xy;
+	r0.y = r0.y + 0.5;
+	r6.z = r0.y * 0.0625;
+	r6 = tex3D(VolumeSampler, r6.xyz);
+	r0.yzw = r6.yzx * 2 + -1;
+	r1.x = detailSettings.x * i.texcoord2.w;
+	r0.w = r0.w * r1.x + 1;
+	o.color.xyz = r0.www * r3.xyz;
+	r1.xyw = r0.zzz * i.texcoord5.xyz;
+	r1.xyw = i.texcoord4.xyz * r0.yyy + r1.xyw;
+	r1.xyw = r1.xyw * detailSettings.yyy;
+	r1.xyw = r1.xyw * i.texcoord2.www + r2.xyw;
+	r1.xyw = r1.xyw + 1E-05;
+	r2.xyz = normalize(r1.xyw);
+	o.color2.x = saturate(r0.w * r0.x);
+	r0.x = saturate(gAmbientOcclusionEffect.z);
+	r0.x = saturate(r0.x + i.texcoord2.x);
+	o.color1.xyz = r2.xyz * 0.5 + 0.5;
+	r5.x = saturate(r5.x);
+	r0.y = rsqrt(r5.x);
+	r0.y = 1 / r0.y;
+	r0.y = rsqrt(r0.y);
+	o.color2.y = 1 / r0.y;
+	o.color2.z = r0.x * gAmbientOcclusionEffect.w;
+	r0.x = r1.z * globalScalars.x;
+	o.color.w = r0.x;
+	o.color1.w = r0.x;
+	o.color2.w = r0.x;
+	o.color3 = r4.wwwx * gStencil.x;
+
+	return o;
+}

@@ -1,0 +1,267 @@
+cbuffer rage_matrices : register(b0)
+{
+	row_major float4x4 gWorld : packoffset(c0);
+	row_major float4x4 gWorldView : packoffset(c4);
+	row_major float4x4 gWorldViewProj : packoffset(c8);
+	row_major float4x4 gViewInverse : packoffset(c12);
+};
+
+cbuffer direction_light : register(b10)
+{
+	float4 gDepthFxParams : packoffset(c0);
+	float4 gDirectionalLight : packoffset(c1);
+	float4 gDirectionalColour : packoffset(c2);
+};
+
+cbuffer omni_light : register(b2)
+{
+	float4 gLightPosX : packoffset(c0);
+	float4 gLightPosY : packoffset(c1);
+	float4 gLightPosZ : packoffset(c2);
+	float4 gLightDirX : packoffset(c3);
+	float4 gLightDirY : packoffset(c4);
+	float4 gLightDirZ : packoffset(c5);
+	float4 gLightFallOff : packoffset(c6);
+	float4 gLightConeScale : packoffset(c7);
+	float4 gLightConeOffset : packoffset(c8);
+	float4 gLightColR : packoffset(c9);
+	float4 gLightColG : packoffset(c10);
+	float4 gLightColB : packoffset(c11);
+	float4 gLightAmbient0 : packoffset(c12);
+	float4 gLightAmbient1 : packoffset(c13);
+	float4 gLightAmbientDir0 : packoffset(c14);
+	float4 gLightAmbientDir1 : packoffset(c15);
+};
+
+cbuffer ShadowParam : register(b8)
+{
+	float4 gShadowParam18192021 : packoffset(c0);
+	float4 gShadowParam14151617 : packoffset(c1);
+	float4 gShadowParam0123 : packoffset(c2);
+	float4 gShadowParam4567 : packoffset(c3);
+	float4 gShadowParam891113 : packoffset(c4);
+	float4 gCascadeZScales : packoffset(c5);
+	float4 gCascadeZOffsets : packoffset(c6);
+	float4 gCascadeXMinThresholds : packoffset(c7);
+	float4 gCascadeXMaxThresholds : packoffset(c8);
+	float4 gCascadeYMinThresholds : packoffset(c9);
+	float4 gCascadeYMaxThresholds : packoffset(c10);
+	row_major float4x4 gShadowMatrix : packoffset(c11);
+};
+
+cbuffer DeferredLight : register(b4)
+{
+	float gDeferredLightType : packoffset(c0);
+	float3 gDeferredLightPosition : packoffset(c0.y);
+	float3 gDeferredLightDirection : packoffset(c1);
+	float3 gDeferredLightTangent : packoffset(c2);
+	float4 gDeferredLightRadiusProjShearParams : packoffset(c3);
+	float gDeferredLightInvSqrRadius : packoffset(c4);
+	float gDeferredVolumeRadiusScale : packoffset(c4.y);
+	float gDeferredLightConeAngleI : packoffset(c4.z);
+	float gDeferredLightConeAngle : packoffset(c4.w);
+	float gDeferredLightConeOffset : packoffset(c5);
+	float gDeferredLightConeScale : packoffset(c5.y);
+	float4 gDeferredLightColourAndIntensity : packoffset(c6);
+	float4 gooDeferredLightScreenSize : packoffset(c7);
+	float4 gDeferredProjParams : packoffset(c8);
+};
+
+SamplerState StereoParmsTex : register(s9);
+SamplerComparisonState gShadowZSamplerDir : register(s15);
+Texture2DMS<float4> deferredLightTexture0P : register(t3);
+Texture2DMS<float4> gbufferTexture0 : register(t8);
+Texture2D StereoParmsTex_tex : register(t9);
+Texture2DMS<float> gbufferTextureDepth : register(t11);
+Texture2DMS<float4> gbufferTexture1 : register(t12);
+Texture2DMS<float4> gbufferTexture2 : register(t13);
+Texture2D ShadowZTextureDir : register(t15);
+
+struct PS_IN
+{
+	noperspective float4 sv_position : SV_Position;
+	float2 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	nointerpolation uint sv_sampleindex : SV_SampleIndex;
+};
+
+float4 main(PS_IN i) : SV_Target
+{
+	float4 o;
+
+	int4 r0;
+	int4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	int4 r5;
+	int4 r6;
+	int4 r7;
+	float4 r8;
+	r0.xy = (int2)i.sv_position.xy;
+	r0.zw = int2(0, 0);
+	r1.x = asint(gbufferTextureDepth.Load(r0.xy, i.sv_sampleindex).x);
+	r1.yzw = asint(gbufferTexture0.Load(r0.xy, i.sv_sampleindex).xyz);
+	r2.xyz = gbufferTexture2.Load(r0.xy, i.sv_sampleindex).xyz;
+	r3.xyz = gbufferTexture1.Load(r0.xy, i.sv_sampleindex).xyz;
+	r0.xyz = asint(deferredLightTexture0P.Load(r0.xy, i.sv_sampleindex).xyz);
+	r0.xyz = asint(asfloat(r0.xyz) * asfloat(r0.xyz));
+	r0.xyz = asint(asfloat(r0.xyz) * float3(16, 16, 16));
+	r1.yzw = asint(asfloat(r1.yzw) * asfloat(r1.yzw));
+	r0.w = asint(asfloat(r1.x) * gDeferredProjParams.z + -(gDeferredProjParams.w));
+	r1.x = (i.texcoord1.w == 1) ? -1 : 0;
+	if (r1.x != 0) {
+		r1.x = asint(1 / asfloat(r0.w));
+		r4.xy = StereoParmsTex_tex.Sample(StereoParmsTex, float2(0.0625, 0.25)).xy;
+		r1.x = asint(asfloat(r1.x) + -(r4.y));
+		r1.x = asint(asfloat(r1.x) * r4.x);
+		r1.x = asint(asfloat(r1.x) * gDeferredProjParams.x);
+		r4.xyz = -(gViewInverse[0].xyz) * asfloat(r1.xxx) + gViewInverse[3].xyz;
+	} else {
+		r5.xyz = asint(StereoParmsTex_tex.SampleLevel(StereoParmsTex, float2(0.0625, 0.75), 0).xyz);
+		r4.xyz = asfloat(r5.xyz) + gViewInverse[3].xyz;
+	}
+	r0.w = asint(asfloat(r0.w) * i.texcoord1.w);
+	r0.w = asint(1 / asfloat(r0.w));
+	r4.xyz = -(i.texcoord1.xyz) * asfloat(r0.www) + r4.xyz;
+	r0.w = asint(r2.y * r2.y);
+	r0.w = asint(asfloat(r0.w) * asfloat(r0.w));
+	r3.xyz = r3.xyz * float3(2, 2, 2) + float3(-1, -1, -1);
+	r1.x = asint(dot(r3.xyz, r3.xyz));
+	r1.x = asint(rsqrt(asfloat(r1.x)));
+	r3.xyz = asfloat(r1.xxx) * r3.xyz;
+	r5.xyz = asint(StereoParmsTex_tex.SampleLevel(StereoParmsTex, float2(0.0625, 0.75), 0).xyz);
+	r5.xyz = asint(asfloat(r5.xyz) + gViewInverse[3].xyz);
+	r5.xyz = asint(r4.xyz + -(asfloat(r5.xyz)));
+	r5.xyz = asint(asfloat(r5.xyz) + float3(0.00000999999975, 0.00000999999975, 0.00000999999975));
+	r1.x = asint(dot(asfloat(r5.xyz), asfloat(r5.xyz)));
+	r1.x = asint(rsqrt(asfloat(r1.x)));
+	r5.xyz = asint(asfloat(r1.xxx) * asfloat(r5.xyz));
+	r1.x = asint(dot(asfloat(r5.xyz), r3.xyz));
+	r1.x = asint(asfloat(r1.x) + asfloat(r1.x));
+	r5.xyz = asint(r3.xyz * -(asfloat(r1.xxx)) + asfloat(r5.xyz));
+	r1.x = asint(dot(r3.xyz, -(gDirectionalLight.xyz)));
+	r2.y = saturate(asfloat(r1.x) + -0.25);
+	r2.y = r2.y * 1.33333337;
+	r2.w = saturate(dot(-(gDirectionalLight.xyz), asfloat(r5.xyz)));
+	r2.w = r2.w + 0.00000999999975;
+	r0.w = asint(asfloat(r0.w) * 196 + 0.00000999999975);
+	r2.w = log2(r2.w);
+	r0.w = asint(asfloat(r0.w) * r2.w);
+	r0.w = asint(exp2(asfloat(r0.w)));
+	r1.x = asint(saturate(asfloat(r1.x) * 2 + -0.5));
+	r0.w = asint(asfloat(r0.w) * asfloat(r1.x));
+	r5.xyz = asint(r4.yyy * gShadowMatrix[1].xyz);
+	r4.xyw = r4.xxx * gShadowMatrix[0].xyz + asfloat(r5.xyz);
+	r4.xyz = r4.zzz * gShadowMatrix[2].xyz + r4.xyw;
+	r4.xyz = r4.xyz + gShadowMatrix[3].xyz;
+	r5.xy = asint(r4.xy + -(gShadowParam18192021.zw));
+	r5.zw = (asfloat(r5.xx) >= gCascadeXMaxThresholds.xy) ? -1 : 0;
+	r5.zw = r5.zw & int2(1065353216, 1065353216);
+	r6.xy = (gCascadeXMinThresholds.xy >= asfloat(r5.xx)) ? -1 : 0;
+	r6.zw = (asfloat(r5.yy) >= gCascadeYMaxThresholds.xy) ? -1 : 0;
+	r6 = r6 & int4(1065353216, 1065353216, 1065353216, 1065353216);
+	r7.xy = (gCascadeYMinThresholds.xy >= asfloat(r5.yy)) ? -1 : 0;
+	r7.xy = r7.xy & int2(1065353216, 1065353216);
+	r5.zw = asint(asfloat(r5.zw) + asfloat(r6.xy));
+	r5.zw = asint(asfloat(r6.zw) + asfloat(r5.zw));
+	r5.zw = asint(asfloat(r7.xy) + asfloat(r5.zw));
+	r6.yz = asint(min(asfloat(r5.zw), float2(1, 1)));
+	r6.x = 1065353216;
+	r7.x = asint(dot(asfloat(r6.xyz), gShadowParam0123.xyz));
+	r7.y = asint(dot(asfloat(r6.xyz), gShadowParam4567.xyz));
+	r7.z = asint(dot(asfloat(r6.xyz), gCascadeZScales.xyz));
+	r8.x = dot(asfloat(r6.xyz), gShadowParam891113.xyz);
+	r8.y = dot(asfloat(r6.xyz), gShadowParam14151617.xyz);
+	r8.z = dot(asfloat(r6.xyz), gCascadeZOffsets.xyz);
+	r4.xyz = r4.zxy * asfloat(r7.zxy) + r8.zxy;
+	r4.x = saturate(r4.x);
+	r6.x = asint(-(gCascadeXMinThresholds.w));
+	r6.y = asint(-(gCascadeXMaxThresholds.w));
+	r5.xy = asint(saturate(abs(asfloat(r5.xy)) * float2(4, 4) + asfloat(r6.xy)));
+	r1.x = asint(max(asfloat(r5.y), asfloat(r5.x)));
+	r2.w = -(r4.x) + 0.999999523;
+	r4.xw = r4.yz + gShadowParam18192021.xy;
+	r5 = asint(r4.xxww / gShadowParam18192021.xxyy);
+	r5 = asint(frac(asfloat(r5)));
+	r6.xy = (float2(0.5, 0.5) < asfloat(r5.yw)) ? -1 : 0;
+	r5 = asint(asfloat(r5) + float4(-0.5, 0.5, -0.5, 0.5));
+	r5.xy = (r6.xy != 0) ? r5.xz : r5.yw;
+	r5.zw = asint(r4.yz + -(gShadowParam18192021.xy));
+	r6 = asint(ShadowZTextureDir.GatherCmp(gShadowZSamplerDir, asfloat(r5.zw), r2.w));
+	r5.zw = asint(-(asfloat(r6.wz)) + asfloat(r6.xy));
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + asfloat(r6.wz));
+	r3.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r3.w = asfloat(r5.x) * r3.w + asfloat(r5.z);
+	r7 = asint(gShadowParam18192021.xyxy * float4(-1, 1, 1, -1) + r4.yzyz);
+	r8 = ShadowZTextureDir.GatherCmp(gShadowZSamplerDir, asfloat(r7.xy), r2.w);
+	r4.yz = -(r8.wz) + r8.xy;
+	r4.yz = asfloat(r5.yy) * r4.yz + r8.wz;
+	r4.z = -(r4.y) + r4.z;
+	r4.y = asfloat(r5.x) * r4.z + r4.y;
+	r3.w = r3.w + r4.y;
+	r7 = asint(ShadowZTextureDir.GatherCmp(gShadowZSamplerDir, asfloat(r7.zw), r2.w).ywzx);
+	r4.yz = -(asfloat(r7.yz)) + asfloat(r7.wx);
+	r4.yz = asfloat(r5.yy) * r4.yz + asfloat(r7.yz);
+	r4.z = -(r4.y) + r4.z;
+	r4.y = asfloat(r5.x) * r4.z + r4.y;
+	r3.w = r3.w + r4.y;
+	r4 = ShadowZTextureDir.GatherCmp(gShadowZSamplerDir, r4.xw, r2.w).ywzx;
+	r5.zw = asint(-(r4.yz) + r4.wx);
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + r4.yz);
+	r2.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r2.w = asfloat(r5.x) * r2.w + asfloat(r5.z);
+	r2.w = r2.w + r3.w;
+	r5.zw = asint(-(asfloat(r6.xy)) + r8.wz);
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + asfloat(r6.xy));
+	r3.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r3.w = asfloat(r5.x) * r3.w + asfloat(r5.z);
+	r2.w = r2.w + r3.w;
+	r5.zw = asint(-(asfloat(r7.wx)) + r4.yz);
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + asfloat(r7.wx));
+	r3.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r3.w = asfloat(r5.x) * r3.w + asfloat(r5.z);
+	r2.w = r2.w + r3.w;
+	r7.xz = r6.zy;
+	r5.zw = asint(-(asfloat(r7.xy)) + asfloat(r7.zw));
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + asfloat(r7.xy));
+	r3.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r3.w = asfloat(r5.x) * r3.w + asfloat(r5.z);
+	r2.w = r2.w + r3.w;
+	r4.xz = r8.zy;
+	r5.zw = asint(-(asfloat(r7.zw)) + r4.xy);
+	r5.zw = asint(asfloat(r5.yy) * asfloat(r5.zw) + asfloat(r7.zw));
+	r3.w = -(asfloat(r5.z)) + asfloat(r5.w);
+	r3.w = asfloat(r5.x) * r3.w + asfloat(r5.z);
+	r2.w = r2.w + r3.w;
+	r4.zw = -(r4.xy) + r4.zw;
+	r4.xy = asfloat(r5.yy) * r4.zw + r4.xy;
+	r3.w = -(r4.x) + r4.y;
+	r3.w = asfloat(r5.x) * r3.w + r4.x;
+	r2.w = r2.w + r3.w;
+	r1.x = asint(r2.w * 0.111111112 + asfloat(r1.x));
+	r1.x = asint(saturate(asfloat(r1.x) * 1.25));
+	r2.w = asfloat(r1.x) * -2 + 3;
+	r1.x = asint(asfloat(r1.x) * asfloat(r1.x));
+	r1.x = asint(asfloat(r1.x) * r2.w);
+	r4.xyz = asfloat(r1.xxx) * gDirectionalColour.xyz;
+	r5.xyz = asint(asfloat(r0.www) * r4.xyz);
+	r4.xyz = r2.yyy * r4.xyz;
+	r0.w = asint(sqrt(r2.z));
+	r1.x = asint(dot(gLightAmbientDir0.xyz, r3.xyz));
+	r1.x = asint(saturate(asfloat(r1.x) + gLightAmbientDir0.w));
+	r2.y = dot(gLightAmbientDir1.xyz, r3.xyz);
+	r2.y = saturate(r2.y + gLightAmbientDir0.w);
+	r3.xyz = r2.yyy * gLightAmbient1.xyz;
+	r3.xyz = asfloat(r1.xxx) * gLightAmbient0.xyz + r3.xyz;
+	r2.yzw = r2.zzz * r3.xyz;
+	r2.yzw = r4.xyz * asfloat(r0.www) + r2.yzw;
+	r0.w = asint(dot(r2.yzw, float3(0.333333343, 0.333333343, 0.333333343)));
+	r0.w = asint(asfloat(r0.w) + 0.0149999997);
+	r0.xyz = asint(asfloat(r0.www) * asfloat(r0.xyz));
+	r0.xyz = asint(asfloat(r5.xyz) * r2.xxx + asfloat(r0.xyz));
+	o.xyz = asfloat(r1.yzw) * r2.yzw + asfloat(r0.xyz);
+	o.w = 1;
+
+	return o;
+}

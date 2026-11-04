@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="16457">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VSCloudsVertScatterPiercing" OffsetBy1="false" File="dome_clouds/VSCloudsVertScatterPiercing.hlsl" DataType="hlsl" Model="4.0" Length="4532">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VSCloudsOccluder" OffsetBy1="false" File="dome_clouds/VSCloudsOccluder.hlsl" DataType="hlsl" Model="4.0" Length="2760">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>StereoParmsTex</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="7" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PSCloudsVertScatterPiercing" OffsetBy1="false" File="dome_clouds/PSCloudsVertScatterPiercing.hlsl" DataType="hlsl" Model="4.0" Length="3908">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+            <Variable>NormalSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSCloudsVertScatterPiercing_AnimSoft" OffsetBy1="false" File="dome_clouds/PSCloudsVertScatterPiercing_AnimSoft.hlsl" DataType="hlsl" Model="4.0" Length="5836">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+            <Variable>NormalSampler</Variable>
+            <Variable>DetailDensitySampler</Variable>
+            <Variable>DetailNormalSampler</Variable>
+            <Variable>DetailDensity2Sampler</Variable>
+            <Variable>DetailNormal2Sampler</Variable>
+            <Variable>DepthSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSCloudsOccluder" OffsetBy1="false" File="dome_clouds/PSCloudsOccluder.hlsl" DataType="hlsl" Model="4.0" Length="2172">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSCloudsSphereReflection" OffsetBy1="false" File="dome_clouds/PSCloudsSphereReflection.hlsl" DataType="hlsl" Model="4.0" Length="4000">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+            <Variable>NormalSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSCloudsWaterReflection" OffsetBy1="false" File="dome_clouds/PSCloudsWaterReflection.hlsl" DataType="hlsl" Model="4.0" Length="4000">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+            <Variable>NormalSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSCloudsMirrorReflection" OffsetBy1="false" File="dome_clouds/PSCloudsMirrorReflection.hlsl" DataType="hlsl" Model="4.0" Length="4000">
+          <Variables>
+            <Variable>SkyColor</Variable>
+            <Variable>EastColor</Variable>
+            <Variable>WestColor</Variable>
+            <Variable>gSunDirection</Variable>
+            <Variable>gSunColor</Variable>
+            <Variable>gCloudColor</Variable>
+            <Variable>gAmbientColor</Variable>
+            <Variable>gBounceColor</Variable>
+            <Variable>gDensityShiftScale</Variable>
+            <Variable>gScatterG_GSquared_PhaseMult_Scale</Variable>
+            <Variable>gPiercingLightPower_Strength_NormalStrength_Thickness</Variable>
+            <Variable>gScaleDiffuseFillAmbient</Variable>
+            <Variable>gWrapLighting</Variable>
+            <Variable>gHDRExposure</Variable>
+            <Variable>gNearFarQMult</Variable>
+            <Variable>gAnimCombine</Variable>
+            <Variable>gAnimSculpt</Variable>
+            <Variable>gAnimBlendWeights</Variable>
+            <Variable>gUVOffset</Variable>
+            <Variable>gReflScales</Variable>
+            <Variable>gUVOffset1</Variable>
+            <Variable>gUVOffset2</Variable>
+            <Variable>gUVOffset3</Variable>
+            <Variable>gRescaleUV1</Variable>
+            <Variable>gRescaleUV2</Variable>
+            <Variable>gRescaleUV3</Variable>
+            <Variable>gSoftParticleRange</Variable>
+            <Variable>DensitySampler</Variable>
+            <Variable>NormalSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Dome" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="272" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="59" Group="1" FirstName="gConverengeDepth" SecondName="ConverengeDepth" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Texture" Count="0" Slot="9" Group="1" FirstName="StereoParmsTex" SecondName="StereoParmsTexture" Offset="9" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;1;0;1;1;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="Dome" Size="400" VS="1" PS="1" CS="3" DS="3" GS="3" HS="3"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DensitySampler" SecondName="DensityTexture" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Density Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;3;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="NormalSampler" SecondName="NormalTexture" Offset="1" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Normal Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;3;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="DetailDensitySampler" SecondName="DetailDensityTexture" Offset="2" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Detail Density Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;1;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="DetailNormalSampler" SecondName="DetailNormalTexture" Offset="3" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Detail Normal Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;1;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="DetailDensity2Sampler" SecondName="DetailDensity2Texture" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Detail Density 2 Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;1;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="5" Group="2" FirstName="DetailNormal2Sampler" SecondName="DetailNormal2Texture" Offset="5" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Detail Normal 2 Map"/>
+        <Annotation Name="UvSetName" Type="string" Value="map1"/>
+        <Annotation Name="UvSetIndex" Type="int" Value="0"/>
+      </Annotations>
+      <Values>0;1;1;1;5;2;4;2;6;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="6" Group="2" FirstName="DepthSampler" SecondName="DepthTex" Offset="6" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="21" Group="3" FirstName="SkyColor" SecondName="SkyColorCloud" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="22" Group="3" FirstName="EastColor" SecondName="EastColorCloud" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="23" Group="3" FirstName="WestColor" SecondName="WestColorCloud" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="24" Group="3" FirstName="gSunDirection" SecondName="SunDirection" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803"/>
+    <Variable Type="Float3" Count="0" Slot="25" Group="3" FirstName="gSunColor" SecondName="SunColor" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="26" Group="3" FirstName="gCloudColor" SecondName="CloudColor" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="27" Group="3" FirstName="gAmbientColor" SecondName="AmbientColor" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="28" Group="3" FirstName="gBounceColor" SecondName="BounceColor" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="29" Group="3" FirstName="gDensityShiftScale" SecondName="DensityShiftScale" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="30" Group="3" FirstName="gScatterG_GSquared_PhaseMult_Scale" SecondName="ScatterG_GSquared_PhaseMult_Scale" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>-0.75;0.5625;2.0999999;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="31" Group="3" FirstName="gPiercingLightPower_Strength_NormalStrength_Thickness" SecondName="PiercingLightPower_Strength_NormalStrength_Thickness" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="32" Group="3" FirstName="gScaleDiffuseFillAmbient" SecondName="ScaleDiffuseFillAmbient" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="33" Group="3" FirstName="gWrapLighting" SecondName="WrapLighting" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="34" Group="3" FirstName="gHDRExposure" SecondName="HDRExposure" Offset="200" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803"/>
+    <Variable Type="Float4" Count="0" Slot="100" Group="3" FirstName="gNearFarQMult" SecondName="NearFarQMult" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803"/>
+    <Variable Type="Float3" Count="0" Slot="35" Group="3" FirstName="gAnimCombine" SecondName="AnimCombine" Offset="224" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="36" Group="3" FirstName="gAnimSculpt" SecondName="AnimSculpt" Offset="240" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="37" Group="3" FirstName="gAnimBlendWeights" SecondName="AnimBlendWeights" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="3" Slot="38" Group="3" FirstName="gUVOffset" SecondName="UVOffset" Offset="16" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>0;0;0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="39" Group="3" FirstName="gReflScales" SecondName="ReflectionScales" Offset="64" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Values>1;1;1</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="101" Group="3" FirstName="gUVOffset1" SecondName="UVOffset1" Offset="80" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="UV Offset 1"/>
+        <Annotation Name="UIMin" Type="float" Value="-1"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="102" Group="3" FirstName="gUVOffset2" SecondName="UVOffset2" Offset="88" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="UV Offset 2"/>
+        <Annotation Name="UIMin" Type="float" Value="-1"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="103" Group="3" FirstName="gUVOffset3" SecondName="UVOffset3" Offset="96" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="UV Offset 3"/>
+        <Annotation Name="UIMin" Type="float" Value="-1"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="104" Group="3" FirstName="gRescaleUV1" SecondName="RescaleUV1" Offset="104" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Rescale UV 1"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="50"/>
+        <Annotation Name="UIStep" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;1</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="105" Group="3" FirstName="gRescaleUV2" SecondName="RescaleUV2" Offset="112" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Rescale UV 2"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="50"/>
+        <Annotation Name="UIStep" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;1</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="106" Group="3" FirstName="gRescaleUV3" SecondName="RescaleUV3" Offset="120" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Rescale UV 3"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="50"/>
+        <Annotation Name="UIStep" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="107" Group="3" FirstName="gSoftParticleRange" SecondName="SoftParticleRange" Offset="128" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="3789323803">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Soft Partice Range"/>
+        <Annotation Name="UIMin" Type="float" Value="1"/>
+        <Annotation Name="UIMax" Type="float" Value="500"/>
+        <Annotation Name="UIStep" Type="float" Value="1"/>
+      </Annotations>
+      <Values>175</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cloudanim_unlit_draw">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cloudanim_draw">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="clouddepth_draw">
+      <Pass VS="1" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="lit_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight0_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight4_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="paraboloid_draw">
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="reflection_draw">
+      <Pass VS="0" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="mirror_draw">
+      <Pass VS="0" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

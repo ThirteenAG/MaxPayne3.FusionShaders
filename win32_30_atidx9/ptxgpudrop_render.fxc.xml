@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_ptxgpuRenderDrop" OffsetBy1="false" File="ptxgpudrop_render/VS_ptxgpuRenderDrop.hlsl" DataType="hlsl" Model="3.0" Length="4152">
+          <Variables>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gColour</Variable>
+            <Variable>gColourSplash</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gDirectional</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gFadeInOut</Variable>
+            <Variable>gFadeNearFar</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gSizeMinMax</Variable>
+            <Variable>gSplashFrames</Variable>
+            <Variable>gSplashSizeMinMax</Variable>
+            <Variable>gTextureRowsCols</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gWrapScale</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_ptxgpuRenderDrop_VtxTex" OffsetBy1="false" File="ptxgpudrop_render/VS_ptxgpuRenderDrop_VtxTex.hlsl" DataType="hlsl" Model="3.0" Length="4392">
+          <Variables>
+            <Variable>PositionTexSampler</Variable>
+            <Variable>VelocityTexSampler</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gColour</Variable>
+            <Variable>gColourSplash</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gDirectional</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gLifeFade</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gSizeMinMax</Variable>
+            <Variable>gSplashFrames</Variable>
+            <Variable>gSplashSizeMinMax</Variable>
+            <Variable>gTextureRowsCols</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gWrapScale</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="2" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_ptxgpuRenderDrop" OffsetBy1="false" File="ptxgpudrop_render/PS_ptxgpuRenderDrop.hlsl" DataType="hlsl" Model="3.0" Length="380">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="19" Group="1" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="1" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="21" Group="1" FirstName="gLightPosX" SecondName="LightPositionX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="22" Group="1" FirstName="gLightPosY" SecondName="LightPositionY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="23" Group="1" FirstName="gLightPosZ" SecondName="LightPositionZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="24" Group="1" FirstName="gLightDirX" SecondName="LightDirX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="25" Group="1" FirstName="gLightDirY" SecondName="LightDirY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="26" Group="1" FirstName="gLightDirZ" SecondName="LightDirZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="27" Group="1" FirstName="gLightFallOff" SecondName="LightFallOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="28" Group="1" FirstName="gLightConeScale" SecondName="LightConeScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="29" Group="1" FirstName="gLightConeOffset" SecondName="LightConeOffset" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="30" Group="1" FirstName="gLightColR" SecondName="LightColR" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="31" Group="1" FirstName="gLightColG" SecondName="LightColG" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="1" FirstName="gLightColB" SecondName="LightColB" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="33" Group="1" FirstName="gLightAmbient0" SecondName="LightAmbientColor0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 0"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="1" FirstName="gLightAmbient1" SecondName="LightAmbientColor1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 1"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="1" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float" Count="0" Slot="89" Group="0" FirstName="gSuperAlpha" SecondName="SuperAlpha" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="SuperAlpha"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="20"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseTexSampler" SecondName="DiffuseTex2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Texture Map"/>
+      </Annotations>
+      <Values>5;2;4;2;6;2;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="93" Group="1" FirstName="gLifeFade" SecondName="LifeFade" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="98" Group="1" FirstName="gWrapScale" SecondName="WrapScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Scale : Controls how strong sun light hits particle (0 - no direct light , 1 - all direct light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.699999988</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="99" Group="1" FirstName="gWrapBias" SecondName="WrapBias" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Bias : Controls how sun light spreads over surface (0 - no extra spread, 1 - spreads all over surface) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.300000012</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="100" Group="1" FirstName="gDiffuse" SecondName="Diffuse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse : Controls the amount of lighting on surface, color also controls this (0 - no light, 1 - light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="101" Group="1" FirstName="gAmbientAmount" SecondName="AmbientAmount" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Ambient Scale : Controls how much double ambient lighting to apply to surface"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.300000012</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="1" FirstName="PositionTexSampler" SecondName="PositionTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="1" FirstName="VelocityTexSampler" SecondName="VelocityTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="102" Group="1" FirstName="gTextureRowsCols" SecondName="TextureRowsCols" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="103" Group="1" FirstName="gSizeMinMax" SecondName="SizeMinMax" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="104" Group="1" FirstName="gSplashSizeMinMax" SecondName="SplashSizeMinMax" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="105" Group="1" FirstName="gColour" SecondName="Colour" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="106" Group="1" FirstName="gColourSplash" SecondName="ColourSplash" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="107" Group="1" FirstName="gSplashFrames" SecondName="SplashFrames" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="108" Group="1" FirstName="gFadeInOut" SecondName="FadeInOut" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="110" Group="1" FirstName="gDirectional" SecondName="Directional" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="111" Group="1" FirstName="gFadeNearFar" SecondName="FadeNearFar" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="draw_VtxTex">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

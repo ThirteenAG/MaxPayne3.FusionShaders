@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="89">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="18" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_Transform" OffsetBy1="false" File="im/VS_Transform.hlsl" DataType="hlsl" Model="3.0" Length="1380">
+          <Variables>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformSkin" OffsetBy1="false" File="im/VS_TransformSkin.hlsl" DataType="hlsl" Model="3.0" Length="1812">
+          <Variables>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gBoneMtx</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformUnlit" OffsetBy1="false" File="im/VS_TransformUnlit.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_Blit" OffsetBy1="false" File="im/VS_Blit.hlsl" DataType="hlsl" Model="3.0" Length="208">
+        </Shader>
+        <Shader Name="VS_Clear" OffsetBy1="false" File="im/VS_Clear.hlsl" DataType="hlsl" Model="3.0" Length="172">
+        </Shader>
+        <Shader Name="VS_TransformShadowModel" OffsetBy1="false" File="im/VS_TransformShadowModel.hlsl" DataType="hlsl" Model="3.0" Length="248">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_GTABlit" OffsetBy1="false" File="im/VS_GTABlit.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_GTABlitFast" OffsetBy1="false" File="im/VS_GTABlitFast.hlsl" DataType="hlsl" Model="3.0" Length="344">
+          <Variables>
+            <Variable>TransColor</Variable>
+            <Variable>TransPos</Variable>
+            <Variable>TransTex0</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_GTABlitDiffuseOnly" OffsetBy1="false" File="im/VS_GTABlitDiffuseOnly.hlsl" DataType="hlsl" Model="3.0" Length="284">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_GTABlitDoFast" OffsetBy1="false" File="im/VS_GTABlitDoFast.hlsl" DataType="hlsl" Model="3.0" Length="284">
+          <Variables>
+            <Variable>TransColor</Variable>
+            <Variable>TransPos</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_screenTransformTMultiTex" OffsetBy1="false" File="im/VS_screenTransformTMultiTex.hlsl" DataType="hlsl" Model="3.0" Length="276">
+        </Shader>
+        <Shader Name="VS_screenTransformT" OffsetBy1="false" File="im/VS_screenTransformT.hlsl" DataType="hlsl" Model="3.0" Length="240">
+        </Shader>
+        <Shader Name="VS_Blit0" OffsetBy1="false" File="im/VS_Blit0.hlsl" DataType="hlsl" Model="3.0" Length="208">
+        </Shader>
+        <Shader Name="VS_corona" OffsetBy1="false" File="im/VS_corona.hlsl" DataType="hlsl" Model="3.0" Length="1660">
+          <Variables>
+            <Variable>CoronasDepthMapSampler</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>poisson12</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_corona_R" OffsetBy1="false" File="im/VS_corona_R.hlsl" DataType="hlsl" Model="3.0" Length="384">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_corona_PB" OffsetBy1="false" File="im/VS_corona_PB.hlsl" DataType="hlsl" Model="3.0" Length="1164">
+          <Variables>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_brightlight" OffsetBy1="false" File="im/VS_brightlight.hlsl" DataType="hlsl" Model="3.0" Length="1228">
+          <Variables>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_RadialFade" OffsetBy1="false" File="im/VS_RadialFade.hlsl" DataType="hlsl" Model="3.0" Length="200">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="50" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_Textured_IM" OffsetBy1="false" File="im/PS_Textured_IM.hlsl" DataType="hlsl" Model="3.0" Length="4296">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gCascadeXMaxThresholds</Variable>
+            <Variable>gCascadeXMinThresholds</Variable>
+            <Variable>gCascadeYMaxThresholds</Variable>
+            <Variable>gCascadeYMinThresholds</Variable>
+            <Variable>gCascadeZOffsets</Variable>
+            <Variable>gCascadeZScales</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gShadowParam18192021</Variable>
+            <Variable>gShadowParam4567</Variable>
+            <Variable>gShadowParam891113</Variable>
+            <Variable>gShadowZSamplerDir</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedUnlit_IM" OffsetBy1="false" File="im/PS_TexturedUnlit_IM.hlsl" DataType="hlsl" Model="3.0" Length="288">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Blit" OffsetBy1="false" File="im/PS_Blit.hlsl" DataType="hlsl" Model="3.0" Length="220">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Clear" OffsetBy1="false" File="im/PS_Clear.hlsl" DataType="hlsl" Model="3.0" Length="124">
+        </Shader>
+        <Shader Name="PS_ShadowModel_Depth_Only_MRT" OffsetBy1="false" File="im/PS_ShadowModel_Depth_Only_MRT.hlsl" DataType="hlsl" Model="3.0" Length="136">
+        </Shader>
+        <Shader Name="PS_BlitPoint" OffsetBy1="false" File="im/PS_BlitPoint.hlsl" DataType="hlsl" Model="3.0" Length="224">
+          <Variables>
+            <Variable>DiffuseSamplerPoint</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitHDR" OffsetBy1="false" File="im/PS_BlitHDR.hlsl" DataType="hlsl" Model="3.0" Length="344">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitDiffuse" OffsetBy1="false" File="im/PS_BlitDiffuse.hlsl" DataType="hlsl" Model="3.0" Length="124">
+        </Shader>
+        <Shader Name="PS_BlitGamma" OffsetBy1="false" File="im/PS_BlitGamma.hlsl" DataType="hlsl" Model="3.0" Length="216">
+          <Variables>
+            <Variable>GammaCorrection</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitGammaTestPattern" OffsetBy1="false" File="im/PS_BlitGammaTestPattern.hlsl" DataType="hlsl" Model="3.0" Length="444">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitColorCorrected" OffsetBy1="false" File="im/PS_BlitColorCorrected.hlsl" DataType="hlsl" Model="3.0" Length="428">
+          <Variables>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitColorFactor" OffsetBy1="false" File="im/PS_BlitColorFactor.hlsl" DataType="hlsl" Model="3.0" Length="300">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>GammaCorrection</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeDefaultfalse" OffsetBy1="false" File="im/PS_ImCompositeDefaultfalse.hlsl" DataType="hlsl" Model="3.0" Length="536">
+          <Variables>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeMaskfalse" OffsetBy1="false" File="im/PS_ImCompositeMaskfalse.hlsl" DataType="hlsl" Model="3.0" Length="680">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeInterlacefalse" OffsetBy1="false" File="im/PS_ImCompositeInterlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="800">
+          <Variables>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeMask_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeMask_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="960">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeStencilfalse" OffsetBy1="false" File="im/PS_ImCompositeStencilfalse.hlsl" DataType="hlsl" Model="3.0" Length="1224">
+          <Variables>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeStencil_Maskfalse" OffsetBy1="false" File="im/PS_ImCompositeStencil_Maskfalse.hlsl" DataType="hlsl" Model="3.0" Length="1368">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeStencil_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeStencil_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1488">
+          <Variables>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeStencil_Mask_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeStencil_Mask_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1648">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSepfalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSepfalse.hlsl" DataType="hlsl" Model="3.0" Length="740">
+          <Variables>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Maskfalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Maskfalse.hlsl" DataType="hlsl" Model="3.0" Length="868">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1000">
+          <Variables>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Mask_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Mask_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1160">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Stencilfalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Stencilfalse.hlsl" DataType="hlsl" Model="3.0" Length="1428">
+          <Variables>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Stencil_Maskfalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Stencil_Maskfalse.hlsl" DataType="hlsl" Model="3.0" Length="1572">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Stencil_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Stencil_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1688">
+          <Variables>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ImCompositeRGBSep_Stencil_Mask_Interlacefalse" OffsetBy1="false" File="im/PS_ImCompositeRGBSep_Stencil_Mask_Interlacefalse.hlsl" DataType="hlsl" Model="3.0" Length="1848">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>BlueOff</Variable>
+            <Variable>GreenOff</Variable>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>MaskAlphaReverse</Variable>
+            <Variable>RedOff</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+            <Variable>StencilCopySampler</Variable>
+            <Variable>StencilTech</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS" OffsetBy1="false" File="im/PS.hlsl" DataType="hlsl" Model="3.0" Length="240">
+          <Variables>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_COPYPPMASK" OffsetBy1="false" File="im/PS_COPYPPMASK.hlsl" DataType="hlsl" Model="3.0" Length="308">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_COPYPPMASK2" OffsetBy1="false" File="im/PS_COPYPPMASK2.hlsl" DataType="hlsl" Model="3.0" Length="500">
+          <Variables>
+            <Variable>InterlaceIndex</Variable>
+            <Variable>InterlaceMapSampler</Variable>
+            <Variable>InterlaceTotalNum</Variable>
+            <Variable>RenderMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_MSAA" OffsetBy1="false" File="im/PS_MSAA.hlsl" DataType="hlsl" Model="3.0" Length="204">
+          <Variables>
+            <Variable>RenderMapPointSamplerMSAA</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_MSAAToNonMSAA" OffsetBy1="false" File="im/PS_MSAAToNonMSAA.hlsl" DataType="hlsl" Model="3.0" Length="204">
+          <Variables>
+            <Variable>RenderMapPointSamplerMSAA</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_Radar" OffsetBy1="false" File="im/PS_Radar.hlsl" DataType="hlsl" Model="3.0" Length="512">
+          <Variables>
+            <Variable>AlphaMaskMapSampler</Variable>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>SubViewportParams</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitDepth" OffsetBy1="false" File="im/PS_BlitDepth.hlsl" DataType="hlsl" Model="3.0" Length="248">
+          <Variables>
+            <Variable>DepthMapPointSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DownSampleMinDepth" OffsetBy1="false" File="im/PS_DownSampleMinDepth.hlsl" DataType="hlsl" Model="3.0" Length="456">
+          <Variables>
+            <Variable>DepthMapPointSampler</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitTransparent" OffsetBy1="false" File="im/PS_BlitTransparent.hlsl" DataType="hlsl" Model="3.0" Length="204">
+          <Variables>
+            <Variable>TransparentSrcMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitTransparentEdgeBlur" OffsetBy1="false" File="im/PS_BlitTransparentEdgeBlur.hlsl" DataType="hlsl" Model="3.0" Length="488">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>TransparentSrcMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitTransparentBilateralBlur" OffsetBy1="false" File="im/PS_BlitTransparentBilateralBlur.hlsl" DataType="hlsl" Model="3.0" Length="1880">
+          <Variables>
+            <Variable>DepthMapPointSampler</Variable>
+            <Variable>LowResDepthMapPointSampler</Variable>
+            <Variable>TexelSize</Variable>
+            <Variable>TransparentSrcMapSampler</Variable>
+            <Variable>g_fBilateralCoefficient</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_corona" OffsetBy1="false" File="im/PS_corona.hlsl" DataType="hlsl" Model="3.0" Length="432">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_corona_R" OffsetBy1="false" File="im/PS_corona_R.hlsl" DataType="hlsl" Model="3.0" Length="344">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_brightlight" OffsetBy1="false" File="im/PS_brightlight.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refMipBlur_0" OffsetBy1="false" File="im/PS_refMipBlur_0.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>RefBlurMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refMipBlur_1" OffsetBy1="false" File="im/PS_refMipBlur_1.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>RefBlurMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refMipBlur_2" OffsetBy1="false" File="im/PS_refMipBlur_2.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>RefBlurMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refMipBlur_3" OffsetBy1="false" File="im/PS_refMipBlur_3.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>RefBlurMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refMipBlur" OffsetBy1="false" File="im/PS_refMipBlur.hlsl" DataType="hlsl" Model="3.0" Length="244">
+          <Variables>
+            <Variable>RefBlurMapSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_refBlend" OffsetBy1="false" File="im/PS_refBlend.hlsl" DataType="hlsl" Model="3.0" Length="272">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>refMipBlurParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_RadialFade" OffsetBy1="false" File="im/PS_RadialFade.hlsl" DataType="hlsl" Model="3.0" Length="528">
+          <Variables>
+            <Variable>RadialFadeArea</Variable>
+            <Variable>RadialFadeTime</Variable>
+            <Variable>RadialWaveParam</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float3x4" Count="40" Slot="76" Group="1" FirstName="gBoneMtx" SecondName="WorldMatrixArray" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="18" Group="1" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="19" Group="2" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="2" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="21" Group="2" FirstName="gLightPosX" SecondName="LightPositionX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="22" Group="2" FirstName="gLightPosY" SecondName="LightPositionY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="23" Group="2" FirstName="gLightPosZ" SecondName="LightPositionZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="24" Group="2" FirstName="gLightDirX" SecondName="LightDirX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="25" Group="2" FirstName="gLightDirY" SecondName="LightDirY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="26" Group="2" FirstName="gLightDirZ" SecondName="LightDirZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="27" Group="2" FirstName="gLightFallOff" SecondName="LightFallOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="28" Group="2" FirstName="gLightConeScale" SecondName="LightConeScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="29" Group="2" FirstName="gLightConeOffset" SecondName="LightConeOffset" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="30" Group="2" FirstName="gLightColR" SecondName="LightColR" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="31" Group="2" FirstName="gLightColG" SecondName="LightColG" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="2" FirstName="gLightColB" SecondName="LightColB" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="33" Group="2" FirstName="gLightAmbient0" SecondName="LightAmbientColor0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 0"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="2" FirstName="gLightAmbient1" SecondName="LightAmbientColor1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 1"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="76" Group="2" FirstName="gLightPointColR" SecondName="LightPointColR" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="77" Group="2" FirstName="gLightPointColG" SecondName="LightPointColG" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="78" Group="2" FirstName="gLightPointColB" SecondName="LightPointColB" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="79" Group="2" FirstName="gLightPointPosX" SecondName="LightPointPositionX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="80" Group="2" FirstName="gLightPointPosY" SecondName="LightPointPositionY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="81" Group="2" FirstName="gLightPointPosZ" SecondName="LightPointPositionZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="82" Group="2" FirstName="gLightDir2X" SecondName="LightDir2X" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="83" Group="2" FirstName="gLightDir2Y" SecondName="LightDir2Y" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="84" Group="2" FirstName="gLightDir2Z" SecondName="LightDir2Z" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="85" Group="2" FirstName="gLightConeScale2" SecondName="LightConeScale2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="86" Group="2" FirstName="gLightConeOffset2" SecondName="LightConeOffset2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="87" Group="2" FirstName="gLightPointFallOff" SecondName="LightPointFallOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="68" Group="3" FirstName="gAdrenoFXVars" SecondName="gAdrenoFXVars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="35" Group="3" FirstName="globalScalars" SecondName="globalScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="1" FirstName="globalFogParams" SecondName="globalFogParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="50" Group="3" FirstName="globalFogColorN" SecondName="globalFogColorN" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="3" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="42" Group="1" FirstName="globalDayNightEffects" SecondName="globalDayNightEffects" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;0;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="46" Group="3" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="63" Group="3" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="2" FirstName="gShadowParam18192021" SecondName="ShadowParam18192021" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="53" Group="2" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="2" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="55" Group="2" FirstName="gShadowParam4567" SecondName="ShadowParam4567" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="56" Group="2" FirstName="gShadowParam891113" SecondName="ShadowParam891113" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="92" Group="2" FirstName="gCascadeZScales" SecondName="CascadeZScales" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="93" Group="2" FirstName="gCascadeZOffsets" SecondName="CascadeZOffsets" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="94" Group="2" FirstName="gCascadeXMinThresholds" SecondName="CascadeXMinThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="95" Group="2" FirstName="gCascadeXMaxThresholds" SecondName="CascadeXMaxThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="99" Group="2" FirstName="gCascadeYMinThresholds" SecondName="CascadeYMinThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="100" Group="2" FirstName="gCascadeYMaxThresholds" SecondName="CascadeYMaxThresholds" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="2" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="15" Group="2" FirstName="gShadowZSamplerDir" SecondName="ShadowZTextureDir" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;6;1;5;1;4;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSamplerPoint" SecondName="DiffuseTexPoint" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture Point"/>
+      </Annotations>
+      <Values>6;1;5;1;4;1;0;1;1;1;2;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="TransparentSrcMapSampler" SecondName="TransparentSrcMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;2;4;2;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="DepthMapPointSampler" SecondName="DepthPointMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="5" Group="2" FirstName="LowResDepthMapPointSampler" SecondName="LowResDepthPointMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="1" FirstName="CoronasDepthMapSampler" SecondName="CoronasDepthMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="RenderMapPointSampler" SecondName="RenderPointMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="RefBlurMapSampler" SecondName="RefBlurMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;2;4;2;6;1;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="AlphaMaskMapSampler" SecondName="AlphaMaskMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;2;4;2;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="InterlaceMapSampler" SecondName="InterlaceMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;2;4;2;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="5" Group="2" FirstName="RenderMapPointSamplerMSAA" SecondName="RenderPointMapMSAA" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="6" Group="2" FirstName="StencilCopySampler" SecondName="StencilCopyTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="197" Group="1" FirstName="TransColor" SecondName="TransColor" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="198" Group="1" FirstName="TransPos" SecondName="TransPos" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="199" Group="1" FirstName="TransTex0" SecondName="TransTex0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="200" Group="2" FirstName="TexelSize" SecondName="TexelSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="201" Group="2" FirstName="GammaCorrection" SecondName="GammaCorrection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="202" Group="2" FirstName="g_fBilateralCoefficient" SecondName="BilateralCoefficient" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.00319999992</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="203" Group="2" FirstName="refMipBlurParams" SecondName="RefMipBlurParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="204" Group="2" FirstName="SubViewportParams" SecondName="SubViewportParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="205" Group="2" FirstName="MaskAlphaReverse" SecondName="MaskAlphaReverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="206" Group="2" FirstName="InterlaceIndex" SecondName="InterlaceIndex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="207" Group="2" FirstName="StencilTech" SecondName="StencilTech" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="209" Group="2" FirstName="InterlaceTotalNum" SecondName="InterlaceTotalNum" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="210" Group="2" FirstName="RedOff" SecondName="RedOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="211" Group="2" FirstName="GreenOff" SecondName="GreenOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="212" Group="2" FirstName="BlueOff" SecondName="BlueOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="213" Group="2" FirstName="RadialFadeArea" SecondName="RadialFadeArea" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="214" Group="2" FirstName="RadialFadeTime" SecondName="RadialFadeTime" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="215" Group="2" FirstName="RadialWaveParam" SecondName="RadialWaveParam" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="12" Slot="216" Group="1" FirstName="poisson12" SecondName="poisson12" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>-0.326211989;-0.405809999;-0.840143979;-0.0735799968;-0.69591397;0.457136989;-0.203345001;0.620715976;0.962339997;-0.194983006;0.473434001;-0.480026007;0.519456029;0.767022014;0.185461;-0.893123984;0.507430971;0.0644249991;0.896420002;0.412458003;-0.321940005;-0.932614982;-0.791558981;-0.597710013</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="drawskinned">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_drawskinned">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="blit_draw">
+      <Pass VS="3" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="Clear">
+      <Pass VS="4" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="WriteDepthOnlyMRT">
+      <Pass VS="5" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit">
+      <Pass VS="6" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_fast">
+      <Pass VS="7" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_point">
+      <Pass VS="6" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_hdr">
+      <Pass VS="6" PS="7" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_do">
+      <Pass VS="8" PS="8" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_do_fast">
+      <Pass VS="9" PS="8" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_gamma">
+      <Pass VS="6" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_gammatestpattern">
+      <Pass VS="6" PS="10" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_colorcorrect">
+      <Pass VS="6" PS="11" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="gtadrawblit_ColorFactor">
+      <Pass VS="6" PS="12" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="CopyImageFX">
+      <Pass VS="10" PS="13" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="14" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="15" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="16" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="17" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="18" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="19" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="20" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="21" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="22" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="23" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="24" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="25" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="26" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="27" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+      <Pass VS="10" PS="28" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="Copy">
+      <Pass VS="11" PS="29" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="CopyPPMask">
+      <Pass VS="11" PS="30" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="11" PS="31" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="Copy_MSAA">
+      <Pass VS="11" PS="32" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="Copy_MSAAtoNonMSAA">
+      <Pass VS="11" PS="33" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="Radar">
+      <Pass VS="2" PS="34" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="CopyDepth">
+      <Pass VS="12" PS="35" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="19" Value="0"/>
+          <Param Type="20" Value="0"/>
+          <Param Type="21" Value="0"/>
+          <Param Type="22" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="1"/>
+          <Param Type="7" Value="8"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="DownSampleMinDepth">
+      <Pass VS="12" PS="36" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="CopyTransparent">
+      <Pass VS="12" PS="37" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="CopyTransparentEdgeBlur">
+      <Pass VS="12" PS="38" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="BlitTransparentEdgeBlur">
+      <Pass VS="12" PS="38" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="BlitTransparentBilateralBlur">
+      <Pass VS="12" PS="39" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="corona">
+      <Pass VS="13" PS="40" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="2"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="11" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+      <Pass VS="14" PS="41" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="2"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="11" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="paraboloid_corona">
+      <Pass VS="15" PS="41" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="2"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="11" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="brightlight">
+      <Pass VS="16" PS="42" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="2"/>
+          <Param Type="11" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="refMipBlur">
+      <Pass VS="11" PS="43" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="11" PS="44" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="11" PS="45" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="11" PS="46" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+      <Pass VS="11" PS="47" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="refMipBlurBlend">
+      <Pass VS="11" PS="48" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="7" Value="8"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="RadialFade">
+      <Pass VS="17" PS="49" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

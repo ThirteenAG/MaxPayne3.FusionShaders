@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="9">
+  <PresetParams>
+    <Preset Name="drawBucket" Unused0="0" Value="7"/>
+  </PresetParams>
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_mirror" OffsetBy1="false" File="mirror/VS_mirror.hlsl" DataType="hlsl" Model="4.1" Length="1176">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="2" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_mirror" OffsetBy1="false" File="mirror/PS_mirror.hlsl" DataType="hlsl" Model="4.1" Length="2680">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gConverengeDepth</Variable>
+            <Variable>mirrorNormalIntensity</Variable>
+            <Variable>mirrorSpecMaskIntensity</Variable>
+            <Variable>mirrorIntensity</Variable>
+            <Variable>TextureSize</Variable>
+            <Variable>TextureClamp</Variable>
+            <Variable>GBufferTextureSampler1</Variable>
+            <Variable>GBufferTextureSampler2</Variable>
+            <Variable>ReflectTextureSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="MirrorParam" Slot="4"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="272" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="3" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="3" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="3" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="59" Group="3" FirstName="gConverengeDepth" SecondName="ConverengeDepth" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Texture" Count="0" Slot="12" Group="2" FirstName="GBufferTextureSampler1" SecondName="gbufferTexture1" Offset="12" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="13" Group="2" FirstName="GBufferTextureSampler2" SecondName="gbufferTexture2" Offset="13" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="14" Group="2" FirstName="ReflectTextureSampler" SecondName="reflectiontexture" Offset="14" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;3;6;1;5;3;4;2</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="MirrorParam" Size="48" VS="8" PS="4" CS="8" DS="8" GS="8" HS="8"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float" Count="0" Slot="227" Group="2" FirstName="mirrorNormalIntensity" SecondName="MirrorNormalIntensity" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3538757911">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+        <Annotation Name="UIName" Type="string" Value="Mirror Normal Intensity"/>
+      </Annotations>
+      <Values>0.125</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="228" Group="2" FirstName="mirrorSpecMaskIntensity" SecondName="MirrorSpecMaskIntensity" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3538757911">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+        <Annotation Name="UIName" Type="string" Value="Mirror SpecMask Intensity"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="229" Group="2" FirstName="mirrorIntensity" SecondName="MirrorIntensity" Offset="8" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3538757911">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+        <Annotation Name="UIName" Type="string" Value="Mirror Intensity"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="230" Group="2" FirstName="TextureSize" SecondName="TextureSize" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3538757911">
+      <Values>320;180;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="231" Group="2" FirstName="TextureClamp" SecondName="TextureClamp" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3538757911">
+      <Values>0;0;320;180</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="unlit_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="mirror">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

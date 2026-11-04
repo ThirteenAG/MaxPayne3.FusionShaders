@@ -1,0 +1,132 @@
+float4 gDeferredLightColourAndIntensity : register(c214);
+float gDeferredLightConeAngle : register(c211);
+float gDeferredLightConeAngleI : register(c210);
+float gDeferredLightConeOffset : register(c212);
+float gDeferredLightConeScale : register(c213);
+float3 gDeferredLightDirection : register(c204);
+float gDeferredLightInvSqrRadius : register(c207);
+float3 gDeferredLightPosition : register(c203);
+float4 gDeferredLightRadiusProjShearParams : register(c206);
+float3 gDeferredLightTangent : register(c205);
+float gDeferredLightType : register(c202);
+float gDeferredVolumeRadiusScale : register(c209);
+row_major float4x4 gViewInverse : register(c12);
+row_major float4x4 gWorldViewProj : register(c8);
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float3 texcoord2 : TEXCOORD2;
+	float3 texcoord3 : TEXCOORD3;
+	float3 texcoord4 : TEXCOORD4;
+};
+
+VS_OUT main(float4 position : POSITION)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float3 r4;
+	float3 r5;
+	r0.xyz = gDeferredLightDirection.xyz;
+	r1.xyz = r0.yzx * gDeferredLightTangent.zxy;
+	r0.xyz = gDeferredLightTangent.yzx * r0.zxy + -r1.xyz;
+	r1.xyz = float3(-4, 0.15915494, 0.5);
+	r0.w = r1.x + gDeferredLightType.x;
+	if (-abs(r0.w) >= abs(r0.w)) {
+		r0.w = gDeferredLightConeAngle.x * r1.y + r1.z;
+		r0.w = frac(r0.w);
+		r0.w = r0.w * 6.2831855 + -3.1415927;
+		r2.x = cos(r0.w);
+		r0.w = gDeferredLightConeAngleI.x * r1.y + r1.z;
+		r0.w = frac(r0.w);
+		r0.w = r0.w * 6.2831855 + -3.1415927;
+		r1.x = cos(r0.w);
+		r0.w = position.z * 1.5707964 + 1.5707964;
+		r0.w = r0.w * 0.15915494 + 0.5;
+		r0.w = frac(r0.w);
+		r0.w = r0.w * 6.2831855 + -3.1415927;
+		r3.x = cos(r0.w);
+		r0.w = r3.x * -r3.x + 1;
+		r1.yz = position.xy * position.xy;
+		r1.y = r1.z + r1.y;
+		r1.y = 1 / r1.y;
+		r0.w = r0.w * r1.y;
+		r0.w = rsqrt(r0.w);
+		r0.w = 1 / r0.w;
+		r1.y = (r2.x >= r3.x) ? 1 : 0;
+		r1.z = r0.w * gDeferredVolumeRadiusScale.x;
+		r1.zw = r1.zz * position.xy;
+		r2.yzw = r0.xyz * r1.www;
+		r2.yzw = gDeferredLightTangent.xyz * r1.zzz + r2.yzw;
+		r3.yzw = gDeferredLightDirection.xyz * r2.xxx + r2.yzw;
+		r1.z = (r3.x >= r1.x) ? 1 : 0;
+		r2.xyz = gDeferredLightDirection.xyz * r1.xxx + r2.yzw;
+		r1.xw = r0.ww * position.xy;
+		r4 = r0.xyz * r1.www;
+		r4 = gDeferredLightTangent.xyz * r1.xxx + r4.xyz;
+		r4 = gDeferredLightDirection.xyz * r3.xxx + r4.xyz;
+		r5 = lerp(r4.xyz, r2.xyz, r1.zzz);
+		r2.xyz = lerp(r5.xyz, r3.yzw, r1.yyy);
+	} else {
+		r1.x = -2;
+		r0.w = r1.x + gDeferredLightType.x;
+		r0.w = (-abs(r0.w) >= abs(r0.w)) ? 1 : 0;
+		r1.xy = position.xy * position.xy;
+		r1.x = r1.y + r1.x;
+		r1.y = (r1.x >= 0.0001) ? 1 : 0;
+		r1.z = saturate(-position.z);
+		r1.z = -r1.z + 1;
+		r1.z = r1.z * gDeferredLightConeAngle.x;
+		r1.z = r1.z * 0.15915494 + 0.5;
+		r1.z = frac(r1.z);
+		r1.z = r1.z * 6.2831855 + -3.1415927;
+		r3.x = cos(r1.z);
+		r1.z = r3.x * -r3.x + 1;
+		r1.x = 1 / r1.x;
+		r1.x = r1.x * r1.z;
+		r1.x = rsqrt(r1.x);
+		r1.x = 1 / r1.x;
+		r1.x = r1.x * gDeferredVolumeRadiusScale.x;
+		r1.xz = r1.xx * position.xy;
+		r0.xyz = r0.xyz * r1.zzz;
+		r0.xyz = gDeferredLightTangent.xyz * r1.xxx + r0.xyz;
+		r0.xyz = gDeferredLightDirection.xyz * r3.xxx + r0.xyz;
+		r1.x = (abs(position.z) >= 0.0001) ? 1 : 0;
+		r3.xyz = r1.xxx * gDeferredLightDirection.xyz;
+		r0.xyz = gDeferredLightDirection.xyz * -r1.xxx + r0.xyz;
+		r0.xyz = r1.yyy * r0.xyz + r3.xyz;
+		r1.xyz = 1E-05 + position.xyz;
+		r1.w = dot(r1.xyz, r1.xyz);
+		r1.w = rsqrt(r1.w);
+		r3.xyz = r1.www * r1.xyz;
+		r0.xyz = r1.xyz * -r1.www + r0.xyz;
+		r2.xyz = r0.www * r0.xyz + r3.xyz;
+	}
+	r0.x = gDeferredVolumeRadiusScale.x;
+	r0.x = r0.x * gDeferredLightRadiusProjShearParams.x;
+	r0.x = r0.x * 0.662;
+	r0.xyz = r2.xyz * r0.xxx + gDeferredLightPosition.xyz;
+	r1 = r0.y * gWorldViewProj[1];
+	r1 = r0.x * gWorldViewProj[0] + r1;
+	r1 = r0.z * gWorldViewProj[2] + r1;
+	r1 = r1 + gWorldViewProj[3];
+	o.texcoord3 = -gDeferredLightDirection.xyz;
+	o.texcoord4 = gDeferredLightColourAndIntensity.www * gDeferredLightColourAndIntensity.xyz;
+	r0.xyz = r0.xyz + -gViewInverse[3].xyz;
+	o.texcoord.xyz = -r0.xyz;
+	o.position = r1;
+	o.texcoord.w = r1.w;
+	o.texcoord1.x = gDeferredLightType.x;
+	o.texcoord1.y = gDeferredLightInvSqrRadius.x;
+	o.texcoord1.z = gDeferredLightConeOffset.x;
+	o.texcoord1.w = gDeferredLightConeScale.x;
+	o.texcoord2 = gDeferredLightPosition.xyz;
+
+	return o;
+}

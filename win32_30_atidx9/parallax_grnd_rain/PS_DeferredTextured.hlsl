@@ -1,0 +1,165 @@
+sampler2D BumpSampler : register(s1);
+sampler2D DiffuseSampler : register(s0);
+sampler2D DynamicEnvironmentSampler : register(s13);
+sampler2D PuddleMaskSampler : register(s2);
+sampler2D WaterRainRippleNormalSampler : register(s14);
+float4 WetDarken : register(c203);
+float bumpiness : register(c199);
+float fresnelRolloff : register(c201);
+float4 gAdrenoFXVars : register(c68);
+float4 gAmbientOcclusionEffect : register(c63);
+float4 gStencil : register(c61);
+float4 gWaterGlobals : register(c64);
+float4 globalScalars : register(c35);
+float4 globalScalars2 : register(c36);
+float parallaxScaleBias : register(c196);
+float reflectivePower : register(c200);
+float specularColorFactor : register(c198);
+float specularFactor : register(c197);
+
+struct PS_IN
+{
+	float4 color : COLOR;
+	float2 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float3 texcoord3 : TEXCOORD3;
+	float3 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+	float2 texcoord6 : TEXCOORD6;
+	float3 texcoord7 : TEXCOORD7;
+};
+
+struct PS_OUT
+{
+	float4 color2 : COLOR2;
+	float4 color : COLOR;
+	float4 color1 : COLOR1;
+	float4 color3 : COLOR3;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float3 r5;
+	float4 r6;
+	float3 r7;
+	r0 = tex2D(BumpSampler, i.texcoord.xy);
+	r0.xyz = 1E-05 + i.texcoord7.xyz;
+	r0.z = dot(r0.xyz, r0.xyz);
+	r0.z = rsqrt(r0.z);
+	r0.xy = r0.zz * r0.xy;
+	r1.yw = float2(0.5, -1);
+	r0.z = r1.y * parallaxScaleBias.x;
+	r0.z = r0.w * parallaxScaleBias.x + -r0.z;
+	r0.xy = r0.zz * r0.xy + i.texcoord.xy;
+	r2 = tex2D(BumpSampler, r0.xy);
+	r0 = tex2D(DiffuseSampler, r0.xy);
+	r1.xy = r2.xy * 2 + -1;
+	r1.xy = r1.xy * bumpiness.xx;
+	r2.z = dot(r1.xy, -r1.xy) + 1;
+	r3.x = max(r2.z, 0);
+	r2.z = rsqrt(r3.x);
+	r1.z = 1 / r2.z;
+	r3.y = max(-r1.w, specularFactor.x);
+	r2.zw = WetDarken.ww * i.texcoord6.xy;
+	r4 = tex2D(PuddleMaskSampler, r2.zw);
+	r2.z = r4.x + gWaterGlobals.y;
+	r2.z = saturate(r2.z + -i.color.y);
+	r4.xyz = r0.xyz * WetDarken.xyz;
+	r3.z = gWaterGlobals.z;
+	r5.x = lerp(specularColorFactor.x, r3.z, r2.z);
+	r5.y = lerp(r3.y, gWaterGlobals.w, r2.z);
+	r3.zw = 0.3 * i.texcoord6.xy;
+	r6 = tex2D(WaterRainRippleNormalSampler, r3.zw);
+	r6.xyz = r6.xyz * 2 + -1;
+	r6.xyz = r6.xyz * i.texcoord1.zzz + -r1.xyz;
+	r6.xyz = r2.zzz * r6.xyz + r1.xyz;
+	r6.xyz = r6.xyz + 1E-05;
+	r7 = normalize(r6.xyz);
+	r2.w = saturate(gWaterGlobals.y);
+	r6.xyz = r0.xyz * WetDarken.xyz + -r0.xyz;
+	r6.xyz = r2.www * r6.xyz + r0.xyz;
+	r4.xyz = (-r2.zzz >= 0) ? r6.xyz : r4.xyz;
+	r6.xyz = (-r2.zzz >= 0) ? r1.xyz : r7.xyz;
+	r3.x = specularColorFactor.x;
+	r2.zw = (-r2.zz >= 0) ? r3.xy : r5.xy;
+	r1.xyz = (-i.color.yyy >= 0) ? r1.xyz : r6.xyz;
+	r0.xyz = (-i.color.yyy >= 0) ? r0.xyz : r4.xyz;
+	r2.zw = (-i.color.yy >= 0) ? r3.xy : r2.zw;
+	r3.xyz = r1.xxx * i.texcoord4.xyz;
+	r3.xyz = r1.zzz * i.texcoord1.xyz + r3.xyz;
+	r1.xyz = r1.yyy * i.texcoord5.xyz + r3.xyz;
+	r1.xyz = r1.xyz + 1E-05;
+	r3.xyz = normalize(r1.xyz);
+	r1.x = 0;
+	if (-reflectivePower.x < r1.x) {
+		r1.x = saturate(r2.w * 0.015625);
+		r4.w = r1.x * -4 + 4;
+		r1.xyz = 1E-05 + i.texcoord3.xyz;
+		r5 = normalize(r1.xyz);
+		r1.x = dot(-r5.xyz, r3.xyz);
+		r1.x = r1.x + r1.x;
+		r1.xyz = r3.xyz * -r1.xxx + -r5.xyz;
+		r1.xyz = r1.xyz + 1E-05;
+		r6.xyz = normalize(r1.xyz);
+		r1.x = saturate(r6.z);
+		r1.x = r1.x + 1;
+		r1.x = r1.x + r1.x;
+		r1.x = 1 / r1.x;
+		r1.xy = r6.xy * r1.xx + 0.5;
+		r4.xy = -r1.xy + 1;
+		r4.z = 0;
+		r4 = tex2Dlod(DynamicEnvironmentSampler, r4);
+		r1.xyz = r4.xyz * r4.xyz;
+		r1.xyz = r1.xyz * 16;
+		r3.w = saturate(dot(r5.xyz, r3.xyz));
+		r1.w = -r1.w + -fresnelRolloff.x;
+		r3.w = -r3.w + 1.00001;
+		r4.x = pow(r3.w, 5.00001);
+		r1.w = fresnelRolloff.x * r4.x + r1.w;
+		r1.xyz = r1.www * r1.xyz;
+	} else {
+		r1.xyz = 0;
+	}
+	r1.xyz = r1.xyz * reflectivePower.xxx;
+	r1.xyz = r1.xyz * globalScalars.www;
+	r1.w = dot(r2.xy, r2.xy) + -0.002;
+	r1.w = (r1.w >= 0) ? 1 : 0;
+	r4.xyz = r0.xyz * r1.www;
+	r2.x = r1.w * i.color.x;
+	o.color2.x = r1.w * r2.z;
+	r0.w = r0.w * i.color.w;
+	r2.y = dot(r4.xyz, float3(0.2125, 0.7154, 0.0721));
+	r5 = r0.xyz * r1.www + -r2.yyy;
+	r5 = gAdrenoFXVars.xxx * r5.xyz + r2.yyy;
+	r2.y = saturate(gAmbientOcclusionEffect.z + gAmbientOcclusionEffect.z);
+	r0.xyz = r0.xyz * -r1.www + r5.xyz;
+	r0.xyz = r2.yyy * r0.xyz + r4.xyz;
+	r1.w = saturate(i.color.x * r1.w + -1);
+	o.color.xyz = r1.www * globalScalars2.zzz + r0.xyz;
+	o.color1.xyz = r3.xyz * 0.5 + 0.5;
+	r0.x = saturate(r2.w * 0.0051020407);
+	r0.x = rsqrt(r0.x);
+	o.color2.y = 1 / r0.x;
+	r0.x = r0.w * globalScalars.x;
+	r0.yzw = saturate(r1.xyz * 0.0625);
+	r0.y = rsqrt(r0.y);
+	r0.z = rsqrt(r0.z);
+	r0.w = rsqrt(r0.w);
+	o.color3.x = 1 / r0.y;
+	o.color3.y = 1 / r0.z;
+	o.color3.z = 1 / r0.w;
+	o.color.w = r0.x;
+	o.color1.w = r0.x;
+	o.color2.w = r0.x;
+	o.color2.z = r2.x;
+	o.color3.w = gStencil.x;
+
+	return o;
+}

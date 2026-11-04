@@ -1,0 +1,105 @@
+float4 ColorCorrectBottomOffset : register(c44);
+float4 ColorCorrectBottomOffsetScreenEdge : register(c67);
+float4 ColorCorrectTopAndPedReflectScale : register(c43);
+float4 ColorCorrectTopScreenEdge : register(c66);
+float4 ColorShift : register(c45);
+sampler2D DepthMapTexSampler : register(s12);
+sampler2D DiffuseTexSampler : register(s0);
+float HybridAdd : register(c197);
+float4 deSatContrastGamma : register(c46);
+float4 gAdrenoFXVars : register(c68);
+float4 gInvScreenSize : register(c129);
+float gSoftness : register(c196);
+float4 globalScalars4 : register(c51);
+float4 globalScreenSize : register(c41);
+
+struct PS_IN
+{
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float2 texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float2 vpos : VPOS;
+	float4 texcoord2 : TEXCOORD2;
+};
+
+float4 main(PS_IN i) : COLOR
+{
+	float4 o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float4 r5;
+	r0 = tex2D(DiffuseTexSampler, i.texcoord1.xy);
+	r1 = tex2D(DiffuseTexSampler, i.texcoord1.zw);
+	r2.x = saturate(i.texcoord3.x);
+	r3 = lerp(r0, r1, r2.x);
+	r0.xy = i.vpos.xy * gInvScreenSize.xy + gInvScreenSize.zw;
+	r0 = tex2D(DepthMapTexSampler, r0.xy);
+	r0.x = r0.x + -i.texcoord3.y;
+	r0.x = r0.x * r0.x;
+	r0.x = saturate(r0.x * gSoftness.x);
+	r0.w = r0.x * i.texcoord.w;
+	r0.xyz = i.texcoord.xyz;
+	r1 = r3 * r0;
+	r0.w = dot(r1.xyz, float3(0.2125, 0.7154, 0.0721));
+	r1.w = saturate(r1.w);
+	r0.xyz = r0.xyz * r3.xyz + -r0.www;
+	r0.xyz = i.texcoord2.zzz * r0.xyz + r0.www;
+	r0.w = r0.w + 1E-05;
+	r0.w = abs(r0.w) + 1E-05;
+	r2.x = -0.99999 + i.texcoord2.w;
+	r3.x = pow(r0.w, r2.x);
+	r2.xyz = r0.xyz * r3.xxx;
+	r0.xyz = r0.xyz * -r3.xxx + i.texcoord4.xyz;
+	r0.xyz = i.texcoord4.www * r0.xyz + r2.xyz;
+	r0.w = dot(r0.xyz, float3(0.2125, 0.7154, 0.0721));
+	r2.x = gAdrenoFXVars.x;
+	r2.x = r2.x * deSatContrastGamma.x;
+	r3.xyz = lerp(r0.www, r0.xyz, r2.xxx);
+	r0.x = r0.w * ColorCorrectBottomOffset.w;
+	r0.y = r0.w * ColorShift.w;
+	r2.xyz = globalScalars4.yzw * -r0.xxx + r3.xyz;
+	r3.xyz = ColorShift.xyz * -r0.yyy + r3.xyz;
+	r4.xyz = r0.xxx * globalScalars4.yzw;
+	r0.x = saturate(r0.x);
+	r0.xzw = r0.xxx * r2.xyz + r4.xyz;
+	r2.x = 1 / globalScreenSize.y;
+	r2.y = r2.x * i.vpos.y;
+	r4 = ColorCorrectTopScreenEdge;
+	r4.xyz = r2.yyy * ColorCorrectBottomOffsetScreenEdge.xyz + r4.xyz;
+	r5.xyz = r0.xzw * r4.xyz;
+	r0.x = 1 / globalScreenSize.x;
+	r2.x = r0.x * i.vpos.x;
+	r0.xz = r2.xy + -0.5;
+	r4.xyz = ColorCorrectBottomOffset.xyz;
+	r2.xyz = r2.yyy * r4.xyz + ColorCorrectTopAndPedReflectScale.xyz;
+	r0.x = dot(r0.xz, r0.xz) + 0;
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	r0.z = r4.w + -ColorCorrectBottomOffsetScreenEdge.w;
+	r0.z = (r0.z >= 0) ? -r0.z : -0;
+	r0.x = r0.z + r0.x;
+	r0.z = r0.z + ColorCorrectTopScreenEdge.w;
+	r0.z = 1 / r0.z;
+	r0.z = saturate(r0.z * r0.x);
+	r0.x = (r0.x >= 0) ? r0.z : 0;
+	r4.xyz = r0.yyy * ColorShift.xyz;
+	r0.y = saturate(r0.y);
+	r0.yzw = r0.yyy * r3.xyz + r4.xyz;
+	r1.xyz = r2.xyz * r0.yzw;
+	r5.w = r1.w;
+	r2 = lerp(r1, r5, r0.x);
+	r0 = (ColorCorrectTopScreenEdge.w >= 0) ? r2 : r1;
+	r1.xyz = r0.www * r0.xyz;
+	r1.w = r0.w;
+	r2.x = abs(HybridAdd.x);
+	r0 = (-r2.x >= 0) ? r0 : r1;
+	r1 = max(r0, 0);
+	o = min(r1, 32);
+
+	return o;
+}

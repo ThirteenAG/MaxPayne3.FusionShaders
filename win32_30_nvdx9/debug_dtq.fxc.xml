@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="89">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_DTQ" OffsetBy1="false" File="debug_dtq/VS_DTQ.hlsl" DataType="hlsl" Model="3.0" Length="208">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="6" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_DTQ" OffsetBy1="false" File="debug_dtq/PS_DTQ.hlsl" DataType="hlsl" Model="3.0" Length="664">
+          <Variables>
+            <Variable>param0</Variable>
+            <Variable>param1</Variable>
+            <Variable>param2</Variable>
+            <Variable>param3</Variable>
+            <Variable>param4</Variable>
+            <Variable>param5</Variable>
+            <Variable>samp</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DTQ_NoTexture" OffsetBy1="false" File="debug_dtq/PS_DTQ_NoTexture.hlsl" DataType="hlsl" Model="3.0" Length="124">
+        </Shader>
+        <Shader Name="PS_DTQ_Filtered" OffsetBy1="false" File="debug_dtq/PS_DTQ_Filtered.hlsl" DataType="hlsl" Model="3.0" Length="672">
+          <Variables>
+            <Variable>param0</Variable>
+            <Variable>param1</Variable>
+            <Variable>param2</Variable>
+            <Variable>param3</Variable>
+            <Variable>param4</Variable>
+            <Variable>param5</Variable>
+            <Variable>sampFiltered</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DTQ_Specular" OffsetBy1="false" File="debug_dtq/PS_DTQ_Specular.hlsl" DataType="hlsl" Model="3.0" Length="928">
+          <Variables>
+            <Variable>param5</Variable>
+            <Variable>param6</Variable>
+            <Variable>param7</Variable>
+            <Variable>samp</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DTQ_FilteredSpecular" OffsetBy1="false" File="debug_dtq/PS_DTQ_FilteredSpecular.hlsl" DataType="hlsl" Model="3.0" Length="936">
+          <Variables>
+            <Variable>param5</Variable>
+            <Variable>param6</Variable>
+            <Variable>param7</Variable>
+            <Variable>sampFiltered</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="samp" SecondName="base" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;1;6;1;5;1;4;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="sampFiltered" SecondName="baseFiltered" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;1;6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="196" Group="2" FirstName="param0" SecondName="param0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="197" Group="2" FirstName="param1" SecondName="param1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="198" Group="2" FirstName="param2" SecondName="param2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="199" Group="2" FirstName="param3" SecondName="param3" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="200" Group="2" FirstName="param4" SecondName="param4" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="201" Group="2" FirstName="param5" SecondName="param5" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="202" Group="2" FirstName="param6" SecondName="param6" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="203" Group="2" FirstName="param7" SecondName="param7" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables2>
+  <Techniques>
+    <Technique Name="DTQ">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

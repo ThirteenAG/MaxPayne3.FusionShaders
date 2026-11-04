@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="113">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="5" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_PropFoliageDeferred" OffsetBy1="false" File="trees/VS_PropFoliageDeferred.hlsl" DataType="hlsl" Model="3.0" Length="1172">
+          <Variables>
+            <Variable>WindGlobalParams</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>umGlobalParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_PropFoliage0" OffsetBy1="false" File="trees/VS_PropFoliage0.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_PropFoliageImposter" OffsetBy1="false" File="trees/VS_PropFoliageImposter.hlsl" DataType="hlsl" Model="3.0" Length="504">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_WarpDepth" OffsetBy1="false" File="trees/VS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="748">
+          <Variables>
+            <Variable>gShadowMatrix</Variable>
+            <Variable>gShadowParam0123</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>gWorld</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_PropFoliage" OffsetBy1="false" File="trees/VS_PropFoliage.hlsl" DataType="hlsl" Model="3.0" Length="284">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="7" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_PropFoliageDeferred" OffsetBy1="false" File="trees/PS_PropFoliageDeferred.hlsl" DataType="hlsl" Model="3.0" Length="496">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_PropFoliage" OffsetBy1="false" File="trees/PS_PropFoliage.hlsl" DataType="hlsl" Model="3.0" Length="208">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_PropFoliageImposter" OffsetBy1="false" File="trees/PS_PropFoliageImposter.hlsl" DataType="hlsl" Model="3.0" Length="232">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_PropFoliageDeferredImposter" OffsetBy1="false" File="trees/PS_PropFoliageDeferredImposter.hlsl" DataType="hlsl" Model="3.0" Length="1852">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>colorize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_WarpDepth" OffsetBy1="false" File="trees/PS_WarpDepth.hlsl" DataType="hlsl" Model="3.0" Length="408">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>gShadowParam14151617</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_PropFoliageImposterShadow" OffsetBy1="false" File="trees/PS_PropFoliageImposterShadow.hlsl" DataType="hlsl" Model="3.0" Length="208">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="1" FirstName="globalScalars2" SecondName="globalScalars2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="46" Group="1" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="47" Group="2" FirstName="colorize" SecondName="Colorize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="48" Group="1" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="61" Group="2" FirstName="gStencil" SecondName="Stencil" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="53" Group="3" FirstName="gShadowParam14151617" SecondName="ShadowParam14151617" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="54" Group="1" FirstName="gShadowParam0123" SecondName="ShadowParam0123" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="57" Group="1" FirstName="gShadowMatrix" SecondName="ShadowMatrix" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="131" Group="1" FirstName="umGlobalParams" SecondName="umGlobalParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIName" Type="string" Value="Global umParams: ScaleH/ScaleV/FreqH/FreqV"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00100000005"/>
+      </Annotations>
+      <Values>0.0250000004;0.0199999996;1;0.5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="132" Group="1" FirstName="WindGlobalParams" SecondName="windGlobalParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+        <Annotation Name="UIWidget" Type="string" Value="slider"/>
+        <Annotation Name="UIName" Type="string" Value="Wind Global Params: Scale"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1;1;1;1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="deferred_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="16" Value="3"/>
+          <Param Type="6" Value="2"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="7"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphaclip_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="16" Value="3"/>
+          <Param Type="6" Value="2"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="19" Value="7"/>
+          <Param Type="20" Value="7"/>
+          <Param Type="21" Value="7"/>
+          <Param Type="22" Value="15"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="imposter_draw">
+      <Pass VS="2" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="imposterdeferred_draw">
+      <Pass VS="2" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="3" Value="0"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="wd_draw">
+      <Pass VS="3" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="impostershadow_draw">
+      <Pass VS="4" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

@@ -1,0 +1,1896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="193">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="14" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="vs_main" OffsetBy1="false" File="atmoscatt_clouds/vs_main.hlsl" DataType="hlsl" Model="5.0" Length="4896">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_DpFrontMain" OffsetBy1="false" File="atmoscatt_clouds/vs_DpFrontMain.hlsl" DataType="hlsl" Model="5.0" Length="6448">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_CheapDpFrontMain" OffsetBy1="false" File="atmoscatt_clouds/vs_CheapDpFrontMain.hlsl" DataType="hlsl" Model="5.0" Length="5080">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_DpBackMain" OffsetBy1="false" File="atmoscatt_clouds/vs_DpBackMain.hlsl" DataType="hlsl" Model="5.0" Length="6448">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_CheapDpBackMain" OffsetBy1="false" File="atmoscatt_clouds/vs_CheapDpBackMain.hlsl" DataType="hlsl" Model="5.0" Length="5080">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_MiniSky" OffsetBy1="false" File="atmoscatt_clouds/vs_MiniSky.hlsl" DataType="hlsl" Model="5.0" Length="684">
+        </Shader>
+        <Shader Name="vs_BlurSky" OffsetBy1="false" File="atmoscatt_clouds/vs_BlurSky.hlsl" DataType="hlsl" Model="5.0" Length="684">
+        </Shader>
+        <Shader Name="vs_DpGTAMain" OffsetBy1="false" File="atmoscatt_clouds/vs_DpGTAMain.hlsl" DataType="hlsl" Model="5.0" Length="6800">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_CheapDpGTAMain" OffsetBy1="false" File="atmoscatt_clouds/vs_CheapDpGTAMain.hlsl" DataType="hlsl" Model="5.0" Length="5432">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_main_fast" OffsetBy1="false" File="atmoscatt_clouds/vs_main_fast.hlsl" DataType="hlsl" Model="5.0" Length="4804">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_main_clip" OffsetBy1="false" File="atmoscatt_clouds/vs_main_clip.hlsl" DataType="hlsl" Model="5.0" Length="6264">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_cheap_main" OffsetBy1="false" File="atmoscatt_clouds/vs_cheap_main.hlsl" DataType="hlsl" Model="5.0" Length="4896">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_cheap_main_clip" OffsetBy1="false" File="atmoscatt_clouds/vs_cheap_main_clip.hlsl" DataType="hlsl" Model="5.0" Length="4896">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="vs_stencil" OffsetBy1="false" File="atmoscatt_clouds/vs_stencil.hlsl" DataType="hlsl" Model="5.0" Length="980">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="15" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="ps_main" OffsetBy1="false" File="atmoscatt_clouds/ps_main.hlsl" DataType="hlsl" Model="5.0" Length="7220">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_cheap_main" OffsetBy1="false" File="atmoscatt_clouds/ps_cheap_main.hlsl" DataType="hlsl" Model="5.0" Length="5292">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_miniSky" OffsetBy1="false" File="atmoscatt_clouds/ps_miniSky.hlsl" DataType="hlsl" Model="5.0" Length="7180">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_BlurSkyFast" OffsetBy1="false" File="atmoscatt_clouds/ps_BlurSkyFast.hlsl" DataType="hlsl" Model="5.0" Length="1216">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>SkyMapSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="TextureFetch" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_BlurSky" OffsetBy1="false" File="atmoscatt_clouds/ps_BlurSky.hlsl" DataType="hlsl" Model="5.0" Length="2652">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>SkyMapSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="TextureFetch" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_DpGTAMain" OffsetBy1="false" File="atmoscatt_clouds/ps_DpGTAMain.hlsl" DataType="hlsl" Model="5.0" Length="7436">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_CheapDpGTAMain" OffsetBy1="false" File="atmoscatt_clouds/ps_CheapDpGTAMain.hlsl" DataType="hlsl" Model="5.0" Length="5360">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_sunonly" OffsetBy1="false" File="atmoscatt_clouds/ps_sunonly.hlsl" DataType="hlsl" Model="5.0" Length="4468">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_main_withmoon" OffsetBy1="false" File="atmoscatt_clouds/ps_main_withmoon.hlsl" DataType="hlsl" Model="5.0" Length="8988">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>MoonSampler</Variable>
+            <Variable>MoonGlowSampler</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_main_withstarfield" OffsetBy1="false" File="atmoscatt_clouds/ps_main_withstarfield.hlsl" DataType="hlsl" Model="5.0" Length="7556">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>StarFieldSampler</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_main_withstarfield_withmoon" OffsetBy1="false" File="atmoscatt_clouds/ps_main_withstarfield_withmoon.hlsl" DataType="hlsl" Model="5.0" Length="9304">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+            <Variable>MoonSampler</Variable>
+            <Variable>MoonGlowSampler</Variable>
+            <Variable>StarFieldSampler</Variable>
+            <Variable>GalaxySampler</Variable>
+            <Variable>PerlinNoiseSampler</Variable>
+            <Variable>HighDetailNoiseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_cheap_main_withmoon" OffsetBy1="false" File="atmoscatt_clouds/ps_cheap_main_withmoon.hlsl" DataType="hlsl" Model="5.0" Length="5292">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_cheap_main_withstarfield" OffsetBy1="false" File="atmoscatt_clouds/ps_cheap_main_withstarfield.hlsl" DataType="hlsl" Model="5.0" Length="5292">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="ps_cheap_main_withstarfield_withmoon" OffsetBy1="false" File="atmoscatt_clouds/ps_cheap_main_withstarfield_withmoon.hlsl" DataType="hlsl" Model="5.0" Length="5292">
+          <Variables>
+            <Variable>SunDirection</Variable>
+            <Variable>SkyColor</Variable>
+            <Variable>AzimuthColor</Variable>
+            <Variable>SunColor</Variable>
+            <Variable>UnderLightStrength</Variable>
+            <Variable>gtaSkyDomeFade</Variable>
+            <Variable>gtaWaterColor</Variable>
+            <Variable>MoonGlow</Variable>
+            <Variable>SunAxias</Variable>
+            <Variable>AzimuthColorEast</Variable>
+            <Variable>AzimuthHeight</Variable>
+            <Variable>CloudColor</Variable>
+            <Variable>SunsetColor</Variable>
+            <Variable>AzimuthStrength</Variable>
+            <Variable>CloudThreshold</Variable>
+            <Variable>CloudBias</Variable>
+            <Variable>CloudFadeOut</Variable>
+            <Variable>TopCloudHeight</Variable>
+            <Variable>TopCloudDetail</Variable>
+            <Variable>TopCloudThreshold</Variable>
+            <Variable>TopCloudBiasDetailThresholdHeight</Variable>
+            <Variable>TopCloudColor</Variable>
+            <Variable>TopCloudLight</Variable>
+            <Variable>CloudShadowStrength</Variable>
+            <Variable>CloudShadowOffset</Variable>
+            <Variable>CloudThicknessEdgeSmoothDetailScaleStrength</Variable>
+            <Variable>CloudInscatteringRange</Variable>
+            <Variable>StarFieldBrightness</Variable>
+            <Variable>StarFieldUVRepeat</Variable>
+            <Variable>GalaxyOffset</Variable>
+            <Variable>MoonTexPosition</Variable>
+            <Variable>MoonLight</Variable>
+            <Variable>StarThreshold</Variable>
+            <Variable>MoonVisiblity</Variable>
+            <Variable>MoonColorConstant</Variable>
+            <Variable>MoonPosition</Variable>
+            <Variable>MoonXVector</Variable>
+            <Variable>MoonYVector</Variable>
+            <Variable>DetailOffset</Variable>
+            <Variable>SunSize</Variable>
+            <Variable>TimeOfDay</Variable>
+            <Variable>HDRExposure</Variable>
+            <Variable>HDRSunExposure</Variable>
+            <Variable>HDRExposureClamp</Variable>
+            <Variable>dpMapNearClip</Variable>
+            <Variable>dpMapFarClip</Variable>
+            <Variable>SunCentre</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="Sun" Slot="4"/>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="256" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="1" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="Sun" Size="16" VS="3" PS="4" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="TextureFetch" Size="16" VS="3" PS="1" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="$Globals" Size="2848" VS="1" PS="1" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float3" Count="0" Slot="130" Group="2" FirstName="SunCentre" SecondName="SunCentre" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1202616602"/>
+    <Variable Type="Float4" Count="0" Slot="131" Group="2" FirstName="TexelSize" SecondName="TexelSize" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1567424360">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="SkyMapSampler" SecondName="SkyMapTexture" Offset="1" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;2;1;6;2;5;2;4;2;7;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="2" Group="2" FirstName="MoonSampler" SecondName="MoonTexture" Offset="2" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="MoonTexture"/>
+      </Annotations>
+      <Values>0;3;1;3;2;1;6;2;5;2;4;2;7;0;3;4294967295</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="MoonGlowSampler" SecondName="MoonGlowTexture" Offset="3" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="MoonTexture"/>
+      </Annotations>
+      <Values>0;3;1;3;2;3;6;2;5;2;4;2;7;0;3;4294967295</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="StarFieldSampler" SecondName="StarFieldTexture" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="StarFieldTexture"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;6;2;5;2;4;2;7;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="5" Group="2" FirstName="GalaxySampler" SecondName="GalaxyTexture" Offset="5" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="GalaxyTexture"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;6;0;5;2;4;2;7;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="6" Group="2" FirstName="PerlinNoiseSampler" SecondName="PerlinNoiseMap" Offset="6" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Perlin Noise Map"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;6;2;5;2;4;2;7;0</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="7" Group="2" FirstName="HighDetailNoiseSampler" SecondName="HighDetailNoiseMap" Offset="7" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="HighDetailNoiseMap"/>
+      </Annotations>
+      <Values>0;1;1;1;2;1;6;2;5;2;4;2;7;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="132" Group="3" FirstName="SunDirection" SecondName="SunDirection" Offset="64" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="133" Group="3" FirstName="SkyColor" SecondName="SkyColor" Offset="80" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="134" Group="3" FirstName="AzimuthColor" SecondName="AzimuthColor" Offset="96" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="135" Group="3" FirstName="SunColor" SecondName="SunColor" Offset="112" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="136" Group="3" FirstName="UnderLightStrength" SecondName="UnderLightStrength" Offset="128" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="137" Group="3" FirstName="gtaSkyDomeFade" SecondName="gtaSkyDomeFade" Offset="144" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="138" Group="3" FirstName="gtaWaterColor" SecondName="gtaWaterColor" Offset="160" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="139" Group="3" FirstName="MoonGlow" SecondName="MoonGlow" Offset="176" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Moon Glow"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.200000003</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="140" Group="3" FirstName="SunAxias" SecondName="SunAxias" Offset="192" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Sun Axias"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="-1"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="141" Group="3" FirstName="AzimuthColorEast" SecondName="AzimuthColorEast" Offset="208" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Azimuth Color East"/>
+        <Annotation Name="UIWidget" Type="string" Value="Color"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;0;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="142" Group="3" FirstName="AzimuthHeight" SecondName="AzimuthHeight" Offset="224" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Azimuth Height"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="20"/>
+      </Annotations>
+      <Values>8</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="143" Group="3" FirstName="CloudColor" SecondName="CloudColor" Offset="240" Variant="8" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Color"/>
+        <Annotation Name="UIWidget" Type="string" Value="Color"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+      </Annotations>
+      <Values>0.930000007;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="144" Group="3" FirstName="SunsetColor" SecondName="SunsetColor" Offset="0" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Sunset Color"/>
+        <Annotation Name="UIWidget" Type="string" Value="Color"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;0.50999999;0.379999995;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="145" Group="3" FirstName="AzimuthStrength" SecondName="AzimuthStrength" Offset="16" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Azimuth Strength"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>0.5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="146" Group="3" FirstName="CloudThreshold" SecondName="CloudThreshold" Offset="32" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Threshold"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="-5"/>
+        <Annotation Name="UIMax" Type="float" Value="5"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0500000007"/>
+      </Annotations>
+      <Values>1.79999995</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="147" Group="3" FirstName="CloudBias" SecondName="CloudBias" Offset="48" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Bias"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0500000007"/>
+      </Annotations>
+      <Values>0.800000012</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="148" Group="3" FirstName="CloudFadeOut" SecondName="CloudFadeOut" Offset="64" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Fade Out"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0500000007"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="149" Group="3" FirstName="TopCloudHeight" SecondName="TopCloudHeight" Offset="80" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top Cloudlayer Height"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0500000007"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="150" Group="3" FirstName="TopCloudDetail" SecondName="TopCloudDetail" Offset="96" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top Cloudlayer Detail"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0500000007"/>
+      </Annotations>
+      <Values>3</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="151" Group="3" FirstName="TopCloudThreshold" SecondName="TopCloudThreshold" Offset="112" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top Cloudlayer Threshold"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="-5"/>
+        <Annotation Name="UIMax" Type="float" Value="5"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0199999996"/>
+      </Annotations>
+      <Values>0.899999976</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="152" Group="3" FirstName="TopCloudBiasDetailThresholdHeight" SecondName="TopCloudBiasDetailThresholdHeight" Offset="128" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top CloudLayer Bias Height"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0199999996"/>
+      </Annotations>
+      <Values>0.400000006;3;0.899999976;2</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="153" Group="3" FirstName="TopCloudColor" SecondName="TopCloudColor" Offset="144" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top Cloud Color"/>
+        <Annotation Name="UIWidget" Type="string" Value="Color"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+      </Annotations>
+      <Values>0.930000007;1;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="154" Group="3" FirstName="TopCloudLight" SecondName="TopCloudLight" Offset="160" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Top Cloud LIght"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="155" Group="3" FirstName="CloudShadowStrength" SecondName="CloudShadowStrength" Offset="176" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Shadow Strength"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0250000004"/>
+      </Annotations>
+      <Values>0.400000006</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="156" Group="3" FirstName="CloudShadowOffset" SecondName="CloudShadowOffset" Offset="192" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Shadow Offset"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.119999997</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="157" Group="3" FirstName="CloudThicknessEdgeSmoothDetailScaleStrength" SecondName="CloudThicknessEdgeSmoothDetailScaleStrength" Offset="208" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Thickness &amp;  EdgeSmooth DetailScale &amp; Strength"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="64"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>0.349999994;1;16;0.150000006</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="158" Group="3" FirstName="CloudInscatteringRange" SecondName="CloudInscatteringRange" Offset="224" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Cloud Inscattering Range"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0.100000001"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="159" Group="3" FirstName="StarFieldBrightness" SecondName="StarFieldBrightness" Offset="240" Variant="9" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="160" Group="3" FirstName="StarFieldUVRepeat" SecondName="StarFieldUVRepeat" Offset="0" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="StarFieldUVRepeat"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="64"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>16</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="161" Group="3" FirstName="GalaxyOffset" SecondName="GalaxyOffset" Offset="16" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="GalaxyOffset"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="-16"/>
+        <Annotation Name="UIMax" Type="float" Value="16"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="162" Group="3" FirstName="MoonTexPosition" SecondName="MoonTexPosition" Offset="32" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="MoonTexPosition"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="64"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.5;0.5;0.5;0.5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="163" Group="3" FirstName="MoonLight" SecondName="MoonLight" Offset="48" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Moon Light"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="64"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.5;0.5;0.5;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="164" Group="3" FirstName="StarThreshold" SecondName="StarThreshold" Offset="64" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="StarField Threshold"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="-1"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="165" Group="3" FirstName="MoonVisiblity" SecondName="MoonVisiblity" Offset="80" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Moon Visiblity"/>
+        <Annotation Name="UIWidget" Type="string" Value="Numeric"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="5"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="166" Group="3" FirstName="MoonColorConstant" SecondName="MoonColorConstant" Offset="96" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="167" Group="3" FirstName="MoonPosition" SecondName="MoonPosition" Offset="112" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="168" Group="3" FirstName="MoonXVector" SecondName="MoonXVector" Offset="128" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="169" Group="3" FirstName="MoonYVector" SecondName="MoonYVector" Offset="144" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float2" Count="0" Slot="170" Group="3" FirstName="DetailOffset" SecondName="DetailOffset" Offset="160" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>0;0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="171" Group="3" FirstName="SunSize" SecondName="SunSize" Offset="176" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="172" Group="3" FirstName="TimeOfDay" SecondName="TimeOfDay" Offset="192" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="173" Group="3" FirstName="HDRExposure" SecondName="HDRExposure" Offset="208" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="174" Group="3" FirstName="HDRSunExposure" SecondName="HDRSunExposure" Offset="224" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float3" Count="0" Slot="175" Group="3" FirstName="HDRExposureClamp" SecondName="HDRExposureClamp" Offset="240" Variant="10" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="176" Group="3" FirstName="dpMapNearClip" SecondName="dpMapNearClip" Offset="0" Variant="11" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="177" Group="3" FirstName="dpMapFarClip" SecondName="dpMapFarClip" Offset="16" Variant="11" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>20000</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="dpskyfront_draw">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_dpskyfront_draw">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="dpskyback_draw">
+      <Pass VS="3" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_dpskyback_draw">
+      <Pass VS="4" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawMiniMe">
+      <Pass VS="5" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="1"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="FastblurMiniMe">
+      <Pass VS="6" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="1"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="blurMiniMe">
+      <Pass VS="6" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="1"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="paraboloid_draw">
+      <Pass VS="7" PS="6" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_paraboloid_draw">
+      <Pass VS="8" PS="7" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="1"/>
+          <Param Type="10" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="draw_sunonly">
+      <Pass VS="9" PS="8" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="2"/>
+          <Param Type="5" Value="2"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="draw_withmoon">
+      <Pass VS="0" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_withstarfield">
+      <Pass VS="10" PS="10" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_withstarfield_withmoon">
+      <Pass VS="10" PS="11" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_draw_withmoon">
+      <Pass VS="11" PS="12" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_draw_withstarfield">
+      <Pass VS="12" PS="13" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="cheap_draw_withstarfield_withmoon">
+      <Pass VS="12" PS="14" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_stencil">
+      <Pass VS="13" PS="0" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

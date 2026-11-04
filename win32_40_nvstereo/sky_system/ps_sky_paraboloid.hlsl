@@ -1,0 +1,168 @@
+cbuffer SkySystem : register(b1)
+{
+	float3 azimuthEastColor : packoffset(c0);
+	float3 azimuthWestColor : packoffset(c1);
+	float3 azimuthTransitionColor : packoffset(c2);
+	float azimuthTransitionPosition : packoffset(c2.w);
+	float3 zenithColor : packoffset(c3);
+	float3 zenithTransitionColor : packoffset(c4);
+	float3 zenithConstants : packoffset(c5);
+	float hdrIntensity : packoffset(c5.w);
+	float sphereReflectionSkyIntensity : packoffset(c6);
+	float waterReflectionSkyIntensity : packoffset(c6.y);
+	float mirrorReflectionSkyIntensity : packoffset(c6.z);
+	float3 sunColor : packoffset(c7);
+	float3 sunDiscColor : packoffset(c8);
+	float sunHdrIntensity : packoffset(c8.w);
+	float4 sunConstants : packoffset(c9);
+	float3 sunDirection : packoffset(c10);
+	float3 sunPosition : packoffset(c11);
+	float3 cloudBaseColour : packoffset(c12);
+	float3 cloudMidColour : packoffset(c13);
+	float3 cloudShadowColour : packoffset(c14);
+	float4 cloudDetailConstants : packoffset(c15);
+	float4 cloudConstants1 : packoffset(c16);
+	float4 cloudConstants2 : packoffset(c17);
+	float4 cloudConstants3 : packoffset(c18);
+	float4 smallCloudConstants : packoffset(c19);
+	float3 smallCloudColorXHdrIntensity : packoffset(c20);
+	float4 effectsConstants : packoffset(c21);
+	float horizonLevel : packoffset(c22);
+	float3 speedConstants : packoffset(c22.y);
+	float starfieldIntensity : packoffset(c23);
+	float3 moonDirection : packoffset(c23.y);
+	float3 moonPosition : packoffset(c24);
+	float moonIntensity : packoffset(c24.w);
+	float3 lunarCycle : packoffset(c25);
+	float3 moonColor : packoffset(c26);
+};
+
+SamplerState perlinSampler : register(s1);
+SamplerState highDetailSampler : register(s2);
+SamplerState starFieldSampler : register(s3);
+SamplerState ditherSampler : register(s4);
+SamplerState moonSampler : register(s5);
+Texture2D perlinSampler_tex : register(t1);
+Texture2D highDetailSampler_tex : register(t2);
+Texture2D starFieldSampler_tex : register(t3);
+Texture2D ditherSampler_tex : register(t4);
+Texture2D moonSampler_tex : register(t5);
+
+struct PS_IN
+{
+	float4 sv_position : SV_Position;
+	float4 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float4 texcoord3 : TEXCOORD3;
+	float2 texcoord4 : TEXCOORD4;
+	float2 texcoord5 : TEXCOORD5;
+	float2 texcoord6 : TEXCOORD6;
+	float2 texcoord7 : TEXCOORD7;
+};
+
+struct PS_OUT
+{
+	float4 sv_target : SV_Target;
+	float4 sv_target1 : SV_Target1;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float3 r4;
+	r0 = highDetailSampler_tex.Sample(highDetailSampler, i.texcoord3.xy);
+	r0.x = r0.x + -0.5;
+	r0.x = r0.x * cloudDetailConstants.x;
+	r1 = highDetailSampler_tex.Sample(highDetailSampler, i.texcoord5);
+	r0.z = r1.x + -0.5;
+	r0.y = r0.z * smallCloudConstants.y;
+	r1 = highDetailSampler_tex.Sample(highDetailSampler, i.texcoord3.zw);
+	r0.z = r1.x + -0.5;
+	r1 = perlinSampler_tex.Sample(perlinSampler, i.texcoord.zw);
+	r0.w = r0.z * cloudConstants2.z + r1.x;
+	r2.x = r0.z * cloudDetailConstants.z;
+	r0.z = r0.w * cloudConstants1.x;
+	r3 = perlinSampler_tex.Sample(perlinSampler, i.texcoord.xy);
+	r0.z = r0.z * r3.x;
+	r0.w = saturate(-(r0.z) * 2 + 1);
+	r0.xy = r0.ww * r0.xy;
+	r0.w = -(r3.z) + 1;
+	r2.y = r0.w * smallCloudConstants.y;
+	r0.xy = r0.xy * r3.zz + r2.xy;
+	r0.w = r0.x + r1.y;
+	r0.w = r0.w * cloudConstants2.x;
+	r1.xyz = -(cloudBaseColour.xyz) + cloudShadowColour.xyz;
+	r1.xyz = r0.www * r1.xyz + cloudBaseColour.xyz;
+	r1.xyz = r1.xyz + -(cloudMidColour.xyz);
+	r1.xyz = r0.zzz * r1.xyz + cloudMidColour.xyz;
+	r3.y = 0;
+	r0.xy = r0.xy + r3.xy;
+	r2.x = r0.x * cloudConstants1.y;
+	r2.y = r0.y * smallCloudConstants.z;
+	r0.x = saturate(-(r0.x) * 1.36000001 + 1);
+	r3.y = -(smallCloudConstants.w);
+	r3.xz = -(cloudConstants1.zw);
+	r0.yz = saturate(r2.xy + r3.xy);
+	r0.yz = r0.yz * r0.yz;
+	r2.xyz = i.texcoord1.xyz + float3(0.00000999999975, 0.00000999999975, 0.00000999999975);
+	r0.w = dot(r2.xyz, r2.xyz);
+	r0.w = rsqrt(r0.w);
+	r2.xyz = r0.www * r2.xyz;
+	r0.w = saturate(r2.z * 5 + r3.z);
+	r0.yz = r0.ww * r0.yz;
+	r3.x = dot(r2.xyz, -(sunDirection.xyz));
+	r3.y = dot(r2.xyz, moonDirection);
+	r0.w = -(sunConstants.x) * r3.x + sunConstants.y;
+	r0.w = abs(r0.w) + 0.00000999999975;
+	r0.w = log2(r0.w);
+	r0.w = r0.w * 1.50001001;
+	r0.w = exp2(r0.w);
+	r1.w = r3.x * r3.x + 1;
+	r3.x = saturate(-(r3.x));
+	r2.xy = -(r3.xy) + float2(1, 1);
+	r2.xy = r2.xy / effectsConstants.xz;
+	r2.xy = saturate(r2.xy * float2(100, 100));
+	r2.xy = -(r2.xy) + float2(1, 1);
+	r0.w = r1.w / r0.w;
+	r0.w = saturate(r0.w * sunConstants.z);
+	r3.xyz = sunColor.xyz * sunHdrIntensity + -(i.texcoord2.xyz);
+	r3.xyz = r0.www * r3.xyz + i.texcoord2.xyz;
+	r4 = -(r3.xyz) + smallCloudColorXHdrIntensity.xyz;
+	r3.xyz = r0.zzz * r4.xyz + r3.xyz;
+	r1.xyz = r1.xyz * cloudConstants2.www + -(r3.xyz);
+	r1.xyz = r0.yyy * r1.xyz + r3.xyz;
+	r3 = ditherSampler_tex.Sample(ditherSampler, i.texcoord4.xy);
+	r0.w = r3.x + -0.5;
+	r1.xyz = r0.www * i.texcoord2.www + r1.xyz;
+	r0.w = r0.z * 0.300000012;
+	r1.w = -(r0.z) * 0.300000012 + 1;
+	r0.w = r0.y * r1.w + r0.w;
+	r0.y = r0.z + r0.y;
+	o.sv_target.w = -(r0.y) + 1;
+	r0.y = -(r0.w) + 1;
+	r0.zw = r0.ww * r2.xy;
+	r0.xz = r0.xx * r0.zw;
+	r0.xz = r0.xz * r0.xz;
+	r0.xz = r0.xz * effectsConstants.yw;
+	r2 = starFieldSampler_tex.Sample(starFieldSampler, i.texcoord6.xy);
+	r2.xyz = r2.xyz * starfieldIntensity;
+	r2.xyz = r0.yyy * r2.xyz;
+	r3 = moonSampler_tex.Sample(moonSampler, i.texcoord7);
+	r0.y = -(r3.w) + 1;
+	r1.xyz = r2.xyz * r0.yyy + r1.xyz;
+	r0.yzw = r0.zzz * moonColor.xyz;
+	r0.xyz = sunColor.xyz * r0.xxx + r0.yzw;
+	r0.xyz = r0.xyz * hdrIntensity + r1.xyz;
+	r0.xyz = r0.xyz * sphereReflectionSkyIntensity;
+	r0.xyz = saturate(r0.xyz * float3(0.0625, 0.0625, 0.0625));
+	o.sv_target.xyz = sqrt(r0.xyz);
+	o.sv_target1 = float4(64, 64, 64, 64);
+
+	return o;
+}

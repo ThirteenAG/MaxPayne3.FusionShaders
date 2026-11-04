@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="81">
+  <PresetParams>
+    <Preset Name="drawBucket" Unused0="0" Value="1"/>
+  </PresetParams>
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_TransformUnlit" OffsetBy1="false" File="radar/VS_TransformUnlit.hlsl" DataType="hlsl" Model="3.0" Length="320">
+          <Variables>
+            <Variable>gWorldViewProj</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="2" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_TexturedUnlit" OffsetBy1="false" File="radar/PS_TexturedUnlit.hlsl" DataType="hlsl" Model="3.0" Length="284">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>diffuseCol</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float4" Count="0" Slot="3" Group="2" FirstName="diffuseCol" SecondName="DiffuseColor" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Radar Diffuse Color"/>
+      </Annotations>
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="deferred_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="wd_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="paraboloid_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="reflection_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight0_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="lightweight4_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="23" Value="1"/>
+          <Param Type="4" Value="5"/>
+          <Param Type="5" Value="6"/>
+          <Param Type="10" Value="1"/>
+          <Param Type="3" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="0" Value="1"/>
+          <Param Type="6" Value="1"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

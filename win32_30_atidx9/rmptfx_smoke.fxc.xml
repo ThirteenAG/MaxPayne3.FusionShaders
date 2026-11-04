@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="984">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="7" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_TransformVertexLitVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformVertexLitVS.hlsl" DataType="hlsl" Model="3.0" Length="4000">
+          <Variables>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformLitVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformLitVS.hlsl" DataType="hlsl" Model="3.0" Length="1784">
+          <Variables>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformLitSoftVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformLitSoftVS.hlsl" DataType="hlsl" Model="3.0" Length="1748">
+          <Variables>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformLitScreenSpaceVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformLitScreenSpaceVS.hlsl" DataType="hlsl" Model="3.0" Length="1464">
+          <Variables>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformUnLitVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformUnLitVS.hlsl" DataType="hlsl" Model="3.0" Length="1784">
+          <Variables>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformUnLitSoftVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformUnLitSoftVS.hlsl" DataType="hlsl" Model="3.0" Length="1796">
+          <Variables>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformUnLitScreenSpaceVS" OffsetBy1="false" File="rmptfx_smoke/VS_TransformUnLitScreenSpaceVS.hlsl" DataType="hlsl" Model="3.0" Length="1504">
+          <Variables>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="5" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_Draw" OffsetBy1="false" File="rmptfx_smoke/PS_Draw.hlsl" DataType="hlsl" Model="3.0" Length="1704">
+          <Variables>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DrawSoft" OffsetBy1="false" File="rmptfx_smoke/PS_DrawSoft.hlsl" DataType="hlsl" Model="3.0" Length="1964">
+          <Variables>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DrawUnLit" OffsetBy1="false" File="rmptfx_smoke/PS_DrawUnLit.hlsl" DataType="hlsl" Model="3.0" Length="1704">
+          <Variables>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DrawSoftUnLit" OffsetBy1="false" File="rmptfx_smoke/PS_DrawSoftUnLit.hlsl" DataType="hlsl" Model="3.0" Length="1964">
+          <Variables>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="1" FirstName="gWorldView" SecondName="WorldView" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="17" Group="1" FirstName="gAspectRatio" SecondName="AspectRatio" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="18" Group="1" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="19" Group="1" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="1" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="21" Group="1" FirstName="gLightPosX" SecondName="LightPositionX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="22" Group="1" FirstName="gLightPosY" SecondName="LightPositionY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="23" Group="1" FirstName="gLightPosZ" SecondName="LightPositionZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="24" Group="1" FirstName="gLightDirX" SecondName="LightDirX" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="25" Group="1" FirstName="gLightDirY" SecondName="LightDirY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="26" Group="1" FirstName="gLightDirZ" SecondName="LightDirZ" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="27" Group="1" FirstName="gLightFallOff" SecondName="LightFallOff" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="28" Group="1" FirstName="gLightConeScale" SecondName="LightConeScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="29" Group="1" FirstName="gLightConeOffset" SecondName="LightConeOffset" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="30" Group="1" FirstName="gLightColR" SecondName="LightColR" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="31" Group="1" FirstName="gLightColG" SecondName="LightColG" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="1" FirstName="gLightColB" SecondName="LightColB" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="33" Group="1" FirstName="gLightAmbient0" SecondName="LightAmbientColor0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 0"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="1" FirstName="gLightAmbient1" SecondName="LightAmbientColor1" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 1"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="68" Group="2" FirstName="gAdrenoFXVars" SecondName="gAdrenoFXVars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="51" Group="2" FirstName="globalScalars4" SecondName="globalScalars4" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="1" FirstName="globalFogParams" SecondName="globalFogParams" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="50" Group="1" FirstName="globalFogColorN" SecondName="globalFogColorN" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="3" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="43" Group="2" FirstName="ColorCorrectTopAndPedReflectScale" SecondName="ColorCorrectTopAndPedReflectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="44" Group="2" FirstName="ColorCorrectBottomOffset" SecondName="ColorCorrectBottomOffset" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="45" Group="2" FirstName="ColorShift" SecondName="ColorShift" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="46" Group="2" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="63" Group="1" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="66" Group="2" FirstName="ColorCorrectTopScreenEdge" SecondName="ColorCorrectTopScreenEdge" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="67" Group="2" FirstName="ColorCorrectBottomOffsetScreenEdge" SecondName="ColorCorrectBottomOffsetScreenEdge" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="128" Group="1" FirstName="NearFarPlane" SecondName="NearFarPlane" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="129" Group="2" FirstName="gInvScreenSize" SecondName="InvScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Texture" Count="0" Slot="12" Group="2" FirstName="DepthMapTexSampler" SecondName="DepthMap" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float" Count="0" Slot="88" Group="2" FirstName="gSoftness" SecondName="gSoftness" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Softness Fade : Controls how much soft particles fade out as objects become close to them ;"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseTexSampler" SecondName="DiffuseTex2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Texture Map"/>
+      </Annotations>
+      <Values>5;3;4;2;6;2;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="89" Group="2" FirstName="HybridAdd" SecondName="HybridAdd" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="90" Group="0" FirstName="HybridAddRatio" SecondName="HybridAddRatio" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Hybrid Add Ratio"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="91" Group="0" FirstName="HDRIntensityMultiplier" SecondName="HDRIntensityMultiplier" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="HDR Intensity Multiplier"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="255"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="93" Group="1" FirstName="gBiasToCamera" SecondName="BiasToCamera" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Scale : Controls how strong sun light hits particle ( 0 - no direct light , 1 - all direct light)"/>
+        <Annotation Name="UIMin" Type="float" Value="-1000"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="94" Group="1" FirstName="gWrapScale" SecondName="WrapScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Scale : Controls how strong sun light hits particle ( 0 - no direct light , 1 - all direct light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="95" Group="1" FirstName="gWrapBias" SecondName="WrapBias" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Bias : Controls how sun light spreads over surface ( 0 - no extra spread, 1- spreads all over surface) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="96" Group="1" FirstName="gDiffuse" SecondName="Diffuse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse : Controls the amount of lighting on surface, color also controls this ( 0 - no light, 1- light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.75</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="99" Group="1" FirstName="gAmbientAmount" SecondName="AmbientAmount" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Ambient Scale : Controls how much double ambient lighting  to alpy to surface"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="100" Group="1" FirstName="gSuperAlpha" SecondName="SuperAlpha" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Super Alpha : Boosts the alpha amount by the given value ( 1 - normal alpha,  2 - super alpha) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="101" Group="1" FirstName="gNormalArc" SecondName="NormalArc" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Normal Arc : Determines how much to bend normals outwards for vertex lighting  ( 0 - bend completely outwards, 4 bend nearly ompletely inwards) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.5</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="102" Group="1" FirstName="gScaleFade" SecondName="gScaleFade" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Near Scale : Amount to scale down particles as the camera gets near 1.0 means same as alpha fades down, 2.0 means twice as slow as alpha fades"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="106" Group="1" FirstName="gTexCoordScaleOffset0" SecondName="TexCoordScaleOffset0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Scale//Offset : Lets you selection sub-regions of the texture assigned.  Ex Texture Size 1024 by 512 sub region 64,128 - 120,256 = (120-64)/1024, (256-128)/512, 64/1024, 120/512"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0625"/>
+      </Annotations>
+      <Values>1;1;0;0</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw_old">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_screenspace">
+      <Pass VS="3" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="4" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw_soft">
+      <Pass VS="5" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw_screenspace">
+      <Pass VS="6" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

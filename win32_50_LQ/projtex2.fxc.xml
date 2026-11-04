@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="1">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_rippleFx" OffsetBy1="false" File="projtex2/VS_rippleFx.hlsl" DataType="hlsl" Model="5.0" Length="2088">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="2" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_rippleFx" OffsetBy1="false" File="projtex2/PS_rippleFx.hlsl" DataType="hlsl" Model="5.0" Length="5844">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>gDeferredLightType</Variable>
+            <Variable>gDeferredLightPosition</Variable>
+            <Variable>gDeferredLightDirection</Variable>
+            <Variable>gDeferredLightTangent</Variable>
+            <Variable>gDeferredLightRadiusProjShearParams</Variable>
+            <Variable>gDeferredLightInvSqrRadius</Variable>
+            <Variable>gDeferredVolumeRadiusScale</Variable>
+            <Variable>gDeferredLightConeAngleI</Variable>
+            <Variable>gDeferredLightConeAngle</Variable>
+            <Variable>gDeferredLightConeOffset</Variable>
+            <Variable>gDeferredLightConeScale</Variable>
+            <Variable>gDeferredLightColourAndIntensity</Variable>
+            <Variable>gooDeferredLightScreenSize</Variable>
+            <Variable>gDeferredProjParams</Variable>
+            <Variable>gDeferredLightShaftParams</Variable>
+            <Variable>gDeferredLightVolumeParams</Variable>
+            <Variable>gLightSettings</Variable>
+            <Variable>gDecalSampler</Variable>
+            <Variable>gDecalNormalSampler</Variable>
+            <Variable>GBufferTextureSamplerDepth</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="DeferredLight" Slot="4"/>
+            <Buffer Name="ProjectedParam" Slot="7"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="256" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+    <CBuffer Name="direction_light" Size="48" VS="10" PS="10" CS="10" DS="10" GS="10" HS="10"/>
+    <CBuffer Name="rage_globals" Size="464" VS="5" PS="5" CS="5" DS="5" GS="5" HS="5"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="3" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="3" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="3" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="18" Group="2" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="19" Group="2" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="2" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="globalScalars2" SecondName="globalScalars2" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="2" FirstName="globalScalars3" SecondName="globalScalars3" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="51" Group="2" FirstName="globalScalars4" SecondName="globalScalars4" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="2" FirstName="globalFogParams" SecondName="globalFogParams" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="38" Group="2" FirstName="globalFogColor" SecondName="globalFogColor" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="40" Group="2" FirstName="globalFogOffsetN" SecondName="globalFogOffsetN" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="50" Group="2" FirstName="globalFogColorN" SecondName="globalFogColorN" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="2" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="42" Group="2" FirstName="globalDayNightEffects" SecondName="globalDayNightEffects" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;0;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="43" Group="2" FirstName="ColorCorrectTopAndPedReflectScale" SecondName="ColorCorrectTopAndPedReflectScale" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="44" Group="2" FirstName="ColorCorrectBottomOffset" SecondName="ColorCorrectBottomOffset" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="45" Group="2" FirstName="ColorShift" SecondName="ColorShift" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="46" Group="2" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="75" Group="2" FirstName="deSatContrastGammaIFX" SecondName="deSatContrastGammaIFX" Offset="224" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="47" Group="2" FirstName="colorize" SecondName="Colorize" Offset="240" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="48" Group="2" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="65" Group="2" FirstName="gToneMapScalers" SecondName="ToneMapScalers" Offset="16" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="32" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="64" Group="2" FirstName="gWaterGlobals" SecondName="WaterGlobals" Offset="48" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="66" Group="2" FirstName="ColorCorrectTopScreenEdge" SecondName="ColorCorrectTopScreenEdge" Offset="64" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="67" Group="2" FirstName="ColorCorrectBottomOffsetScreenEdge" SecondName="ColorCorrectBottomOffsetScreenEdge" Offset="80" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="2" FirstName="gScreenSpaceTessFactors" SecondName="gScreenSpaceTessFactors" Offset="96" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;3;1.5;0.0666666701</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="33" Group="2" FirstName="gTessFactors" SecondName="gTessFactors" Offset="112" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;0.25;1;5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="2" FirstName="gFrustumPlaneEquation_Left" SecondName="gFrustumPlaneEquation_Left" Offset="128" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="gFrustumPlaneEquation_Right" SecondName="gFrustumPlaneEquation_Right" Offset="144" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="gFrustumPlaneEquation_Top" SecondName="gFrustumPlaneEquation_Top" Offset="160" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="37" Group="2" FirstName="gFrustumPlaneEquation_Bottom" SecondName="gFrustumPlaneEquation_Bottom" Offset="176" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="38" Group="2" FirstName="gTessParameters" SecondName="gTessParameters" Offset="192" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>5;0.100000001;0.5;0.200000003</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="DeferredLight" Size="176" VS="8" PS="4" CS="8" DS="8" GS="8" HS="8"/>
+    <CBuffer Name="ProjectedParam" Size="16" VS="8" PS="7" CS="8" DS="8" GS="8" HS="8"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="gDecalSampler" SecondName="decalTexture" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;4;1;4;2;4;3;0;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="gDecalNormalSampler" SecondName="decalNormal" Offset="1" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;4;1;4;2;4;3;0;5;2;4;2;6;1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="211" Group="2" FirstName="gDeferredLightType" SecondName="deferredLightType" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float3" Count="0" Slot="212" Group="2" FirstName="gDeferredLightPosition" SecondName="deferredLightPosition" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float3" Count="0" Slot="213" Group="2" FirstName="gDeferredLightDirection" SecondName="deferredLightDirection" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float3" Count="0" Slot="214" Group="2" FirstName="gDeferredLightTangent" SecondName="deferredLightTangent" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="215" Group="2" FirstName="gDeferredLightRadiusProjShearParams" SecondName="deferredLightRadiusProjectionShearParams" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="216" Group="2" FirstName="gDeferredLightInvSqrRadius" SecondName="deferredLightInvSqrRadius" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="217" Group="2" FirstName="gDeferredVolumeRadiusScale" SecondName="deferredVolumeRadiusScale" Offset="68" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="218" Group="2" FirstName="gDeferredLightConeAngleI" SecondName="deferredLightConeAngleI" Offset="72" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="219" Group="2" FirstName="gDeferredLightConeAngle" SecondName="deferredLightConeAngle" Offset="76" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="220" Group="2" FirstName="gDeferredLightConeOffset" SecondName="deferredLightConeOffset" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float" Count="0" Slot="221" Group="2" FirstName="gDeferredLightConeScale" SecondName="deferredLightConeScale" Offset="84" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="222" Group="2" FirstName="gDeferredLightColourAndIntensity" SecondName="deferredLightColourAndIntensity" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="223" Group="2" FirstName="gooDeferredLightScreenSize" SecondName="deferredLightScreenSize" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="224" Group="2" FirstName="gDeferredProjParams" SecondName="deferredProjectionParams" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="225" Group="2" FirstName="gDeferredLightShaftParams" SecondName="deferredLightShaftParams" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Float4" Count="0" Slot="226" Group="2" FirstName="gDeferredLightVolumeParams" SecondName="deferredLightVolumeParams" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="38554211"/>
+    <Variable Type="Texture" Count="0" Slot="8" Group="2" FirstName="GBufferTextureSamplerDepth" SecondName="gbufferTextureDepth" Offset="8" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;3;1;3;5;1;4;1;6;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="227" Group="2" FirstName="gLightSettings" SecondName="gLightSettings" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="2462512173"/>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="0" Value="1"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="6" Value="3"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

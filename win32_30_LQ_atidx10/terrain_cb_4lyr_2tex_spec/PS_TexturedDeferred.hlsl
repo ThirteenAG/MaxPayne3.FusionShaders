@@ -1,0 +1,133 @@
+sampler2D BumpSampler_layer0 : register(s1);
+sampler2D BumpSampler_layer1 : register(s4);
+sampler2D BumpSampler_layer2 : register(s6);
+sampler2D BumpSampler_layer3 : register(s9);
+sampler2D SpecSampler_layer01 : register(s2);
+sampler2D SpecSampler_layer23 : register(s7);
+sampler2D TextureSampler_layer0 : register(s0);
+sampler2D TextureSampler_layer1 : register(s3);
+sampler2D TextureSampler_layer2 : register(s5);
+sampler2D TextureSampler_layer3 : register(s8);
+float bumpiness : register(c8);
+float4 gAmbientOcclusionEffect : register(c63);
+float4 gStencil : register(c61);
+float4 globalScalars : register(c35);
+float4 globalScalars2 : register(c36);
+float specularColorFactor : register(c1);
+float specularColorFactor1 : register(c3);
+float specularColorFactor2 : register(c5);
+float specularColorFactor3 : register(c7);
+float specularFactor : register(c0);
+float specularFactor1 : register(c2);
+float specularFactor2 : register(c4);
+float specularFactor3 : register(c6);
+
+struct PS_IN
+{
+	float4 texcoord : TEXCOORD;
+	float3 color : COLOR;
+	float3 texcoord2 : TEXCOORD2;
+	float4 texcoord3 : TEXCOORD3;
+	float3 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+};
+
+struct PS_OUT
+{
+	float4 color : COLOR;
+	float4 color1 : COLOR1;
+	float4 color2 : COLOR2;
+	float4 color3 : COLOR3;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	r0.x = saturate(-1 + i.texcoord3.w);
+	r0.x = r0.x * globalScalars2.z;
+	r1 = i.texcoord.xyxx * float4(1, 1, 0, 0) + float4(0, 0, 0, -1.3);
+	r1 = tex2Dbias(TextureSampler_layer0, r1);
+	r2 = i.texcoord.zwxx * float4(1, 1, 0, 0) + float4(0, 0, 0, -1.3);
+	r3 = tex2Dbias(TextureSampler_layer1, r2);
+	r0.yzw = 1 + -i.color.xyz;
+	r0.z = r0.z * r0.y;
+	r1.w = r0.z * i.color.z;
+	r0.z = r0.w * r0.z;
+	r3.xyz = r1.www * r3.xyz;
+	r1.xyz = r1.xyz * r0.zzz + r3.xyz;
+	r3 = tex2Dbias(TextureSampler_layer2, r2);
+	r2 = tex2Dbias(TextureSampler_layer3, r2);
+	r0.y = r0.y * i.color.y;
+	r0.w = r0.w * r0.y;
+	r0.y = r0.y * i.color.z;
+	r1.xyz = r3.xyz * r0.www + r1.xyz;
+	r1.xyz = r2.xyz * r0.yyy + r1.xyz;
+	o.color.xyz = r1.xyz * i.texcoord3.xyz + r0.xxx;
+	r2 = tex2D(BumpSampler_layer1, i.texcoord.zw);
+	r0.x = -r2.w + 1;
+	r0.x = -r2.x + r0.x;
+	r1.xy = (r0.xx >= 0) ? r2.wy : r2.xy;
+	r1.xy = r1.ww * r1.xy;
+	r2 = tex2D(BumpSampler_layer0, i.texcoord.xy);
+	r0.x = -r2.w + 1;
+	r0.x = -r2.x + r0.x;
+	r2.xy = (r0.xx >= 0) ? r2.wy : r2.xy;
+	r1.xy = r2.xy * r0.zz + r1.xy;
+	r2 = tex2D(BumpSampler_layer2, i.texcoord.zw);
+	r0.x = -r2.w + 1;
+	r0.x = -r2.x + r0.x;
+	r2.xy = (r0.xx >= 0) ? r2.wy : r2.xy;
+	r1.xy = r2.xy * r0.ww + r1.xy;
+	r2 = tex2D(BumpSampler_layer3, i.texcoord.zw);
+	r0.x = -r2.w + 1;
+	r0.x = -r2.x + r0.x;
+	r2.xy = (r0.xx >= 0) ? r2.wy : r2.xy;
+	r1.xy = r2.xy * r0.yy + r1.xy;
+	r1.xy = r1.xy + -0.5;
+	r1.xy = r1.xy * bumpiness.xx;
+	r1.xy = r1.xy + r1.xy;
+	r0.x = dot(r1.xy, -r1.xy) + 1;
+	r1.z = max(r0.x, 0);
+	r0.x = rsqrt(r1.z);
+	r0.x = 1 / r0.x;
+	r2.xyz = r1.xxx * i.texcoord4.xyz;
+	r2.xyz = i.texcoord2.xyz * r0.xxx + r2.xyz;
+	r1.xyz = r1.yyy * i.texcoord5.xyz + r2.xyz;
+	r1.xyz = r1.xyz + 1E-05;
+	r2.xyz = normalize(r1.xyz);
+	o.color1.xyz = r2.xyz * 0.5 + 0.5;
+	r2 = tex2D(SpecSampler_layer01, i.texcoord.zw);
+	r1.x = r2.z * specularFactor1.x;
+	r1.y = r2.w * specularColorFactor1.x;
+	r1.xy = r1.ww * r1.xy;
+	r2 = tex2D(SpecSampler_layer01, i.texcoord.xy);
+	r3.x = r2.x * specularFactor.x;
+	r3.y = r2.y * specularColorFactor.x;
+	r0.xz = r3.xy * r0.zz + r1.xy;
+	r1 = tex2D(SpecSampler_layer23, i.texcoord.zw);
+	r2.x = r1.x * specularFactor2.x;
+	r2.y = r1.y * specularColorFactor2.x;
+	r0.xz = r2.xy * r0.ww + r0.xz;
+	r1.x = r1.z * specularFactor3.x;
+	r1.y = r1.w * specularColorFactor3.x;
+	r0.xy = r1.xy * r0.yy + r0.xz;
+	r0.x = saturate(r0.x * 0.0051020407);
+	o.color2.x = r0.y;
+	r0.x = rsqrt(r0.x);
+	r0.x = 1 / r0.x;
+	r0.x = rsqrt(r0.x);
+	o.color2.y = 1 / r0.x;
+	o.color2.z = gAmbientOcclusionEffect.w * i.texcoord3.w;
+	o.color.w = 0;
+	o.color1.w = globalScalars.x;
+	o.color2.w = globalScalars.x;
+	r0.xy = float2(1, 0);
+	o.color3 = r0.yyyx * gStencil.x;
+
+	return o;
+}

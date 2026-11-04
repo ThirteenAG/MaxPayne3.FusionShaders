@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="153">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="2" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_ragePassThroughNoXform" OffsetBy1="false" File="rage_fastmipmap/VS_ragePassThroughNoXform.hlsl" DataType="hlsl" Model="4.1" Length="888">
+        </Shader>
+        <Shader Name="VS_ragePassThroughNoXformTexOnly" OffsetBy1="false" File="rage_fastmipmap/VS_ragePassThroughNoXformTexOnly.hlsl" DataType="hlsl" Model="4.1" Length="712">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="7" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PSFastMipMap" OffsetBy1="false" File="rage_fastmipmap/PSFastMipMap.hlsl" DataType="hlsl" Model="4.1" Length="1508">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>AlphaRange</Variable>
+            <Variable>MipMapLod</Variable>
+            <Variable>BaseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSBlur" OffsetBy1="false" File="rage_fastmipmap/PSBlur.hlsl" DataType="hlsl" Model="4.1" Length="1156">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>AlphaRange</Variable>
+            <Variable>MipMapLod</Variable>
+            <Variable>BaseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PSDownSampleX2" OffsetBy1="false" File="rage_fastmipmap/PSDownSampleX2.hlsl" DataType="hlsl" Model="4.1" Length="872">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>AlphaRange</Variable>
+            <Variable>MipMapLod</Variable>
+            <Variable>BaseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="DownsampleDepthPS" OffsetBy1="false" File="rage_fastmipmap/DownsampleDepthPS.hlsl" DataType="hlsl" Model="4.1" Length="852">
+          <Variables>
+            <Variable>DepthTextureSampler0</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PSFastMipMapCutOut" OffsetBy1="false" File="rage_fastmipmap/PSFastMipMapCutOut.hlsl" DataType="hlsl" Model="4.1" Length="1416">
+          <Variables>
+            <Variable>TexelSize</Variable>
+            <Variable>AlphaRange</Variable>
+            <Variable>MipMapLod</Variable>
+            <Variable>BaseSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="$Globals" Slot="1"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="DownsampleNormalPS" OffsetBy1="false" File="rage_fastmipmap/DownsampleNormalPS.hlsl" DataType="hlsl" Model="4.1" Length="816">
+          <Variables>
+            <Variable>BaseSampler</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Texture" Count="0" Slot="15" Group="2" FirstName="DepthTextureSampler0" SecondName="DepthTexture0" Offset="15" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;4;1;4;2;4;3;4294967295;6;1;5;1;4;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="$Globals" Size="656" VS="0" PS="1" CS="0" DS="0" GS="0" HS="0"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="3" Group="2" FirstName="BaseSampler" SecondName="BaseTex" Offset="3" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Base Texture"/>
+      </Annotations>
+      <Values>0;3;1;3;2;3;6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="38" Group="2" FirstName="TexelSize" SecondName="TexelSize" Offset="96" Variant="2" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+    <Variable Type="Float" Count="0" Slot="39" Group="2" FirstName="AlphaRange" SecondName="AlphaRange" Offset="112" Variant="2" Unused0="0" Unused1="0" CBufferNameHash="1866965008">
+      <Values>3.03571439</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="40" Group="2" FirstName="MipMapLod" SecondName="MipMapLod" Offset="128" Variant="2" Unused0="0" Unused1="0" CBufferNameHash="1866965008"/>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawBlit">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawBlur">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawBlitX2">
+      <Pass VS="1" PS="3" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawDepth">
+      <Pass VS="1" PS="4" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawCutOut">
+      <Pass VS="0" PS="5" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+    <Technique Name="drawNormal">
+      <Pass VS="1" PS="6" CS="0" DS="0" GS="0" HS="0">
+        <Params>
+          <Param Type="6" Value="1"/>
+          <Param Type="0" Value="0"/>
+          <Param Type="2" Value="0"/>
+          <Param Type="10" Value="0"/>
+          <Param Type="3" Value="0"/>
+        </Params>
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="217">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_ragePassThroughNoXformTexOnly" OffsetBy1="false" File="ptxgpudrop_update/VS_ragePassThroughNoXformTexOnly.hlsl" DataType="hlsl" Model="3.0" Length="208">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="3" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_ptxgpuUpdateDrop" OffsetBy1="false" File="ptxgpudrop_update/PS_ptxgpuUpdateDrop.hlsl" DataType="hlsl" Model="3.0" Length="2732">
+          <Variables>
+            <Variable>InitPositionTexSampler</Variable>
+            <Variable>InitVelocityTexSampler</Variable>
+            <Variable>NoiseTexSampler</Variable>
+            <Variable>ParticleCollisionSampler</Variable>
+            <Variable>ParticlePosXYTexSampler</Variable>
+            <Variable>ParticlePosZWTexSampler</Variable>
+            <Variable>gBoxCentreOffset</Variable>
+            <Variable>gBoxSize</Variable>
+            <Variable>gBoxTransform</Variable>
+            <Variable>gDepthViewProjMtx</Variable>
+            <Variable>gGravity</Variable>
+            <Variable>gLifeMinMax</Variable>
+            <Variable>gResetParticles</Variable>
+            <Variable>gSplashLifeMinMax</Variable>
+            <Variable>gTimeStep</Variable>
+            <Variable>gVelocityMax</Variable>
+            <Variable>gVelocityMin</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_ptxgpuUpdateGround" OffsetBy1="false" File="ptxgpudrop_update/PS_ptxgpuUpdateGround.hlsl" DataType="hlsl" Model="3.0" Length="2852">
+          <Variables>
+            <Variable>InitPositionTexSampler</Variable>
+            <Variable>InitVelocityTexSampler</Variable>
+            <Variable>NoiseTexSampler</Variable>
+            <Variable>ParticleCollisionSampler</Variable>
+            <Variable>ParticlePosXYTexSampler</Variable>
+            <Variable>ParticlePosZWTexSampler</Variable>
+            <Variable>gBoxCentreOffset</Variable>
+            <Variable>gBoxSize</Variable>
+            <Variable>gBoxTransform</Variable>
+            <Variable>gDepthViewProjMtx</Variable>
+            <Variable>gGravity</Variable>
+            <Variable>gLifeMinMax</Variable>
+            <Variable>gSplashLifeMinMax</Variable>
+            <Variable>gTimeStep</Variable>
+            <Variable>gVelocityMax</Variable>
+            <Variable>gVelocityMin</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="ParticlePosXYTexSampler" SecondName="ParticlePosXY" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="ParticlePosZWTexSampler" SecondName="ParticlePosZW" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="4" Group="2" FirstName="ParticleCollisionSampler" SecondName="ParticleCollisionTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="5" Group="2" FirstName="NoiseTexSampler" SecondName="NoiseTexture" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;1;1;1</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="6" Group="2" FirstName="InitPositionTexSampler" SecondName="InitPositionTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="7" Group="2" FirstName="InitVelocityTexSampler" SecondName="InitVelocityTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float4x4" Count="0" Slot="202" Group="2" FirstName="gDepthViewProjMtx" SecondName="DepthViewProjMtx" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="206" Group="2" FirstName="gBoxTransform" SecondName="BoxTransform" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="210" Group="2" FirstName="gGravity" SecondName="Gravity" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="211" Group="2" FirstName="gTimeStep" SecondName="TimeStep" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float" Count="0" Slot="212" Group="2" FirstName="gResetParticles" SecondName="ResetParticles" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="213" Group="2" FirstName="gBoxCentreOffset" SecondName="BoxCentreOffset" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="214" Group="2" FirstName="gBoxSize" SecondName="BoxSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="215" Group="2" FirstName="gLifeMinMax" SecondName="LifeMinMax" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float2" Count="0" Slot="216" Group="2" FirstName="gSplashLifeMinMax" SecondName="SplashLifeMinMax" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="217" Group="2" FirstName="gVelocityMin" SecondName="VelocityMin" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="218" Group="2" FirstName="gVelocityMax" SecondName="VelocityMax" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_drop">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_ground">
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

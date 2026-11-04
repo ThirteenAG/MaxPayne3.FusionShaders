@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="113">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="4" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_Transform" OffsetBy1="false" File="grass/VS_Transform.hlsl" DataType="hlsl" Model="3.0" Length="2180">
+          <Variables>
+            <Variable>_fakedGrassNormal</Variable>
+            <Variable>_vecCollParams</Variable>
+            <Variable>_vecVehCollB</Variable>
+            <Variable>_vecVehCollM</Variable>
+            <Variable>_vecVehCollR</Variable>
+            <Variable>bVehCollEnabled</Variable>
+            <Variable>fadeAlphaDistUmTimer</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>groundColor</Variable>
+            <Variable>matGrassTransform</Variable>
+            <Variable>plantColor</Variable>
+            <Variable>uMovementParams</Variable>
+            <Variable>vecCameraPos</Variable>
+            <Variable>vecPlayerPos</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformLOD1" OffsetBy1="false" File="grass/VS_TransformLOD1.hlsl" DataType="hlsl" Model="3.0" Length="868">
+          <Variables>
+            <Variable>_fakedGrassNormal</Variable>
+            <Variable>fadeAlphaLOD1Dist</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>groundColor</Variable>
+            <Variable>matGrassTransform</Variable>
+            <Variable>plantColor</Variable>
+            <Variable>vecCameraPos</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_TransformLOD2" OffsetBy1="false" File="grass/VS_TransformLOD2.hlsl" DataType="hlsl" Model="3.0" Length="1164">
+          <Variables>
+            <Variable>_dimensionLOD2</Variable>
+            <Variable>_fakedGrassNormal</Variable>
+            <Variable>fadeAlphaLOD2Dist</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>groundColor</Variable>
+            <Variable>matGrassTransform</Variable>
+            <Variable>plantColor</Variable>
+            <Variable>vecCameraPos</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="VS_blit" OffsetBy1="false" File="grass/VS_blit.hlsl" DataType="hlsl" Model="3.0" Length="248">
+          <Variables>
+            <Variable>_fakedGrassNormal</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="6" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_DeferredTextured" OffsetBy1="false" File="grass/PS_DeferredTextured.hlsl" DataType="hlsl" Model="3.0" Length="668">
+          <Variables>
+            <Variable>TextureGrassSampler</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredTexturedLOD" OffsetBy1="false" File="grass/PS_DeferredTexturedLOD.hlsl" DataType="hlsl" Model="3.0" Length="668">
+          <Variables>
+            <Variable>TextureGrassSampler</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_DeferredTexturedAlphaStipple" OffsetBy1="false" File="grass/PS_DeferredTexturedAlphaStipple.hlsl" DataType="hlsl" Model="3.0" Length="668">
+          <Variables>
+            <Variable>TextureGrassSampler</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_TexturedUnlit" OffsetBy1="false" File="grass/PS_TexturedUnlit.hlsl" DataType="hlsl" Model="3.0" Length="400">
+          <Variables>
+            <Variable>DiffuseSampler</Variable>
+            <Variable>globalScalars</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_BlitFakedGbuf" OffsetBy1="false" File="grass/PS_BlitFakedGbuf.hlsl" DataType="hlsl" Model="3.0" Length="404">
+          <Variables>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gStencil</Variable>
+            <Variable>globalScalars2</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="1" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="1" FirstName="gViewInverse" SecondName="ViewInverse" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="2" FirstName="globalScalars" SecondName="globalScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="2" FirstName="globalScalars2" SecondName="globalScalars2" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="48" Group="1" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="61" Group="2" FirstName="gStencil" SecondName="Stencil" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="2" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="208" Group="0" FirstName="invVertexBufferSize" SecondName="invVertexBufferSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Boolean" Count="0" Slot="10" Group="1" FirstName="bVehCollEnabled" SecondName="bVehCollEnabled0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseSampler" SecondName="DiffuseTex" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse Texture"/>
+      </Annotations>
+      <Values>6;2;5;2;4;2</Values>
+    </Variable>
+    <Variable Type="Float4x4" Count="0" Slot="64" Group="1" FirstName="matGrassTransform" SecondName="matGrassTransform0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="68" Group="1" FirstName="plantColor" SecondName="plantColor0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="69" Group="1" FirstName="groundColor" SecondName="groundColor0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float3" Count="0" Slot="70" Group="1" FirstName="vecCameraPos" SecondName="vecCameraPos0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float3" Count="0" Slot="71" Group="1" FirstName="vecPlayerPos" SecondName="vecPlayerPos0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="72" Group="1" FirstName="_dimensionLOD2" SecondName="dimensionLOD20" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float2" Count="0" Slot="73" Group="1" FirstName="_vecCollParams" SecondName="vecCollParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.5625;1.77777779</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="84" Group="1" FirstName="_vecVehCollB" SecondName="vecVehCollB0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="85" Group="1" FirstName="_vecVehCollM" SecondName="vecVehCollM0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="86" Group="1" FirstName="_vecVehCollR" SecondName="vecVehCollR0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="87" Group="1" FirstName="fadeAlphaDistUmTimer" SecondName="fadeAlphaDistUmTimer0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="88" Group="1" FirstName="fadeAlphaLOD1Dist" SecondName="fadeAlphaLOD1Dist0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="89" Group="1" FirstName="fadeAlphaLOD2Dist" SecondName="fadeAlphaLOD2Dist0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0"/>
+    <Variable Type="Float4" Count="0" Slot="90" Group="1" FirstName="uMovementParams" SecondName="uMovementParams0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0.0500000007;0.0500000007;0.212500006;0.212500006</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="91" Group="1" FirstName="_fakedGrassNormal" SecondName="fakedGrassNormal0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="nostrip" Type="int" Value="1"/>
+      </Annotations>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="1" Group="2" FirstName="TextureGrassSampler" SecondName="grassTexture0" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>0;1;1;1;2;1;6;2;5;3;4;2</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="deferred_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredLOD0_draw">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredLOD1_draw">
+      <Pass VS="1" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredLOD2_draw">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferred_drawskinned">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_draw">
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="deferredalphastipple_drawskinned">
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="blitFakedGBuf">
+      <Pass VS="3" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

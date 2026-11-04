@@ -1,0 +1,165 @@
+sampler2D BumpSampler : register(s3);
+sampler2D DiffuseSampler : register(s0);
+sampler2D DirtSampler : register(s2);
+sampler2D EnvironmentSampler : register(s5);
+sampler2D SpecSampler : register(s4);
+float bumpiness : register(c209);
+float3 dirtColor : register(c200);
+float dirtLevel : register(c199);
+float fresnelRolloff : register(c211);
+float4 gAmbientOcclusionEffect : register(c63);
+float4 gDirectionalLight : register(c19);
+float4 gStencil : register(c61);
+float4 globalFogColorN : register(c50);
+float4 globalScalars : register(c35);
+float4 globalScalars2 : register(c36);
+float3 matDiffuseColor : register(c197);
+float4 matDiffuseColor2 : register(c198);
+float reflectivePower : register(c210);
+float4 specMapExpMask : register(c204);
+float3 specMapIntMask : register(c203);
+float3 specMapReflectMask : register(c212);
+float3 specular2Color : register(c207);
+float specular2ColorIntensity : register(c206);
+float specular2Factor : register(c205);
+float specularColorFactor : register(c202);
+float specularFactor : register(c201);
+
+struct PS_IN
+{
+	float2 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float3 texcoord3 : TEXCOORD3;
+	float3 texcoord4 : TEXCOORD4;
+	float3 texcoord5 : TEXCOORD5;
+	float2 texcoord7 : TEXCOORD7;
+};
+
+struct PS_OUT
+{
+	float4 color2 : COLOR2;
+	float4 color : COLOR;
+	float4 color1 : COLOR1;
+	float4 color3 : COLOR3;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float4 r3;
+	float4 r4;
+	float4 r5;
+	float4 r6;
+	float4 r7;
+	r0 = tex2D(BumpSampler, i.texcoord.xy);
+	r0.z = -r0.w + 1;
+	r0.z = -r0.x + r0.z;
+	r0.xy = (r0.zz >= 0) ? r0.wy : r0.xy;
+	r1 = tex2D(DiffuseSampler, i.texcoord.xy);
+	r0.xy = r0.xy * 2 + -1;
+	r0.xy = r0.xy * bumpiness.xx;
+	r0.z = dot(r0.xy, -r0.xy) + 1;
+	r2.x = max(r0.z, 0);
+	r0.z = rsqrt(r2.x);
+	r0.z = 1 / r0.z;
+	r2 = tex2D(SpecSampler, i.texcoord.xy);
+	r0.w = dot(r2, specMapExpMask);
+	r0.w = r0.w * specularFactor.x;
+	r2.w = dot(r2.xyz, specMapIntMask.xyz);
+	r2.w = r2.w * specularColorFactor.x;
+	r3.x = max(1, r0.w);
+	r3.yzw = r0.xxx * i.texcoord4.xyz;
+	r0.xzw = r0.zzz * i.texcoord1.xyz + r3.yzw;
+	r0.xyz = r0.yyy * i.texcoord5.xyz + r0.xzw;
+	r0.xyz = r0.xyz + 1E-05;
+	r4.xyz = normalize(r0.xyz);
+	r0.xyz = 1E-05 + i.texcoord3.xyz;
+	r5.xyz = normalize(r0.xyz);
+	r0.x = dot(-r5.xyz, r4.xyz);
+	r0.x = r0.x + r0.x;
+	r0.xyz = r4.xyz * -r0.xxx + -r5.xyz;
+	r3.yzw = r0.xyz + 1E-05;
+	r0.w = dot(r3.yzw, r3.yzw);
+	r0.w = rsqrt(r0.w);
+	r3.yz = r3.yw * r0.ww + 1;
+	r3.yz = r3.yz * -0.5;
+	r6 = tex2D(EnvironmentSampler, r3.yz);
+	r0.w = saturate(dot(r5.xyz, r4.xyz));
+	r5.xw = float2(1, 0);
+	r3.y = r5.x + -fresnelRolloff.x;
+	r0.w = -r0.w + 1.00001;
+	r3.z = pow(r0.w, 5.00001);
+	r0.w = fresnelRolloff.x * r3.z + r3.y;
+	r3.yzw = r0.www * r6.xyz;
+	r3.yzw = r3.yzw * reflectivePower.xxx;
+	r0.w = dot(r2.xyz, specMapReflectMask.xyz);
+	r2.xyz = r0.www * r3.yzw;
+	r2.xyz = r2.xyz * globalFogColorN.www;
+	r1.xyz = r1.xyz * matDiffuseColor.xyz;
+	r1 = r1 * i.texcoord2;
+	r0.w = dot(i.texcoord2.xyz, float3(0.2125, 0.7154, 0.0721));
+	r3.z = globalScalars.z;
+	r3.y = r3.z * gAmbientOcclusionEffect.y;
+	r3.z = r0.w * r3.y;
+	if (-dirtLevel.x < r5.w) {
+		r6 = tex2D(DirtSampler, i.texcoord7.xy);
+		r3.w = r6.x * dirtLevel.x;
+		r5.x = r6.x * -dirtLevel.x + r5.x;
+		r5.yzw = lerp(r1.xyz, dirtColor.xyz, r3.www);
+		r7 = r1.xxyz * float4(0, 1, 1, 1) + float4(1, 0, 0, 0);
+		r5 = (-r6.x >= 0) ? r7 : r5;
+		r1.xyz = r5.yzw;
+	} else {
+		r5.x = 1;
+	}
+	r3.w = r2.w * r5.x;
+	r4.w = 1 / specularFactor.x;
+	r4.w = r3.x * r4.w;
+	r5.y = 1 / specularColorFactor.x;
+	r2.w = r2.w * r5.y;
+	r5.y = specular2ColorIntensity.x * specular2ColorIntensity.x;
+	r2.w = r2.w * r5.y;
+	r5.yzw = r2.www * specular2Color.xyz;
+	r2.w = dot(r4.xyz, -gDirectionalLight.xyz);
+	r0.x = saturate(dot(-gDirectionalLight.xyz, r0.xyz));
+	r0.x = r0.x + 1E-05;
+	r6.x = 1E-05;
+	r0.y = specular2Factor.x * r4.w + r6.x;
+	r4.w = pow(r0.x, r0.y);
+	r0.x = saturate(r2.w * 2 + -0.5);
+	r0.x = (r2.w >= 0) ? r0.x : 0;
+	r0.x = r0.x * r4.w;
+	r0.xyz = r0.xxx * r5.yzw;
+	r0.xyz = r0.xyz * r1.xyz;
+	r0.xyz = r0.xyz * r5.xxx + r2.xyz;
+	r0.xyz = (-specular2ColorIntensity.xxx >= 0) ? r2.xyz : r0.xyz;
+	o.color2.x = r3.w * matDiffuseColor2.w;
+	r2.x = r3.x * matDiffuseColor2.w;
+	r0.xyz = r0.xyz * matDiffuseColor2.www;
+	r0.w = saturate(r0.w * r3.y + -1);
+	o.color.xyz = r0.www * globalScalars2.zzz + r1.xyz;
+	o.color1.xyz = r4.xyz * 0.5 + 0.5;
+	r0.w = saturate(r2.x * 0.0051020407);
+	r0.w = rsqrt(r0.w);
+	o.color2.y = 1 / r0.w;
+	r0.w = r1.w * globalScalars.x;
+	r0.xyz = saturate(r0.xyz * 0.0625);
+	r0.x = rsqrt(r0.x);
+	r0.y = rsqrt(r0.y);
+	r0.z = rsqrt(r0.z);
+	o.color3.x = 1 / r0.x;
+	o.color3.y = 1 / r0.y;
+	o.color3.z = 1 / r0.z;
+	o.color.w = r0.w;
+	o.color1.w = r0.w;
+	o.color2.w = r0.w;
+	o.color2.z = r3.z;
+	o.color3.w = gStencil.x;
+
+	return o;
+}

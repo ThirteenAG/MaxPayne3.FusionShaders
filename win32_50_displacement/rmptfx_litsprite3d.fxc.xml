@@ -1,0 +1,2302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="modern" VertexType="985">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="10" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_TransformVertexLitVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformVertexLitVS.hlsl" DataType="hlsl" Model="5.0" Length="12500">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformLitVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformLitVS.hlsl" DataType="hlsl" Model="5.0" Length="11672">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformLitVS_With_NormalMaps" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformLitVS_With_NormalMaps.hlsl" DataType="hlsl" Model="5.0" Length="7764">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformLitSoftVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformLitSoftVS.hlsl" DataType="hlsl" Model="5.0" Length="11672">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformLitSoftVS_With_NormalMaps" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformLitSoftVS_With_NormalMaps.hlsl" DataType="hlsl" Model="5.0" Length="7764">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformLitScreenSpaceVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformLitScreenSpaceVS.hlsl" DataType="hlsl" Model="5.0" Length="11616">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+            <Buffer Name="ParticleSprite" Slot="8"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformUnLitVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformUnLitVS.hlsl" DataType="hlsl" Model="5.0" Length="7796">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformUnLitSoftVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformUnLitSoftVS.hlsl" DataType="hlsl" Model="5.0" Length="7796">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformUnLitScreenSpaceVS" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformUnLitScreenSpaceVS.hlsl" DataType="hlsl" Model="5.0" Length="7012">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+            <Buffer Name="ParticleSprite" Slot="8"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="VS_TransformVelocity" OffsetBy1="false" File="rmptfx_litsprite3d/VS_TransformVelocity.hlsl" DataType="hlsl" Model="5.0" Length="7796">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gForcedColor</Variable>
+            <Variable>gAspectRatio</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="rage_ptx" Slot="3"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+            <Buffer Name="ParticleSprite" Slot="9"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="11" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_Draw" OffsetBy1="false" File="rmptfx_litsprite3d/PS_Draw.hlsl" DataType="hlsl" Model="5.0" Length="5980">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_Draw_with_NormalMaps" OffsetBy1="false" File="rmptfx_litsprite3d/PS_Draw_with_NormalMaps.hlsl" DataType="hlsl" Model="5.0" Length="10432">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+            <Buffer Name="ParticleSprite" Slot="8"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_Draw_with_NormalMaps_SkipInteriorLights" OffsetBy1="false" File="rmptfx_litsprite3d/PS_Draw_with_NormalMaps_SkipInteriorLights.hlsl" DataType="hlsl" Model="5.0" Length="8724">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+            <Buffer Name="ParticleSprite" Slot="8"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawSoft" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawSoft.hlsl" DataType="hlsl" Model="5.0" Length="6788">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="Softness" Slot="7"/>
+            <Buffer Name="CacheHybrid" Slot="8"/>
+            <Buffer Name="CustomVertexVariables" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawSoft_with_NormalMaps" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawSoft_with_NormalMaps.hlsl" DataType="hlsl" Model="5.0" Length="11220">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="Softness" Slot="7"/>
+            <Buffer Name="CacheHybrid" Slot="8"/>
+            <Buffer Name="CustomVertexVariables" Slot="9"/>
+            <Buffer Name="ParticleSprite" Slot="12"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawSoft_with_NormalMaps_SkipInteriorLights" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawSoft_with_NormalMaps_SkipInteriorLights.hlsl" DataType="hlsl" Model="5.0" Length="9512">
+          <Variables>
+            <Variable>gWorld</Variable>
+            <Variable>gWorldView</Variable>
+            <Variable>gWorldViewProj</Variable>
+            <Variable>gViewInverse</Variable>
+            <Variable>gDepthFxParams</Variable>
+            <Variable>gDirectionalLight</Variable>
+            <Variable>gDirectionalColour</Variable>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>gBiasToCamera</Variable>
+            <Variable>gWrapScale</Variable>
+            <Variable>gWrapBias</Variable>
+            <Variable>gDiffuse</Variable>
+            <Variable>gSpecularIntensity</Variable>
+            <Variable>gSpecularExponent</Variable>
+            <Variable>gExtraLights</Variable>
+            <Variable>gAmbientAmount</Variable>
+            <Variable>gSuperAlpha</Variable>
+            <Variable>gNormalArc</Variable>
+            <Variable>gScaleFade</Variable>
+            <Variable>gUseShadows</Variable>
+            <Variable>gAmbientShadow</Variable>
+            <Variable>gLightIntensityClamp</Variable>
+            <Variable>gTextureAngleRads</Variable>
+            <Variable>gInterpolationFactor</Variable>
+            <Variable>gPositionOffset</Variable>
+            <Variable>gPositionScale</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="rage_matrices" Slot="0"/>
+            <Buffer Name="direction_light" Slot="10"/>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="Softness" Slot="7"/>
+            <Buffer Name="CacheHybrid" Slot="8"/>
+            <Buffer Name="CustomVertexVariables" Slot="9"/>
+            <Buffer Name="ParticleSprite" Slot="12"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawUnLit" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawUnLit.hlsl" DataType="hlsl" Model="5.0" Length="5980">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="CacheHybrid" Slot="4"/>
+            <Buffer Name="CustomVertexVariables" Slot="7"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawSoftUnLit" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawSoftUnLit.hlsl" DataType="hlsl" Model="5.0" Length="6788">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="Softness" Slot="7"/>
+            <Buffer Name="CacheHybrid" Slot="8"/>
+            <Buffer Name="CustomVertexVariables" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawSoft_Simple" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawSoft_Simple.hlsl" DataType="hlsl" Model="5.0" Length="6896">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>gSoftness</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="Softness" Slot="7"/>
+            <Buffer Name="CacheHybrid" Slot="8"/>
+            <Buffer Name="CustomVertexVariables" Slot="9"/>
+          </Buffers>
+        </Shader>
+        <Shader Name="PS_DrawVelocity" OffsetBy1="false" File="rmptfx_litsprite3d/PS_DrawVelocity.hlsl" DataType="hlsl" Model="5.0" Length="6544">
+          <Variables>
+            <Variable>gLightPosX</Variable>
+            <Variable>gLightPosY</Variable>
+            <Variable>gLightPosZ</Variable>
+            <Variable>gLightDirX</Variable>
+            <Variable>gLightDirY</Variable>
+            <Variable>gLightDirZ</Variable>
+            <Variable>gLightFallOff</Variable>
+            <Variable>gLightConeScale</Variable>
+            <Variable>gLightConeOffset</Variable>
+            <Variable>gLightColR</Variable>
+            <Variable>gLightColG</Variable>
+            <Variable>gLightColB</Variable>
+            <Variable>gLightAmbient0</Variable>
+            <Variable>gLightAmbient1</Variable>
+            <Variable>gLightAmbientDir0</Variable>
+            <Variable>gLightAmbientDir1</Variable>
+            <Variable>gLightPointColR</Variable>
+            <Variable>gLightPointColG</Variable>
+            <Variable>gLightPointColB</Variable>
+            <Variable>gLightPointPosX</Variable>
+            <Variable>gLightPointPosY</Variable>
+            <Variable>gLightPointPosZ</Variable>
+            <Variable>gLightDir2X</Variable>
+            <Variable>gLightDir2Y</Variable>
+            <Variable>gLightDir2Z</Variable>
+            <Variable>gLightConeScale2</Variable>
+            <Variable>gLightConeOffset2</Variable>
+            <Variable>gLightPointFallOff</Variable>
+            <Variable>gDistFadeParams</Variable>
+            <Variable>gAdrenoFXVars</Variable>
+            <Variable>globalScalars</Variable>
+            <Variable>globalScalars2</Variable>
+            <Variable>globalScalars3</Variable>
+            <Variable>globalScalars4</Variable>
+            <Variable>globalFogParams</Variable>
+            <Variable>globalFogColor</Variable>
+            <Variable>globalFogOffsetN</Variable>
+            <Variable>globalFogColorN</Variable>
+            <Variable>globalScreenSize</Variable>
+            <Variable>globalDayNightEffects</Variable>
+            <Variable>ColorCorrectTopAndPedReflectScale</Variable>
+            <Variable>ColorCorrectBottomOffset</Variable>
+            <Variable>ColorShift</Variable>
+            <Variable>deSatContrastGamma</Variable>
+            <Variable>deSatContrastGammaIFX</Variable>
+            <Variable>colorize</Variable>
+            <Variable>globalUmScalars</Variable>
+            <Variable>gToneMapScalers</Variable>
+            <Variable>gAmbientOcclusionEffect</Variable>
+            <Variable>gWaterGlobals</Variable>
+            <Variable>ColorCorrectTopScreenEdge</Variable>
+            <Variable>ColorCorrectBottomOffsetScreenEdge</Variable>
+            <Variable>gScreenSpaceTessFactors</Variable>
+            <Variable>gTessFactors</Variable>
+            <Variable>gFrustumPlaneEquation_Left</Variable>
+            <Variable>gFrustumPlaneEquation_Right</Variable>
+            <Variable>gFrustumPlaneEquation_Top</Variable>
+            <Variable>gFrustumPlaneEquation_Bottom</Variable>
+            <Variable>gTessParameters</Variable>
+            <Variable>NearFarPlane</Variable>
+            <Variable>gInvScreenSize</Variable>
+            <Variable>HybridAdd</Variable>
+            <Variable>HybridAddRatio</Variable>
+            <Variable>HDRIntensityMultiplier</Variable>
+            <Variable>gActiveUnit</Variable>
+            <Variable>gTexCoordScaleOffset0</Variable>
+            <Variable>gTexCoordScaleOffset1</Variable>
+            <Variable>gTexCoordScaleOffset2</Variable>
+            <Variable>gTexCoordScaleOffset3</Variable>
+            <Variable>DiffuseTexSampler</Variable>
+            <Variable>DepthMapTexSampler</Variable>
+          </Variables>
+          <Buffers>
+            <Buffer Name="omni_light" Slot="2"/>
+            <Buffer Name="rage_globals" Slot="5"/>
+            <Buffer Name="rage_SoftParticleBuffer" Slot="4"/>
+            <Buffer Name="CacheHybrid" Slot="7"/>
+            <Buffer Name="CustomVertexVariables" Slot="8"/>
+          </Buffers>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+    <CBuffer Name="rage_matrices" Size="256" VS="0" PS="0" CS="0" DS="0" GS="0" HS="0"/>
+    <CBuffer Name="rage_ptx" Size="32" VS="3" PS="3" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="direction_light" Size="48" VS="10" PS="10" CS="10" DS="10" GS="10" HS="10"/>
+    <CBuffer Name="omni_light" Size="480" VS="2" PS="2" CS="2" DS="2" GS="2" HS="2"/>
+    <CBuffer Name="rage_globals" Size="464" VS="5" PS="5" CS="5" DS="5" GS="5" HS="5"/>
+    <CBuffer Name="rage_SoftParticleBuffer" Size="32" VS="4" PS="4" CS="3" DS="3" GS="3" HS="3"/>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4x4" Count="0" Slot="0" Group="3" FirstName="gWorld" SecondName="World" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="4" Group="3" FirstName="gWorldView" SecondName="WorldView" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="8" Group="3" FirstName="gWorldViewProj" SecondName="WorldViewProjection" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4x4" Count="0" Slot="12" Group="3" FirstName="gViewInverse" SecondName="ViewInverse" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1032736383"/>
+    <Variable Type="Float4" Count="0" Slot="16" Group="1" FirstName="gForcedColor" SecondName="ForcedColor" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="2726522661">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="17" Group="1" FirstName="gAspectRatio" SecondName="AspectRatio" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="2726522661">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="18" Group="3" FirstName="gDepthFxParams" SecondName="DepthFxParams" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="19" Group="3" FirstName="gDirectionalLight" SecondName="DirectionalLight" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="20" Group="3" FirstName="gDirectionalColour" SecondName="DirectionalColour" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1065075776"/>
+    <Variable Type="Float4" Count="0" Slot="21" Group="3" FirstName="gLightPosX" SecondName="LightPositionX" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="22" Group="3" FirstName="gLightPosY" SecondName="LightPositionY" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="23" Group="3" FirstName="gLightPosZ" SecondName="LightPositionZ" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="24" Group="3" FirstName="gLightDirX" SecondName="LightDirX" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="25" Group="3" FirstName="gLightDirY" SecondName="LightDirY" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="26" Group="3" FirstName="gLightDirZ" SecondName="LightDirZ" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="27" Group="3" FirstName="gLightFallOff" SecondName="LightFallOff" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="28" Group="3" FirstName="gLightConeScale" SecondName="LightConeScale" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="29" Group="3" FirstName="gLightConeOffset" SecondName="LightConeOffset" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="30" Group="3" FirstName="gLightColR" SecondName="LightColR" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="31" Group="3" FirstName="gLightColG" SecondName="LightColG" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="3" FirstName="gLightColB" SecondName="LightColB" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="33" Group="3" FirstName="gLightAmbient0" SecondName="LightAmbientColor0" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 0"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="3" FirstName="gLightAmbient1" SecondName="LightAmbientColor1" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Annotations>
+        <Annotation Name="UIWidget" Type="string" Value="Ambient Light Color 1"/>
+        <Annotation Name="Space" Type="string" Value="material"/>
+      </Annotations>
+      <Values>0;0;0;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="72" Group="3" FirstName="gLightAmbientDir0" SecondName="LightAmbientDir0" Offset="224" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Values>0;0;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="73" Group="3" FirstName="gLightAmbientDir1" SecondName="LightAmbientDir1" Offset="240" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Values>0;0;-1;0.5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="76" Group="3" FirstName="gLightPointColR" SecondName="LightPointColR" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="77" Group="3" FirstName="gLightPointColG" SecondName="LightPointColG" Offset="16" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="78" Group="3" FirstName="gLightPointColB" SecondName="LightPointColB" Offset="32" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="79" Group="3" FirstName="gLightPointPosX" SecondName="LightPointPositionX" Offset="48" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="80" Group="3" FirstName="gLightPointPosY" SecondName="LightPointPositionY" Offset="64" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="81" Group="3" FirstName="gLightPointPosZ" SecondName="LightPointPositionZ" Offset="80" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="82" Group="3" FirstName="gLightDir2X" SecondName="LightDir2X" Offset="96" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="83" Group="3" FirstName="gLightDir2Y" SecondName="LightDir2Y" Offset="112" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="84" Group="3" FirstName="gLightDir2Z" SecondName="LightDir2Z" Offset="128" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="85" Group="3" FirstName="gLightConeScale2" SecondName="LightConeScale2" Offset="144" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="86" Group="3" FirstName="gLightConeOffset2" SecondName="LightConeOffset2" Offset="160" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="87" Group="3" FirstName="gLightPointFallOff" SecondName="LightPointFallOff" Offset="176" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621"/>
+    <Variable Type="Float4" Count="0" Slot="97" Group="3" FirstName="gDistFadeParams" SecondName="gDistFadeParams" Offset="192" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="68" Group="3" FirstName="gAdrenoFXVars" SecondName="gAdrenoFXVars" Offset="208" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="626293621">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="35" Group="3" FirstName="globalScalars" SecondName="globalScalars" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="36" Group="3" FirstName="globalScalars2" SecondName="globalScalars2" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="49" Group="3" FirstName="globalScalars3" SecondName="globalScalars3" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="51" Group="3" FirstName="globalScalars4" SecondName="globalScalars4" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="37" Group="3" FirstName="globalFogParams" SecondName="globalFogParams" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1600;9000000;0.00999999978;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="38" Group="3" FirstName="globalFogColor" SecondName="globalFogColor" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="40" Group="3" FirstName="globalFogOffsetN" SecondName="globalFogOffsetN" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="50" Group="3" FirstName="globalFogColorN" SecondName="globalFogColorN" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="41" Group="3" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="128" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="42" Group="3" FirstName="globalDayNightEffects" SecondName="globalDayNightEffects" Offset="144" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;0;1;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="43" Group="3" FirstName="ColorCorrectTopAndPedReflectScale" SecondName="ColorCorrectTopAndPedReflectScale" Offset="160" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="44" Group="3" FirstName="ColorCorrectBottomOffset" SecondName="ColorCorrectBottomOffset" Offset="176" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="45" Group="3" FirstName="ColorShift" SecondName="ColorShift" Offset="192" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="46" Group="3" FirstName="deSatContrastGamma" SecondName="deSatContrastGamma" Offset="208" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="75" Group="3" FirstName="deSatContrastGammaIFX" SecondName="deSatContrastGammaIFX" Offset="224" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="47" Group="3" FirstName="colorize" SecondName="Colorize" Offset="240" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="48" Group="3" FirstName="globalUmScalars" SecondName="globalUmScalars" Offset="0" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="65" Group="3" FirstName="gToneMapScalers" SecondName="ToneMapScalers" Offset="16" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="63" Group="3" FirstName="gAmbientOcclusionEffect" SecondName="globalAOEffectScale" Offset="32" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>1;1;1;1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="64" Group="3" FirstName="gWaterGlobals" SecondName="WaterGlobals" Offset="48" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="66" Group="3" FirstName="ColorCorrectTopScreenEdge" SecondName="ColorCorrectTopScreenEdge" Offset="64" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="67" Group="3" FirstName="ColorCorrectBottomOffsetScreenEdge" SecondName="ColorCorrectBottomOffsetScreenEdge" Offset="80" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="32" Group="3" FirstName="gScreenSpaceTessFactors" SecondName="gScreenSpaceTessFactors" Offset="96" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;3;1.5;0.0666666701</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="33" Group="3" FirstName="gTessFactors" SecondName="gTessFactors" Offset="112" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>3;0.25;1;5</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="34" Group="3" FirstName="gFrustumPlaneEquation_Left" SecondName="gFrustumPlaneEquation_Left" Offset="128" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="35" Group="3" FirstName="gFrustumPlaneEquation_Right" SecondName="gFrustumPlaneEquation_Right" Offset="144" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="36" Group="3" FirstName="gFrustumPlaneEquation_Top" SecondName="gFrustumPlaneEquation_Top" Offset="160" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="37" Group="3" FirstName="gFrustumPlaneEquation_Bottom" SecondName="gFrustumPlaneEquation_Bottom" Offset="176" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674"/>
+    <Variable Type="Float4" Count="0" Slot="38" Group="3" FirstName="gTessParameters" SecondName="gTessParameters" Offset="192" Variant="1" Unused0="0" Unused1="0" CBufferNameHash="256486674">
+      <Values>5;0.100000001;0.5;0.200000003</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="128" Group="3" FirstName="NearFarPlane" SecondName="NearFarPlane" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="2725372071"/>
+    <Variable Type="Float4" Count="0" Slot="129" Group="3" FirstName="gInvScreenSize" SecondName="InvScreenSize" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="2725372071"/>
+    <Variable Type="Texture" Count="0" Slot="12" Group="2" FirstName="DepthMapTexSampler" SecondName="DepthMap" Offset="12" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;1;4;1;6;0;0;3;1;3</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+    <CBuffer Name="Softness" Size="16" VS="3" PS="7" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="CacheHybrid" Size="16" VS="7" PS="7" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="CustomVertexVariables" Size="96" VS="8" PS="8" CS="3" DS="3" GS="3" HS="3"/>
+    <CBuffer Name="ParticleSprite" Size="128" VS="9" PS="12" CS="3" DS="3" GS="3" HS="3"/>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Float" Count="0" Slot="205" Group="2" FirstName="gSoftness" SecondName="gSoftness" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="187712958">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Softness Fade : Controls how much soft particles fade out as objects become close to them ;"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="DiffuseTexSampler" SecondName="DiffuseTex2" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Texture Map"/>
+      </Annotations>
+      <Values>5;3;4;2;6;2;0;3;1;3</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="206" Group="3" FirstName="HybridAdd" SecondName="HybridAdd" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1642837276">
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="207" Group="3" FirstName="HybridAddRatio" SecondName="HybridAddRatio" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Hybrid Add Ratio"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="208" Group="3" FirstName="HDRIntensityMultiplier" SecondName="HDRIntensityMultiplier" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="HDR Intensity Multiplier"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="255"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIHint" Type="string" Value="Keyframeable"/>
+        <Annotation Name="nostrip" Type="string" Value="nostrip"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="209" Group="3" FirstName="gActiveUnit" SecondName="ActiveUnit" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Unit 1-4 specify if they are enabled (0 or 1)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="1"/>
+      </Annotations>
+      <Values>1;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="210" Group="3" FirstName="gTexCoordScaleOffset0" SecondName="TexCoordScaleOffset0" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Scale//Offset : Lets you selection sub-regions of the texture assigned.  Ex Texture Size 1024 by 512 sub region 64,128 - 120,256 = (120-64)/1024, (256-128)/512, 64/1024, 120/512"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0625"/>
+      </Annotations>
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="211" Group="3" FirstName="gTexCoordScaleOffset1" SecondName="TexCoordScaleOffset1" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Scale//Offset : Lets you selection sub-regions of the texture assigned.  Ex Texture Size 1024 by 512 sub region 64,128 - 120,256 = (120-64)/1024, (256-128)/512, 64/1024, 120/512"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0625"/>
+      </Annotations>
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="212" Group="3" FirstName="gTexCoordScaleOffset2" SecondName="TexCoordScaleOffset2" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Scale//Offset : Lets you selection sub-regions of the texture assigned.  Ex Texture Size 1024 by 512 sub region 64,128 - 120,256 = (120-64)/1024, (256-128)/512, 64/1024, 120/512"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0625"/>
+      </Annotations>
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="213" Group="3" FirstName="gTexCoordScaleOffset3" SecondName="TexCoordScaleOffset3" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="1015170886">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Scale//Offset : Lets you selection sub-regions of the texture assigned.  Ex Texture Size 1024 by 512 sub region 64,128 - 120,256 = (120-64)/1024, (256-128)/512, 64/1024, 120/512"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.0625"/>
+      </Annotations>
+      <Values>1;1;0;0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="215" Group="3" FirstName="gBiasToCamera" SecondName="BiasToCamera" Offset="0" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Scale : Controls how strong sun light hits particle ( 0 - no direct light , 1 - all direct light)"/>
+        <Annotation Name="UIMin" Type="float" Value="-1000"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="216" Group="3" FirstName="gWrapScale" SecondName="WrapScale" Offset="4" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Scale : Controls how strong sun light hits particle ( 0 - no direct light , 1 - all direct light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="217" Group="3" FirstName="gWrapBias" SecondName="WrapBias" Offset="8" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Wrap Bias : Controls how sun light spreads over surface ( 0 - no extra spread, 1- spreads all over surface) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="218" Group="3" FirstName="gDiffuse" SecondName="Diffuse" Offset="12" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Diffuse : Controls the amount of lighting on surface, color also controls this ( 0 - no light, 1- light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="219" Group="3" FirstName="gSpecularIntensity" SecondName="SpecularIntensity" Offset="16" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Specular Intensity : Controls the amount of specular lighting on surface ( 0 - no specular, 1- full specular)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>100</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="220" Group="3" FirstName="gSpecularExponent" SecondName="SpecularExponent" Offset="20" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Specular Exponent : Controls the specular exponent (specular dot) for the surface( 0 - no specular, 1- full specular)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>100</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="221" Group="3" FirstName="gExtraLights" SecondName="ExtraLights" Offset="24" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="ExtraLights : Controls the amount of lighting applied from the additional 4 lights in gta ( 0 - no light, 4- light)"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="10"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="222" Group="3" FirstName="gAmbientAmount" SecondName="AmbientAmount" Offset="28" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Ambient Scale : Controls how much double ambient lighting  to alpy to surface"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="2"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="223" Group="3" FirstName="gSuperAlpha" SecondName="SuperAlpha" Offset="32" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Super Alpha : Boosts the alpha amount by the given value ( 1 - normal alpha,  2 - super alpha) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="4"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="224" Group="3" FirstName="gNormalArc" SecondName="NormalArc" Offset="36" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Normal Arc : Determines how much to bend normals outwards for vertex lighting  ( 0 - bend completely outwards, 4 bend nearly ompletely inwards) "/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="225" Group="3" FirstName="gScaleFade" SecondName="gScaleFade" Offset="40" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Near Scale : Amount to scale down particles as the camera gets near 1.0 means same as alpha fades down, 2.0 means twice as slow as alpha fades"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1000"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>2</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="226" Group="3" FirstName="gUseShadows" SecondName="UseShadows" Offset="44" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Percentage of shadows to apply to directional light"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="227" Group="3" FirstName="gAmbientShadow" SecondName="AmbientShadows" Offset="48" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Percentage of shadows to apply to ambient term"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>1</Values>
+    </Variable>
+    <Variable Type="Float" Count="0" Slot="228" Group="3" FirstName="gLightIntensityClamp" SecondName="LightIntensityClamp" Offset="52" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Clamp the max value a dotproduct can be"/>
+        <Annotation Name="UIMin" Type="float" Value="0"/>
+        <Annotation Name="UIMax" Type="float" Value="1"/>
+        <Annotation Name="UIStep" Type="float" Value="0.00999999978"/>
+      </Annotations>
+      <Values>0.699999988</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="229" Group="3" FirstName="gTextureAngleRads" SecondName="TextureAngleRads" Offset="64" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="The radian angle that a given texture represents"/>
+        <Annotation Name="UIMin" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIMax" Type="float" Value="100"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>0;0.785398185;1.57079601;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="230" Group="3" FirstName="gInterpolationFactor" SecondName="InterpolationFactor" Offset="80" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Controls the priority based on the angle of the Number of Textures to generate view"/>
+        <Annotation Name="UIMin" Type="float" Value="0.00999999978"/>
+        <Annotation Name="UIMax" Type="float" Value="100"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>8;8;8;8</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="231" Group="3" FirstName="gPositionOffset" SecondName="PositionOffset" Offset="96" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Vertex Position Offset along Y Axis"/>
+        <Annotation Name="UIMin" Type="float" Value="-100"/>
+        <Annotation Name="UIMax" Type="float" Value="100"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>0;0;0;0</Values>
+    </Variable>
+    <Variable Type="Float4" Count="0" Slot="232" Group="3" FirstName="gPositionScale" SecondName="PositionScale" Offset="112" Variant="0" Unused0="0" Unused1="0" CBufferNameHash="3099749578">
+      <Annotations>
+        <Annotation Name="UIName" Type="string" Value="Particle Size Scale based on used texture"/>
+        <Annotation Name="UIMin" Type="float" Value="-100"/>
+        <Annotation Name="UIMax" Type="float" Value="100"/>
+        <Annotation Name="UIStep" Type="float" Value="0.100000001"/>
+      </Annotations>
+      <Values>1;1;1;1</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="draw_old">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw">
+      <Pass VS="1" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_with_normalmaps">
+      <Pass VS="2" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_with_normalmaps_skipinteriorlights">
+      <Pass VS="2" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft">
+      <Pass VS="3" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft_with_normalmaps">
+      <Pass VS="4" PS="5" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft_with_normalmaps_skipinteriorlights">
+      <Pass VS="4" PS="6" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft_downsample">
+      <Pass VS="3" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_screenspace">
+      <Pass VS="5" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw">
+      <Pass VS="6" PS="7" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw_soft">
+      <Pass VS="7" PS="8" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="unlit_draw_screenspace">
+      <Pass VS="8" PS="7" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_soft_simple">
+      <Pass VS="3" PS="9" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+    <Technique Name="draw_velocity">
+      <Pass VS="9" PS="10" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>

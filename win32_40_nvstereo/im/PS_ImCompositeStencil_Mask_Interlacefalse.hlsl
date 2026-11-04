@@ -1,0 +1,98 @@
+cbuffer _Globals : register(b4)
+{
+	float ApparentDepth : packoffset(c205);
+	float4 TransColor : packoffset(c207);
+	float4 TransPos : packoffset(c208);
+	float4 TransTex0 : packoffset(c209);
+	float4 TexelSize : packoffset(c210);
+	float GammaCorrection : packoffset(c211);
+	float g_fBilateralCoefficient : packoffset(c212);
+	float4 refMipBlurParams : packoffset(c213);
+	float4 SubViewportParams : packoffset(c214);
+	float MaskAlphaReverse : packoffset(c215);
+	float InterlaceIndex : packoffset(c216);
+	float StencilTech : packoffset(c217);
+	float InterlaceTotalNum : packoffset(c218);
+};
+
+SamplerState RenderMapPointSampler : register(s1);
+SamplerState AlphaMaskMapSampler : register(s3);
+SamplerState InterlaceMapSampler : register(s4);
+Texture2D RenderMapPointSampler_tex : register(t1);
+Texture2D AlphaMaskMapSampler_tex : register(t3);
+Texture2D InterlaceMapSampler_tex : register(t4);
+Texture2D<uint4> StencilCopyTexture : register(t6);
+
+struct PS_IN
+{
+	float4 sv_position : SV_Position;
+	float4 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 color : COLOR;
+};
+
+float4 main(PS_IN i) : SV_Target
+{
+	float4 o;
+
+	int4 r0;
+	int4 r1;
+	int4 r2;
+	float3 r3;
+	int3 r4;
+	r0 = asint(AlphaMaskMapSampler_tex.Sample(AlphaMaskMapSampler, i.texcoord1.xy));
+	r0.x = (0 < InterlaceTotalNum) ? -1 : 0;
+	if (r0.x != 0) {
+		r0.x = asint(1 / InterlaceTotalNum);
+		r0.y = asint(asfloat(r0.x) * InterlaceIndex);
+		r0.x = asint(asfloat(r0.x) * 0.5 + asfloat(r0.y));
+		r0.y = asint(i.texcoord.y);
+		r1 = asint(InterlaceMapSampler_tex.Sample(InterlaceMapSampler, asfloat(r0.xy)).wxyz);
+	} else {
+		r1.x = 1065353216;
+	}
+	float4 dimensions0 = 0;
+	StencilCopyTexture.GetDimensions(0, dimensions0.x, dimensions0.y, dimensions0.w);
+	r2 = asint(dimensions0);
+	r0.xy = asint(asfloat(r2.xy) * i.texcoord.xy);
+	r2.xy = (int2)asfloat(r0.xy);
+	r2.zw = int2(0, 0);
+	r2 = StencilCopyTexture.Load(r2.xyz);
+	r0.xy = r2.yy & int2(7, 128);
+	r0.xy = (r0.xy == int2(1, 128)) ? -1 : 0;
+	r0.z = r0.x & 1065353216;
+	r1.y = (r0.y == 0) ? -1 : 0;
+	r1.y = r0.x & r1.y;
+	r1.y = r1.y & 1065353216;
+	r1.zw = (abs(StencilTech) == float2(1, 2)) ? -1 : 0;
+	r0.x = r0.y & r0.x;
+	r0.x = r0.x & 1065353216;
+	r0.x = (r1.w != 0) ? r0.x : r0.z;
+	r0.x = (r1.z != 0) ? r1.y : r0.x;
+	r0.y = (StencilTech < 0) ? -1 : 0;
+	r0.z = asint(-(asfloat(r0.x)) + 1);
+	r0.xz = asint(asfloat(r0.xz) * i.color.ww);
+	r0.x = (r0.y != 0) ? r0.z : r0.x;
+	r0.y = (MaskAlphaReverse == 0) ? -1 : 0;
+	r0.z = asint(asfloat(r0.w) * asfloat(r0.x));
+	r0.w = asint(-(asfloat(r0.w)) + 1);
+	r0.x = asint(asfloat(r0.w) * asfloat(r0.x));
+	r0.xz = asint(asfloat(r1.xx) * asfloat(r0.xz));
+	r0.x = (r0.y != 0) ? r0.z : r0.x;
+	r1 = asint(RenderMapPointSampler_tex.Sample(RenderMapPointSampler, i.texcoord.xy));
+	r0.y = (0 < asfloat(r0.x)) ? -1 : 0;
+	r2.xyz = asint(-(asfloat(r1.xyz)) + float3(1, 1, 1));
+	r3 = i.color.xyz * float3(256, 256, 256) + float3(-128, -128, -128);
+	r2.xyz = asint(asfloat(r2.xyz) * r3.xyz);
+	r0.z = asint(asfloat(r1.x) * 0.0078125);
+	r4 = (float3(0, 0, 0) < r3.xyz) ? -1 : 0;
+	r2.xyz = asint(asfloat(r2.xyz) * float3(0.0078125, 0.0078125, 0.0078125));
+	r3 = r3.xyz * asfloat(r0.zzz);
+	r2.xyz = (r4.xyz != 0) ? r2.xyz : asint(r3.xyz);
+	r1.xyz = r1.xyz & r0.yyy;
+	r0.yzw = r0.yyy & r2.xyz;
+	o.xyz = asfloat(r0.yzw) + asfloat(r1.xyz);
+	o.w = asfloat(r0.x);
+
+	return o;
+}

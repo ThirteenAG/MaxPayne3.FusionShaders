@@ -1,0 +1,136 @@
+float gDistanceScale : register(c134);
+float gLifeTimeScale : register(c133);
+float gTotalLifeTimeScale : register(c135);
+row_major float4x4 gViewInverse : register(c12);
+row_major float4x4 gWorld : register(c0);
+row_major float4x4 gWorldView : register(c4);
+row_major float4x4 gWorldViewProj : register(c8);
+float4 globalDayNightEffects : register(c42);
+float4 vCustomData[4] : register(c137);
+
+struct VS_IN
+{
+	float4 position : POSITION;
+	float4 texcoord : TEXCOORD;
+};
+
+struct VS_OUT
+{
+	float4 position : POSITION;
+	float2 texcoord : TEXCOORD;
+	float4 texcoord1 : TEXCOORD1;
+	float4 texcoord2 : TEXCOORD2;
+	float texcoord3 : TEXCOORD3;
+	float4 texcoord4 : TEXCOORD4;
+	float4 texcoord5 : TEXCOORD5;
+	float3 texcoord6 : TEXCOORD6;
+	float4 texcoord7 : TEXCOORD7;
+	float4 color : COLOR;
+};
+
+VS_OUT main(VS_IN i)
+{
+	VS_OUT o;
+
+	float4 r0;
+	float4 r1;
+	float4 r2;
+	float3 r3;
+	float4 r4;
+	float4 r5;
+	float4 r6;
+	r0 = vCustomData[0];
+	r1.x = r0.z * gTotalLifeTimeScale.x;
+	r1.yz = float2(-0.009765625, 0.25) + i.position.zz;
+	r1.x = saturate(r1.x * -4 + r1.z);
+	r1.y = max(r1.y, 0);
+	r1.y = min(r1.y, 0.030273438);
+	r2.xyw = float3(1.05, 2, 0.25);
+	r1.z = vCustomData[1].w * -r2.x + r2.y;
+	r1.z = max(r1.z, 0.1);
+	r1.yz = r1.yz * vCustomData[0].ww;
+	r2.xyz = r0.xxx * float3(1, 1, 0) + float3(0, 0, 33.032257);
+	r1.y = r1.y * r2.z + 0.025;
+	r1.w = abs(vCustomData[3].y);
+	r3.z = min(r1.w, r1.y);
+	r1.y = 1 / r1.w;
+	r1.w = r3.z * 2.2;
+	r1.w = min(r1.w, 5);
+	r1.z = r1.z * 0.49 + -r1.w;
+	r1.z = max(r1.z, 0);
+	r4.xyz = float3(1, 256, 65536);
+	r4.yzw = r4.xyz * vCustomData[2].yyy;
+	r4.yzw = frac(r4.yzw);
+	r5.xyz = r1.zzz * r4.yzw;
+	r1.z = r0.z * -gLifeTimeScale.x + r4.x;
+	r1.z = r3.z * -gDistanceScale.x + r1.z;
+	r1.z = r0.y * -1.05 + r1.z;
+	r6.xy = vCustomData[1].xy;
+	r5.w = saturate(r6.x * -1E-07 + r1.z);
+	r6 = r6.y * float4(0.004, 0.002, 0, 0);
+	r5 = r6.xyww * r1.x + r5;
+	r1.x = r3.z * -0.25 + 1;
+	r0.z = r0.z * -gTotalLifeTimeScale.x + r1.x;
+	r0.y = saturate(r0.y * -5 + r0.z);
+	r5 = r6 * r0.y + r5;
+	r0.y = saturate(r2.w + globalDayNightEffects.z);
+	r1.xzw = r0.yyy * r4.yzw;
+	o.color.xyz = r5.xyz * 0.0001 + r1.xzw;
+	o.color.w = r5.w;
+	r0.y = -r3.z * gWorldView[1].z;
+	r1.xz = i.position.xy;
+	r1.xz = r2.xy * r1.xz;
+	r0.z = r1.y * abs(r3.z);
+	r1.y = r1.y * vCustomData[0].w;
+	r1.yw = r1.yy * vCustomData[3].xz;
+	r3.xy = vCustomData[3].xz * r0.zz + r1.xz;
+	r0.y = r3.x * gWorldView[0].z + r0.y;
+	r0.y = r3.y * gWorldView[2].z + r0.y;
+	r0.y = r0.y + gWorldView[3].z;
+	o.texcoord3 = -r0.y;
+	r2.xyz = r3.xyz + -i.position.xyz;
+	r0.y = dot(r2.xyz, r2.xyz);
+	r0.y = rsqrt(r0.y);
+	r0.y = 1 / r0.y;
+	r0.y = -r0.y + vCustomData[0].w;
+	r0.z = 1 / vCustomData[2].w;
+	r0.y = saturate(r0.z * r0.y);
+	r0.y = r0.y + -1;
+	r1.x = 0;
+	r0.z = (r1.x < vCustomData[2].w) ? 1 : 0;
+	o.texcoord7.w = r0.z * r0.y + 1;
+	r2 = -r3.z * gWorld[1];
+	r4 = -r3.z * gWorldViewProj[1];
+	r4 = r3.x * gWorldViewProj[0] + r4;
+	r4 = r3.y * gWorldViewProj[2] + r4;
+	r4 = r4 + gWorldViewProj[3];
+	r2 = r3.x * gWorld[0] + r2;
+	r2 = r3.y * gWorld[2] + r2;
+	r2 = r2 + gWorld[3];
+	r3 = -r2.xyz + gViewInverse[3].xyz;
+	o.texcoord4 = r2;
+	r2.xyz = normalize(r3.xyz);
+	r0.yzw = -r0.www * gWorld[1].xyz;
+	r0.yzw = r1.yyy * gWorld[0].xyz + r0.yzw;
+	r0.yzw = r1.www * gWorld[2].xyz + r0.yzw;
+	r1.xyz = normalize(r0.yzw);
+	r0.yzw = r2.xyz * r1.yzx;
+	r0.yzw = r1.xyz * r2.yzx + -r0.yzw;
+	r1.w = dot(r0.yzw, r0.yzw);
+	r1.w = rsqrt(r1.w);
+	r0.yzw = r0.yzw * r1.www;
+	r2.xyz = r1.yzx * r0.yzw;
+	r0.yzw = r0.wyz * r1.zxy + -r2.xyz;
+	o.texcoord6 = r1.xyz;
+	r1.x = dot(r0.yzw, r0.yzw);
+	r1.x = rsqrt(r1.x);
+	o.texcoord7.xyz = r0.yzw * r1.xxx;
+	o.position = r4;
+	o.texcoord = i.texcoord.xy;
+	o.texcoord1 = r4;
+	o.texcoord2 = r4;
+	o.texcoord5.xyz = gWorld[3].xyz;
+	o.texcoord5.w = r0.x * 0.009765625;
+
+	return o;
+}

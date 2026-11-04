@@ -1,0 +1,81 @@
+SamplerState DiffuseSampler : register(s0);
+Texture2D DiffuseSampler_tex : register(t0);
+
+struct PS_IN
+{
+	float4 sv_position : SV_Position;
+	float2 texcoord : TEXCOORD;
+	float3 texcoord1 : TEXCOORD1;
+	float4 texcoord6 : TEXCOORD6;
+};
+
+struct PS_OUT
+{
+	float4 sv_target : SV_Target;
+	float4 sv_target1 : SV_Target1;
+	float4 sv_target2 : SV_Target2;
+	float4 sv_target3 : SV_Target3;
+	uint sv_coverage : SV_Coverage;
+};
+
+PS_OUT main(PS_IN i)
+{
+	PS_OUT o;
+
+	int4 r0;
+	int4 r1;
+	int4 r2;
+	int4 r3;
+	int4 r4;
+	int2 r5;
+	r0.x = 1;
+	r1 = asint(ddy_coarse(i.texcoord.xyxy));
+	r2 = asint(asfloat(r1.zwzw) * float4(-0.375, -0.375, -0.125, -0.125));
+	r1 = asint(asfloat(r1) * float4(0.125, 0.125, 0.375, 0.375));
+	r3 = asint(ddx_coarse(i.texcoord.xyxy));
+	r2 = asint(asfloat(r3.zwzw) * float4(-0.125, -0.125, 0.375, 0.375) + asfloat(r2));
+	r1 = asint(asfloat(r3) * float4(-0.375, -0.375, 0.125, 0.125) + asfloat(r1));
+	r1 = asint(asfloat(r1) + i.texcoord.xyxy);
+	r2 = asint(asfloat(r2) + i.texcoord.xyxy);
+	r3 = asint(DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r2.xy)));
+	r2 = asint(DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r2.zw)));
+	r0.y = r3.w;
+	r0.z = asint(asfloat(r3.w) + -0.5);
+	r3.xyz = asint(asfloat(r3.www) * asfloat(r3.xyz));
+	r0.z = (asfloat(r0.z) >= 0) ? -1 : 0;
+	r0.xy = r0.xy & r0.zz;
+	r4.y = asint(asfloat(r2.w) + asfloat(r0.y));
+	r0.w = asint(asfloat(r2.w) + -0.5);
+	r0.w = (asfloat(r0.w) >= 0) ? -1 : 0;
+	r4.x = (2 & ~1) | (r0.z & 1);
+	r3.xyz = r3.xyz & r0.zzz;
+	r0.xy = (r0.ww != 0) ? r4.xy : r0.xy;
+	r4 = asint(DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r1.xy)));
+	r1 = asint(DiffuseSampler_tex.Sample(DiffuseSampler, asfloat(r1.zw)));
+	r5.y = asint(asfloat(r0.y) + asfloat(r4.w));
+	r5.x = r0.x + 4;
+	r0.z = asint(asfloat(r4.w) + -0.5);
+	r0.z = (asfloat(r0.z) >= 0) ? -1 : 0;
+	r0.xy = (r0.zz != 0) ? r5.xy : r0.xy;
+	r5.x = r0.x + 8;
+	r5.y = asint(asfloat(r1.w) + asfloat(r0.y));
+	r3.w = asint(asfloat(r1.w) + -0.5);
+	r3.w = (asfloat(r3.w) >= 0) ? -1 : 0;
+	r0.xy = (r3.ww != 0) ? r5.xy : r0.xy;
+	r2.xyz = asint(asfloat(r2.xyz) * asfloat(r2.www) + asfloat(r3.xyz));
+	r2.xyz = (r0.www != 0) ? r2.xyz : r3.xyz;
+	r3.xyz = asint(asfloat(r4.xyz) * asfloat(r4.www) + asfloat(r2.xyz));
+	r2.xyz = (r0.zzz != 0) ? r3.xyz : r2.xyz;
+	r1.xyz = asint(asfloat(r1.xyz) * asfloat(r1.www) + asfloat(r2.xyz));
+	r1.xyz = (r3.www != 0) ? r1.xyz : r2.xyz;
+	o.sv_target.xyz = asfloat(r1.xyz) / asfloat(r0.yyy);
+	o.sv_target.w = asfloat(r0.y) * i.texcoord6.w;
+	o.sv_coverage = r0.x;
+	o.sv_target1.xyz = i.texcoord1.xyz;
+	o.sv_target1.w = 0;
+	o.sv_target2.xyz = i.texcoord6.xyz;
+	o.sv_target2.w = 1000;
+	o.sv_target3 = float4(0, 0, 0, 0);
+
+	return o;
+}

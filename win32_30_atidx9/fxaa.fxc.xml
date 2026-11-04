@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Effect Format="legacy" VertexType="65">
+  <ShaderGroups>
+    <Group Stage="Vertex" RawCount="1" OffsetBy1="false" Name="" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="VS_Passthrough" OffsetBy1="false" File="fxaa/VS_Passthrough.hlsl" DataType="hlsl" Model="3.0" Length="204">
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Pixel" RawCount="5" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+        <Shader Name="PS_FXAAConsole" OffsetBy1="false" File="fxaa/PS_FXAAConsole.hlsl" DataType="hlsl" Model="3.0" Length="1328">
+          <Variables>
+            <Variable>BackBufferSampler</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_FXAA_Quality2" OffsetBy1="false" File="fxaa/PS_FXAA_Quality2.hlsl" DataType="hlsl" Model="3.0" Length="4440">
+          <Variables>
+            <Variable>BackBufferSampler</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_FXAA_Quality3" OffsetBy1="false" File="fxaa/PS_FXAA_Quality3.hlsl" DataType="hlsl" Model="3.0" Length="4672">
+          <Variables>
+            <Variable>BackBufferSampler</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+        <Shader Name="PS_FXAA_Quality4" OffsetBy1="false" File="fxaa/PS_FXAA_Quality4.hlsl" DataType="hlsl" Model="3.0" Length="4672">
+          <Variables>
+            <Variable>BackBufferSampler</Variable>
+            <Variable>globalScreenSize</Variable>
+          </Variables>
+        </Shader>
+      </Shaders>
+    </Group>
+    <Group Stage="Compute" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Domain" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Geometry" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+    <Group Stage="Hull" RawCount="1" OffsetBy1="false" Name="NULL" Unk1="0" Unk2="0" Unk3="0">
+      <Shaders>
+      </Shaders>
+    </Group>
+  </ShaderGroups>
+  <CBuffers1>
+  </CBuffers1>
+  <Variables1>
+    <Variable Type="Float4" Count="0" Slot="41" Group="2" FirstName="globalScreenSize" SecondName="globalScreenSize" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>1;1;1;1</Values>
+    </Variable>
+  </Variables1>
+  <CBuffers2>
+  </CBuffers2>
+  <Variables2>
+    <Variable Type="Texture" Count="0" Slot="0" Group="2" FirstName="BackBufferSampler" SecondName="BackBuffer" Offset="255" Variant="255" Unused0="0" Unused1="0" CBufferNameHash="0">
+      <Values>5;2;4;2;6;0;0;3;1;3</Values>
+    </Variable>
+  </Variables2>
+  <Techniques>
+    <Technique Name="AntiAliasing">
+      <Pass VS="0" PS="1" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="2" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="3" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+      <Pass VS="0" PS="4" CS="0" DS="0" GS="0" HS="0">
+      </Pass>
+    </Technique>
+  </Techniques>
+</Effect>
